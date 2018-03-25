@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/about/my-name-is-xuzhixiang.html</loc>
+    <loc>http://yoursite.com/2018/03/25/hello-world/</loc>
     
-    <lastmod>2018-03-25T10:51:43.611Z</lastmod>
+    <lastmod>2018-03-25T12:48:47.384Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/03/25/hello-world/</loc>
+    <loc>http://yoursite.com/tags/tags.html</loc>
     
-    <lastmod>2018-03-24T13:31:05.712Z</lastmod>
+    <lastmod>2018-03-25T12:47:33.057Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/my-name-is-xuzhixiang.html</loc>
+    
+    <lastmod>2018-03-25T10:51:43.611Z</lastmod>
     
   </url>
   
@@ -30,14 +37,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/photo/index.html</loc>
+    <loc>http://yoursite.com/life/index.html</loc>
     
     <lastmod>2018-03-24T13:31:05.712Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/life/index.html</loc>
+    <loc>http://yoursite.com/photo/index.html</loc>
     
     <lastmod>2018-03-24T13:31:05.712Z</lastmod>
     
