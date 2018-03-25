@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2018-03-24T13:31:05.712Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/Study/index.html</loc>
     
     <lastmod>2018-03-24T13:31:05.712Z</lastmod>
@@ -31,6 +24,13 @@
   
   <url>
     <loc>http://yoursite.com/life/index.html</loc>
+    
+    <lastmod>2018-03-24T13:31:05.712Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2018-03-24T13:31:05.712Z</lastmod>
     
