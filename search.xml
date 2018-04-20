@@ -3,6 +3,87 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2018/04/20/%E9%98%BF%E9%87%8C%E4%B9%8B%E5%8F%8C%E9%AB%98%E9%A2%84%E6%B5%8B-%E6%97%A5%E5%BF%97/"/>
+      <url>/2018/04/20/%E9%98%BF%E9%87%8C%E4%B9%8B%E5%8F%8C%E9%AB%98%E9%A2%84%E6%B5%8B-%E6%97%A5%E5%BF%97/</url>
+      <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title:操作日志</span><br><span class="line">date: 2018-04-12 19:19:02</span><br><span class="line">tags:  AI</span><br><span class="line">categories: Content </span><br><span class="line">description: 双高预测操作日志</span><br></pre></td></tr></table></figure><h3 id="一数据准备工作"><a href="#一数据准备工作" class="headerlink" title="一数据准备工作"></a>一数据准备工作</h3><ol><li>为方便数据操作，将txt文件导入sql数据库</li><li>将vid和table_Id设为联合主键唯一标示，合并两个特征表</li></ol><p>Step1：先复制表结构及其内容：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 新表  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></table></figure><p>Step2：再将另外的一张表合并</p><p>insert into test1 (field1,field2,….) select(field1,field2,….) from test2;</p><ol><li>查询数据集的总人数：57299</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> alloriginaldate.vid   <span class="keyword">from</span> alloriginaldate <span class="keyword">group</span> byalloriginaldate.vid</span><br></pre></td></tr></table></figure><p><img src="/2018/04/20/阿里之双高预测-日志/1.png" alt="1"> </p><p>5.查询数据集中总体检数</p><p><img src="/2018/04/20/阿里之双高预测-日志/2.png" alt="2"></p><h3 id="二数据预处理"><a href="#二数据预处理" class="headerlink" title="二数据预处理"></a>二数据预处理</h3>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Excel导入Matlab数值全为NAN解决方案</title>
+      <link href="/2018/04/19/Excel%E5%AF%BC%E5%85%A5Matlab%E6%95%B0%E5%80%BC%E5%85%A8%E4%B8%BANAN%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+      <url>/2018/04/19/Excel%E5%AF%BC%E5%85%A5Matlab%E6%95%B0%E5%80%BC%E5%85%A8%E4%B8%BANAN%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      <content type="html"><![CDATA[<p>最近在利用Matlab做来训练BP神经网络的时候遇见了一个问题。</p><p>当我在数据库里将原始数据进行一定预处理后，重新导出到excel，并把导出的excel导入matlab中，过程很顺利，但当我在matlab中查看我导入后的数据时，竟然满眼的NAN,</p><p><img src="/2018/04/19/Excel导入Matlab数值全为NAN解决方案/1.png" alt="2"></p><p>amazing！</p><p>直觉告诉我肯定是数据格式的问题。</p><p>1.首先NAN=Not a number，既然不是数值类型，那我先找到Excel的数据，将数据全部改为数值类型，但是Fail！我用求和格式对数据进行求和来验证是否是数值类型，如果能正常求和，那肯定是数据类型无疑，但是百度了很多将excel数据变为数值的方法，最后结果都是Fail。</p><p>2.既然excel这边没办法解决，我就在上一个环节数据库导出这边进行尝试解决问题。</p><p>我尝试着将Navchar格式改为float类型，忽略警告</p><p> <img src="/2018/04/19/Excel导入Matlab数值全为NAN解决方案/2.png" alt="2"></p><p>但是还是报错</p><p><img src="/2018/04/19/Excel导入Matlab数值全为NAN解决方案/3.png" alt="3"></p><p>没办法，Fail</p><p>然后我分析数据库里的数据，发现问题所在。</p><p><img src="/2018/04/19/Excel导入Matlab数值全为NAN解决方案/4.png" alt=""></p><p>问题就出现在这个未知的空符号（不是空格），然后我用replace，ltrim，rtrim等方法试图去掉这个位置的空符号，还是依旧存在。</p><p>内事不决问百度，外事不决问谷歌，在各种途径的搜索下终于找到一种解决方案。</p><p>首先，将excel的数据数据类型全部设置为文本类型。</p><p>其次，导入到数据库，修改数据库的表设计，将navarchar或varchar改为float类型，再重新导出即可，就是这么简单。</p>]]></content>
+      
+      <categories>
+          
+          <category> Error_handling </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Maltab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>BP神经网络学习笔记</title>
+      <link href="/2018/04/04/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2018/04/04/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h1 id="一CDF-累积分布函数图作用"><a href="#一CDF-累积分布函数图作用" class="headerlink" title="一CDF 累积分布函数图作用"></a>一CDF 累积分布函数图作用</h1><p>定义：对<a href="http://baike.baidu.com/view/150456.htm" target="_blank" rel="noopener">连续函数</a>，所有小于等于a的值，其出现概率的和。F(a)=P(x&lt;=a)</p><p>数据的累积分布，也即小于等于当前数据值的所有数据的概率分布，对于表示数据点在某个区间内出现的概率有很大的帮助。</p><p>根据这张累积分布函数图（无图），可以很方便地回答之前的两个问题：</p><ol><li>CDF中横轴上的2对应的Y值约为0.98，因此所有大于2的数据点所占比例约为2%。</li><li>CDF中横轴上的1.3对应的Y值约为0.75，因此所有介于1.3和2之间的数据点所占比例约为23% (0.98-0.75)。</li></ol><p>与直方图、核密度估计相比，累积分布函数存在以下几个特点：</p><ul><li>累积分布函数是X轴单调递增函数。</li><li>累积分布函数更加平滑，图像中噪音更小。</li><li>累积分布函数没有引入带宽等外部概念，因此不会丢失任何数据信息。对于给定的数据集，累积分布函数是唯一的。</li><li>累积分布函数一般都经过归一化处理，单调递增且趋近于1。</li></ul>]]></content>
+      
+      
+        <tags>
+            
+            <tag> NN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>我的简历</title>
+      <link href="/2018/04/02/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/"/>
+      <url>/2018/04/02/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/</url>
+      <content type="html"><![CDATA[<h3 id="一-基本信息"><a href="#一-基本信息" class="headerlink" title="一 基本信息"></a>一 基本信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">姓    名：徐志翔   </span><br><span class="line">原    籍：江苏南京</span><br><span class="line">目前所在：南京</span><br><span class="line">电    话：13770330366</span><br><span class="line">电子信箱：dreamcore@126.com </span><br><span class="line">英语等级：六级</span><br></pre></td></tr></table></figure><h3 id="二项目经验"><a href="#二项目经验" class="headerlink" title="二项目经验"></a>二项目经验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  《基于LPC1768和CC2530的智能家居设计》      独立完成</span><br><span class="line">  《基于ASP.NET的翔宇学院竞赛管理系统》       负责前台和部分后台</span><br><span class="line">   《基于路况分析的智能路灯物联网系统》          负责STC89C52主控部分</span><br><span class="line">   《基于opencv3的车标识别》校大学生创新项目    负责识别部分</span><br><span class="line">   《基于.NET的毕业审核系统》                   独立完成</span><br><span class="line">   《基于STC89C52的智能小车设计》              独立完成</span><br><span class="line">   《基于RFID门禁系统设计》                    独立完成</span><br></pre></td></tr></table></figure><h3 id="三获奖经历"><a href="#三获奖经历" class="headerlink" title="三获奖经历"></a>三获奖经历</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2014，2015年获国家励志奖学金</span><br><span class="line">2014年江苏省十八届省运会“优秀志愿者”                                </span><br><span class="line">2014年获江苏省大学生暑期社会实践“先进个人”</span><br><span class="line">2015年获全国大学生物联网设计竞赛华东区特等奖，全国三等奖</span><br><span class="line">2015年江苏省“互联网+”大学生创新创业大赛创意组三等奖</span><br><span class="line">获校科技活动奖，校三好学生 ,校二等奖学金三次，校编程大赛一等奖，优秀导生      </span><br><span class="line">江苏省蓝桥杯大赛C/C++三等奖                 </span><br><span class="line">省级大学生创新项目，成功结题，并获得团体软件专利权一项。</span><br></pre></td></tr></table></figure><h3 id="Dividual-Works"><a href="#Dividual-Works" class="headerlink" title="Dividual Works*"></a><strong>Dividual Works*</strong></h3><h4 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本设计采用“物物相连”的物联网思想作为设计理念，搭建了一个基于LPC1768的智能家居网关系统。本次设计包括的模块有ZigBee数据采集模块、ZigBee数据汇聚模块、网关 模块、服务器端模块、PC客户端模块、APP模块等六大模块。主要实现的具体功能有，PC客户端可以通过与远程服务器端中的数据库交互显示当前ZigBee节点采集的数据以及通过对数据库反馈控制ZigBee终端，使用户可以实时通过客户端检测家里的情况并可以加以控制。同样的操作也可以通过APP控制实现。PC机与ZigBee终端节点之间的通信和APP与ZigBee终端节点之间的通信，都需要经过网关进行转接，因此网关是整个系统的通信桥梁。为了实现网关通信桥梁的角色，本次网关的设计，硬件上采用恩智浦公司的LPC1768作为主控MCU，该系统由LPC1768内嵌以太网模块和LAN8720A芯片构建一个以太网服务控制器，即搭建成一个网关系统。软件上将成功将RL-TCPnet的协议栈移植到目标板上，实现了与远程服务器socket通信的能力。通过设计相关的PC客户端及APP手机端，即PC机终端和手机终端，实现了“使用方便”的设计理念，数据采集实现了“贴近生活”设计理念，从而搭建成一个物联网的智能家居网关系统。</span><br></pre></td></tr></table></figure><h4 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h4><p> <img src="/2018/04/02/我的简历/1.jpg" alt="1"></p><p>图一：Zigbee协调器+嵌入式网关（LPC1768）</p><p> <img src="/2018/04/02/我的简历/2.png" alt="2"></p><p>PC客户端 </p><p> <img src="/2018/04/02/我的简历/3.jpg" alt="3"></p><p>远程服务器处理程序</p><p>  <img src="/2018/04/02/我的简历/4.png" alt="4"></p><p>android客户端</p><p> <img src="/2018/04/02/我的简历/5.jpg" alt="5"></p><p>Zigbee终端+传感器采集数据</p><h3 id="智能办公系统"><a href="#智能办公系统" class="headerlink" title="智能办公系统"></a>智能办公系统</h3><p> <img src="/2018/04/02/我的简历/6.png" alt="6"></p><p>应用框图<em>**</em></p><p> <img src="/2018/04/02/我的简历/7.png" alt="7"></p><p>通信框架</p>]]></content>
+      
+      <categories>
+          
+          <category> Personal </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>gradient-descent</title>
+      <link href="/2018/03/29/gradient-descent/"/>
+      <url>/2018/03/29/gradient-descent/</url>
+      <content type="html"><![CDATA[<p>这种算法可以使代价函数最小化，用来优化参数（多个参数）。</p><h1 id="1-普及概念"><a href="#1-普及概念" class="headerlink" title="1.普及概念"></a>1.普及概念</h1><h2 id="1-1何为梯度"><a href="#1-1何为梯度" class="headerlink" title="1.1何为梯度"></a>1.1何为梯度</h2><p><strong>梯度:</strong> 运算的对像是纯量,运算出来的结果会是向量在一个标量场中,梯度的计算结果会是”在每个位置都算出一个向量,而这个向量的方向会是在任何一点上从其周围梯度的计算结果会是”在每个位置都算出一个向量,而这个向量的方向会是在任何一点上从其周围的大小会是上面所说的那个最小与最大的差距程度”。举例子来讲会比较简单,如果现在的纯量场用一座山来表示,纯量值越大的地方越高,反之则越低.经过梯度这个运操作数的运算以后,会在这座山的每一个点上都算出一个向量,这个向量会指向每个点最陡的那个方向,而向量的大小则代表了这个最陡的方向到底有多陡.<strong>几何意义</strong>：  函数z=f(x,y)在点P0处的梯度方向是函数变化率(即方向导数)最大的方向。梯度的方向就是函数f(x,y)在这点<strong>增长最快的方向</strong>，梯度的模为方向导数的最大值。</p>]]></content>
+      
+      <categories>
+          
+          <category> Machine-learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gradient-descent </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>无题</title>
       <link href="/2018/03/29/%E6%97%A0%E9%A2%98/"/>
       <url>/2018/03/29/%E6%97%A0%E9%A2%98/</url>
@@ -70,6 +151,21 @@
       <link href="/2018/03/26/2016-03-26/"/>
       <url>/2018/03/26/2016-03-26/</url>
       <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/8.png" alt=""><img src="/2018/03/26/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/11.png" alt=""></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> school life </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>学校景致</title>
+      <link href="/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/"/>
+      <url>/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/</url>
+      <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
       
       
         <tags>
