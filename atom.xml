@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-13T15:06:54.338Z</updated>
+  <updated>2018-05-21T16:45:04.101Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PX4 Makefile语法</title>
+    <link href="http://yoursite.com/2018/05/22/PX4-Makefile%E8%AF%AD%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/05/22/PX4-Makefile语法/</id>
+    <published>2018-05-21T16:44:00.000Z</published>
+    <updated>2018-05-21T16:45:04.101Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">     本小节给出Makefile文件中使用到部分语法的简单说明，如果想要完全理解、读懂、甚至编写Makefile，需要仔细阅读《GNU Makefile 中文手册》。</span><br><span class="line"></span><br><span class="line">：=                     --直接式变量展开，引用的变量或者函数都会被其定义值替换，如果：= 右端为空，可能是赋值了一个空格；</span><br><span class="line"> = 及 define        --递归式变量展开，在引用处只是文本替换，在使用时才会展开；    </span><br><span class="line">$                         --取变量值操作，可以嵌套使用，例如$($(X))。同时可以用于调用内嵌函数:$（FCTION ARGUMENTS）；</span><br><span class="line">？=                     --条件赋值，只有变量尚未被赋值的情况下，才能将？=后边的值赋给变量；</span><br><span class="line">patsubst             --模式替换，引用格式:$(patsubst A,B,(VAR)), VAR表示变量，下同，例如：$(patsubst %.c %.o, a.c,b.c)；</span><br><span class="line">wildcard             --通用符，引用格式如:$(wildcard *.c)，当前路径下的所有.c结尾的文件；</span><br><span class="line">+=                      --追加赋值，VAR定义时给一个基本值，+=就在原来的变量基础上增加一 个赋值，注意不是覆盖；</span><br><span class="line">%                        --模式字符，例如：%.c 表示后缀为.c模式的文件；</span><br><span class="line">ifeq、ifneq         --条件判断关键字;</span><br><span class="line">ifdef、ifndef       --条件判断关键字；</span><br><span class="line"><span class="comment">// +                     --命令行前使用+，表示；</span></span><br><span class="line">subset                --字符串替换，例如：$(subst,e,E,feet),结果为：fEEt；</span><br><span class="line">filter                   --过滤函数，例如：$(filter %.c %.s, $（VAR）),返回VAR中所有后缀为.c,.s的文件；</span><br><span class="line">sort                    --将字符串升序排列，并去掉重复单词；</span><br><span class="line">word                  --取单词函数，$(word <span class="number">1</span>, text),取text的第<span class="number">1</span>个单词；</span><br><span class="line">wordlist             --取字符串函数，$(word <span class="number">1</span>,<span class="number">5</span>， text)表示取text的第<span class="number">1</span>个到第<span class="number">5</span>个单词字串；</span><br><span class="line">words                --统计字符串中单词数目；</span><br><span class="line">firstword           --取字符串的第一个单词，lastword同理取最后一个单词；</span><br><span class="line">dir                     --取目录，包含指定文件的路径目录；</span><br><span class="line">basename         --取前缀函数，例如 $(basename src/foo.c),返回值为src/foo；</span><br><span class="line">foreach             --循环执行；</span><br><span class="line">call                    --实现用户自定义函数的引用，$（call 函数，参数<span class="number">1</span>,参数<span class="number">2</span>,...）;</span><br><span class="line"><span class="meta">@echo</span>              --在界面上输出build信息；</span><br><span class="line">eval                   --比较复杂，没看懂，构造一个依赖关系链，其主要功能是根据参 数关系、结构，对它们进行替换展开；</span><br><span class="line">shell                  --大致功能是将shell的参数放入shell环境中执行并返回结果；</span><br><span class="line">error                 --$(error TEXT...),返回错误信息并退出执行；</span><br><span class="line">MAKECMDGOALS</span><br><span class="line">                         -（用户输入的）命令行参数；</span><br><span class="line">$@                    -表示规则的目标文件名，一般与改符号上文中的文件相对应，例如前边出现.C，可能默认就是对应的.O文件</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PX4学习(一)之坏境搭建</title>
+    <link href="http://yoursite.com/2018/05/20/PX4%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E4%B9%8B%E5%9D%8F%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2018/05/20/PX4学习-一-之坏境搭建/</id>
+    <published>2018-05-20T09:30:39.000Z</published>
+    <updated>2018-05-20T11:52:10.814Z</updated>
+    
+    <content type="html"><![CDATA[<p>一概念介绍</p><p>​    PX4是独立于平台的自动驾驶软件（或软件堆栈/固件），可以飞行或驾驶无人驾驶飞行器或地面车辆（UAV / UGV）。它装载（闪存）在某些<a href="https://docs.px4.io/en/getting_started/flight_controller_selection.html" target="_blank" rel="noopener">车辆控制硬件上</a>，并与地面控制站一起构成完全自主的自动驾驶系统。</p><p>PX4地面控制站称为 <a href="http://qgroundcontrol.com/" target="_blank" rel="noopener">QGroundControl</a>，是PX4自动驾驶仪系统的组成部分。QGroundControl可以在Windows，OS X或Linux上运行。我从<a href="http://qgroundcontrol.com/downloads/" target="_blank" rel="noopener">这里</a>下载并安装QGroundControl 。在QGroundControl的帮助下，您可以将PX4加载（闪存）到<a href="https://docs.px4.io/en/getting_started/flight_controller_selection.html" target="_blank" rel="noopener">车辆控制硬件</a>，您可以设置车辆，更改不同参数，获取实时航班信息，并创建并执行完全自主化的任务。</p><p>一安装软件</p><p>CMake、Java jre</p><p>jdk</p><p>PX4 Toolchain Installer</p>]]></content>
+    
+    <summary type="html">
+    
+      搭建坏境
+    
+    </summary>
+    
+      <category term="github" scheme="http://yoursite.com/categories/github/"/>
+    
+    
+      <category term="PX4" scheme="http://yoursite.com/tags/PX4/"/>
+    
+  </entry>
+  
+  <entry>
     <title></title>
     <link href="http://yoursite.com/2018/04/20/%E9%98%BF%E9%87%8C%E4%B9%8B%E5%8F%8C%E9%AB%98%E9%A2%84%E6%B5%8B-%E6%97%A5%E5%BF%97/"/>
     <id>http://yoursite.com/2018/04/20/阿里之双高预测-日志/</id>
     <published>2018-04-20T08:19:04.734Z</published>
-    <updated>2018-04-13T15:06:54.338Z</updated>
+    <updated>2018-05-20T09:33:52.948Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title:操作日志</span><br><span class="line">date: 2018-04-12 19:19:02</span><br><span class="line">tags:  AI</span><br><span class="line">categories: Content </span><br><span class="line">description: 双高预测操作日志</span><br></pre></td></tr></table></figure><h3 id="一数据准备工作"><a href="#一数据准备工作" class="headerlink" title="一数据准备工作"></a>一数据准备工作</h3><ol><li>为方便数据操作，将txt文件导入sql数据库</li><li>将vid和table_Id设为联合主键唯一标示，合并两个特征表</li></ol><p>Step1：先复制表结构及其内容：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 新表  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></table></figure><p>Step2：再将另外的一张表合并</p><p>insert into test1 (field1,field2,….) select(field1,field2,….) from test2;</p><ol><li>查询数据集的总人数：57299</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> alloriginaldate.vid   <span class="keyword">from</span> alloriginaldate <span class="keyword">group</span> byalloriginaldate.vid</span><br></pre></td></tr></table></figure><p><img src="/2018/04/20/阿里之双高预测-日志/1.png" alt="1"> </p><p>5.查询数据集中总体检数</p><p><img src="/2018/04/20/阿里之双高预测-日志/2.png" alt="2"></p><h3 id="二数据预处理"><a href="#二数据预处理" class="headerlink" title="二数据预处理"></a>二数据预处理</h3>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 操作日志</span><br><span class="line">date: 2018-03-28 19:19:02</span><br><span class="line">tags:  github pages处理</span><br><span class="line">categories: github </span><br><span class="line">description:  双高预测操作日志</span><br></pre></td></tr></table></figure><h3 id="一数据准备工作"><a href="#一数据准备工作" class="headerlink" title="一数据准备工作"></a>一数据准备工作</h3><ol><li>为方便数据操作，将txt文件导入sql数据库</li><li>将vid和table_Id设为联合主键唯一标示，合并两个特征表</li></ol><p>Step1：先复制表结构及其内容：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 新表  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></table></figure><p>Step2：再将另外的一张表合并</p><p>insert into test1 (field1,field2,….) select(field1,field2,….) from test2;</p><ol><li>查询数据集的总人数：57299</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> alloriginaldate.vid   <span class="keyword">from</span> alloriginaldate <span class="keyword">group</span> byalloriginaldate.vid</span><br></pre></td></tr></table></figure><p><img src="/2018/04/20/阿里之双高预测-日志/1.png" alt="1"> </p><p>5.查询数据集中总体检数</p><p><img src="/2018/04/20/阿里之双高预测-日志/2.png" alt="2"></p><h3 id="二数据预处理"><a href="#二数据预处理" class="headerlink" title="二数据预处理"></a>二数据预处理</h3>]]></content>
     
     <summary type="html">
     
@@ -191,13 +234,13 @@
   </entry>
   
   <entry>
-    <title>Mon Mar 26 2018 00:00:00 GMT+0800 (中国标准时间)</title>
-    <link href="http://yoursite.com/2018/03/26/2016-03-26/"/>
-    <id>http://yoursite.com/2018/03/26/2016-03-26/</id>
+    <title>学校景致</title>
+    <link href="http://yoursite.com/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/"/>
+    <id>http://yoursite.com/2018/03/26/学校景致/</id>
     <published>2018-03-26T08:32:52.000Z</published>
-    <updated>2018-03-26T09:13:36.755Z</updated>
+    <updated>2018-03-29T12:44:53.553Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/8.png" alt=""><img src="/2018/03/26/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/11.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
     
     <summary type="html">
     
@@ -211,13 +254,13 @@
   </entry>
   
   <entry>
-    <title>学校景致</title>
-    <link href="http://yoursite.com/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/"/>
-    <id>http://yoursite.com/2018/03/26/学校景致/</id>
+    <title>Mon Mar 26 2018 00:00:00 GMT+0800 (中国标准时间)</title>
+    <link href="http://yoursite.com/2018/03/26/2016-03-26/"/>
+    <id>http://yoursite.com/2018/03/26/2016-03-26/</id>
     <published>2018-03-26T08:32:52.000Z</published>
-    <updated>2018-03-29T12:44:53.553Z</updated>
+    <updated>2018-03-26T09:13:36.755Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/8.png" alt=""><img src="/2018/03/26/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/11.png" alt=""></p>]]></content>
     
     <summary type="html">
     
