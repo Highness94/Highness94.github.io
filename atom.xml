@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-21T16:45:04.101Z</updated>
+  <updated>2018-06-07T13:32:59.051Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文</title>
+    <link href="http://yoursite.com/2018/06/07/%E8%AE%BA%E6%96%87/"/>
+    <id>http://yoursite.com/2018/06/07/论文/</id>
+    <published>2018-06-07T13:32:59.000Z</published>
+    <updated>2018-06-07T13:32:59.051Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/06/07/%E9%98%BF%E9%87%8C%E4%B9%8B%E5%8F%8C%E9%AB%98%E9%A2%84%E6%B5%8B-%E6%97%A5%E5%BF%97/"/>
+    <id>http://yoursite.com/2018/06/07/阿里之双高预测-日志/</id>
+    <published>2018-06-07T13:31:03.259Z</published>
+    <updated>2018-05-20T09:33:52.948Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 操作日志</span><br><span class="line">date: 2018-03-28 19:19:02</span><br><span class="line">tags:  github pages处理</span><br><span class="line">categories: github </span><br><span class="line">description:  双高预测操作日志</span><br></pre></td></tr></table></figure><h3 id="一数据准备工作"><a href="#一数据准备工作" class="headerlink" title="一数据准备工作"></a>一数据准备工作</h3><ol><li>为方便数据操作，将txt文件导入sql数据库</li><li>将vid和table_Id设为联合主键唯一标示，合并两个特征表</li></ol><p>Step1：先复制表结构及其内容：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 新表  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></table></figure><p>Step2：再将另外的一张表合并</p><p>insert into test1 (field1,field2,….) select(field1,field2,….) from test2;</p><ol><li>查询数据集的总人数：57299</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> alloriginaldate.vid   <span class="keyword">from</span> alloriginaldate <span class="keyword">group</span> byalloriginaldate.vid</span><br></pre></td></tr></table></figure><p><img src="/2018/06/07/阿里之双高预测-日志/1.png" alt="1"> </p><p>5.查询数据集中总体检数</p><p><img src="/2018/06/07/阿里之双高预测-日志/2.png" alt="2"></p><h3 id="二数据预处理"><a href="#二数据预处理" class="headerlink" title="二数据预处理"></a>二数据预处理</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/06/07/index/"/>
+    <id>http://yoursite.com/2018/06/07/index/</id>
+    <published>2018-06-07T13:31:03.249Z</published>
+    <updated>2018-03-25T12:48:47.384Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+      <category term="test" scheme="http://yoursite.com/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title>PX4 Makefile语法</title>
@@ -56,27 +114,6 @@
     
     
       <category term="PX4" scheme="http://yoursite.com/tags/PX4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2018/04/20/%E9%98%BF%E9%87%8C%E4%B9%8B%E5%8F%8C%E9%AB%98%E9%A2%84%E6%B5%8B-%E6%97%A5%E5%BF%97/"/>
-    <id>http://yoursite.com/2018/04/20/阿里之双高预测-日志/</id>
-    <published>2018-04-20T08:19:04.734Z</published>
-    <updated>2018-05-20T09:33:52.948Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 操作日志</span><br><span class="line">date: 2018-03-28 19:19:02</span><br><span class="line">tags:  github pages处理</span><br><span class="line">categories: github </span><br><span class="line">description:  双高预测操作日志</span><br></pre></td></tr></table></figure><h3 id="一数据准备工作"><a href="#一数据准备工作" class="headerlink" title="一数据准备工作"></a>一数据准备工作</h3><ol><li>为方便数据操作，将txt文件导入sql数据库</li><li>将vid和table_Id设为联合主键唯一标示，合并两个特征表</li></ol><p>Step1：先复制表结构及其内容：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 新表  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></table></figure><p>Step2：再将另外的一张表合并</p><p>insert into test1 (field1,field2,….) select(field1,field2,….) from test2;</p><ol><li>查询数据集的总人数：57299</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> alloriginaldate.vid   <span class="keyword">from</span> alloriginaldate <span class="keyword">group</span> byalloriginaldate.vid</span><br></pre></td></tr></table></figure><p><img src="/2018/04/20/阿里之双高预测-日志/1.png" alt="1"> </p><p>5.查询数据集中总体检数</p><p><img src="/2018/04/20/阿里之双高预测-日志/2.png" alt="2"></p><h3 id="二数据预处理"><a href="#二数据预处理" class="headerlink" title="二数据预处理"></a>二数据预处理</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
-      
-    
-    </summary>
-    
     
   </entry>
   
@@ -270,29 +307,6 @@
     
     
       <category term="school life" scheme="http://yoursite.com/tags/school-life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/03/25/index/"/>
-    <id>http://yoursite.com/2018/03/25/index/</id>
-    <published>2018-03-25T13:30:45.768Z</published>
-    <updated>2018-03-25T12:48:47.384Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://yoursite.com/tags/test/"/>
     
   </entry>
   
