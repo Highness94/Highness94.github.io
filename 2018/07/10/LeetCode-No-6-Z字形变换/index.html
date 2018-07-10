@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="github pages处理," />
+  <meta name="keywords" content="leetcode," />
 
 
 
@@ -77,21 +77,18 @@
 
 
 
-<meta name="description" content="双高预测操作日志">
-<meta name="keywords" content="github pages处理">
+<meta name="description" content="我们这个世界的一个问题是，蠢人信誓旦旦，智人满腹狐疑。">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作日志">
-<meta property="og:url" content="http://yoursite.com/2018/03/28/阿里之双高预测-日志/index.html">
+<meta property="og:title" content="LeetCode-No.6 Z字形变换">
+<meta property="og:url" content="http://yoursite.com/2018/07/10/LeetCode-No-6-Z字形变换/index.html">
 <meta property="og:site_name" content="xuzhixiang&#39;s Blog">
-<meta property="og:description" content="双高预测操作日志">
+<meta property="og:description" content="我们这个世界的一个问题是，蠢人信誓旦旦，智人满腹狐疑。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/03/28/阿里之双高预测-日志/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/28/阿里之双高预测-日志/2.png">
-<meta property="og:updated_time" content="2018-07-05T09:43:48.319Z">
+<meta property="og:updated_time" content="2018-07-10T06:07:12.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作日志">
-<meta name="twitter:description" content="双高预测操作日志">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/28/阿里之双高预测-日志/1.png">
+<meta name="twitter:title" content="LeetCode-No.6 Z字形变换">
+<meta name="twitter:description" content="我们这个世界的一个问题是，蠢人信誓旦旦，智人满腹狐疑。">
 
 
 
@@ -121,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/28/阿里之双高预测-日志/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/10/LeetCode-No-6-Z字形变换/"/>
 
   <script>
     (function(){
@@ -136,7 +133,7 @@
 
 
 
-  <title>操作日志 | xuzhixiang's Blog</title>
+  <title>LeetCode-No.6 Z字形变换 | xuzhixiang's Blog</title>
   
 
 
@@ -338,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/28/阿里之双高预测-日志/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/LeetCode-No-6-Z字形变换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xuzhixiang">
@@ -355,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">操作日志</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-No.6 Z字形变换</h1>
         
 
         <div class="post-meta">
@@ -367,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T19:19:02+08:00">
-                2018-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T12:02:15+08:00">
+                2018-07-10
               </time>
             
 
@@ -390,8 +387,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/github/" itemprop="url" rel="index">
-                    <span itemprop="name">github</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -408,9 +405,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/28/阿里之双高预测-日志/#comments" itemprop="discussionUrl">
+                <a href="/2018/07/10/LeetCode-No-6-Z字形变换/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/28/阿里之双高预测-日志/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/07/10/LeetCode-No-6-Z字形变换/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -425,7 +422,7 @@
 
           
               <div class="post-description">
-                  双高预测操作日志
+                  我们这个世界的一个问题是，蠢人信誓旦旦，智人满腹狐疑。
               </div>
           
 
@@ -442,22 +439,14 @@
       
 
       
-        <h3 id="一数据准备工作"><a href="#一数据准备工作" class="headerlink" title="一数据准备工作"></a>一数据准备工作</h3><ol>
-<li>为方便数据操作，将txt文件导入sql数据库</li>
-<li>将vid和table_Id设为联合主键唯一标示，合并两个特征表</li>
-</ol>
-<p>Step1：先复制表结构及其内容：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 新表  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></table></figure>
-<p>Step2：再将另外的一张表合并</p>
-<p>insert into test1 (field1,field2,….) select(field1,field2,….) from test2;</p>
-<ol>
-<li>查询数据集的总人数：57299</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> alloriginaldate.vid   <span class="keyword">from</span> alloriginaldate <span class="keyword">group</span> byalloriginaldate.vid</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/03/28/阿里之双高预测-日志/1.png" alt="1"> </p>
-<p>5.查询数据集中总体检数</p>
-<p><img src="/2018/03/28/阿里之双高预测-日志/2.png" alt="2"></p>
-<h3 id="二数据预处理"><a href="#二数据预处理" class="headerlink" title="二数据预处理"></a>二数据预处理</h3>
+        <p>将字符串 <code>&quot;PAYPALISHIRING&quot;</code> 以Z字形排列成给定的行数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br></pre></td></tr></table></figure>
+<p>之后从左往右，逐行读取字符：<code>&quot;PAHNAPLSIIGYIR&quot;</code></p>
+<p>实现一个将字符串进行指定行数变换的函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string convert(string s, int numRows);</span><br></pre></td></tr></table></figure>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;PAYPALISHIRING&quot;, numRows = 3</span><br><span class="line">输出: &quot;PAHNAPLSIIGYIR&quot;</span><br><span class="line"></span><br><span class="line">输入: s = &quot;PAYPALISHIRING&quot;, numRows = 4</span><br><span class="line">输出: &quot;PINALSIGYAHRPI&quot;</span><br><span class="line">解释:</span><br><span class="line"></span><br><span class="line">P     I    N</span><br><span class="line">A   L S  I G</span><br><span class="line">Y A   H R</span><br><span class="line">P     I</span><br></pre></td></tr></table></figure>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">string</span>  result=<span class="string">""</span>;; </span><br><span class="line">   <span class="built_in">string</span> *p=<span class="keyword">new</span> <span class="built_in">string</span>[numRows];</span><br><span class="line">   <span class="built_in">string</span> tmp=<span class="string">"a"</span>;</span><br><span class="line">   <span class="keyword">int</span> num=<span class="number">0</span>; </span><br><span class="line">   <span class="keyword">int</span> step=numRows+(numRows<span class="number">-2</span>);<span class="comment">//numRows&gt;2</span></span><br><span class="line">   <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">while</span>(i&lt;s.size())</span><br><span class="line">   &#123;</span><br><span class="line">   	   <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;numRows&amp;&amp;i&lt;s.size();j++)</span><br><span class="line">   	   &#123;</span><br><span class="line">   	   	  tmp[<span class="number">0</span>]=s[i++];</span><br><span class="line">   	   	  p[j]=p[j]+tmp;</span><br><span class="line">   	   &#125;</span><br><span class="line">   	   <span class="keyword">for</span>(<span class="keyword">int</span> j=numRows<span class="number">-2</span>;j&gt;<span class="number">0</span>&amp;&amp;i&lt;s.size();j--)</span><br><span class="line">   	   &#123;</span><br><span class="line">   	   	  tmp[<span class="number">0</span>]=s[i++];</span><br><span class="line">   	   	  p[j]=p[j]+tmp;	</span><br><span class="line">   	   &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;numRows;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	result+=p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> test=<span class="string">"PAYPALISHIRING"</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;convert(test,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1>
       
     </div>
     
@@ -503,7 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/github-pages处理/" rel="tag"><i class="fa fa-tag"></i> github pages处理</a>
+            <a href="/tags/leetcode/" rel="tag"><i class="fa fa-tag"></i> leetcode</a>
           
         </div>
       
@@ -516,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/" rel="next" title="Machine-learning(Andrew Ng)_Summary_Week1">
-                <i class="fa fa-chevron-left"></i> Machine-learning(Andrew Ng)_Summary_Week1
+              <a href="/2018/07/09/LeetCode-No-5-最长回文子串/" rel="next" title="LeetCode-No.5 最长回文子串">
+                <i class="fa fa-chevron-left"></i> LeetCode-No.5 最长回文子串
               </a>
             
           </div>
@@ -525,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/29/如何对博文加密处理/" rel="prev" title="如何对博文加密处理">
-                如何对博文加密处理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -605,9 +590,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/03/28/阿里之双高预测-日志/';
-          this.page.identifier = '2018/03/28/阿里之双高预测-日志/';
-          this.page.title = '操作日志';
+          this.page.url = 'http://yoursite.com/2018/07/10/LeetCode-No-6-Z字形变换/';
+          this.page.identifier = '2018/07/10/LeetCode-No-6-Z字形变换/';
+          this.page.title = 'LeetCode-No.6 Z字形变换';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://xzx.disqus.com/embed.js';
@@ -763,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一数据准备工作"><span class="nav-number">1.</span> <span class="nav-text">一数据准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二数据预处理"><span class="nav-number">2.</span> <span class="nav-text">二数据预处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考代码"><span class="nav-number">2.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

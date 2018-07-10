@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-09T12:11:45.216Z</updated>
+  <updated>2018-07-10T06:07:12.316Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-No.6 Z字形变换</title>
+    <link href="http://yoursite.com/2018/07/10/LeetCode-No-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/"/>
+    <id>http://yoursite.com/2018/07/10/LeetCode-No-6-Z字形变换/</id>
+    <published>2018-07-10T04:02:15.000Z</published>
+    <updated>2018-07-10T06:07:12.316Z</updated>
+    
+    <content type="html"><![CDATA[<p>将字符串 <code>&quot;PAYPALISHIRING&quot;</code> 以Z字形排列成给定的行数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br></pre></td></tr></table></figure><p>之后从左往右，逐行读取字符：<code>&quot;PAHNAPLSIIGYIR&quot;</code></p><p>实现一个将字符串进行指定行数变换的函数:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string convert(string s, int numRows);</span><br></pre></td></tr></table></figure><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入: s = &quot;PAYPALISHIRING&quot;, numRows = 3</span><br><span class="line">输出: &quot;PAHNAPLSIIGYIR&quot;</span><br><span class="line"></span><br><span class="line">输入: s = &quot;PAYPALISHIRING&quot;, numRows = 4</span><br><span class="line">输出: &quot;PINALSIGYAHRPI&quot;</span><br><span class="line">解释:</span><br><span class="line"></span><br><span class="line">P     I    N</span><br><span class="line">A   L S  I G</span><br><span class="line">Y A   H R</span><br><span class="line">P     I</span><br></pre></td></tr></table></figure><h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">string</span>  result=<span class="string">""</span>;; </span><br><span class="line">   <span class="built_in">string</span> *p=<span class="keyword">new</span> <span class="built_in">string</span>[numRows];</span><br><span class="line">   <span class="built_in">string</span> tmp=<span class="string">"a"</span>;</span><br><span class="line">   <span class="keyword">int</span> num=<span class="number">0</span>; </span><br><span class="line">   <span class="keyword">int</span> step=numRows+(numRows<span class="number">-2</span>);<span class="comment">//numRows&gt;2</span></span><br><span class="line">   <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">while</span>(i&lt;s.size())</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;numRows&amp;&amp;i&lt;s.size();j++)</span><br><span class="line">      &#123;</span><br><span class="line">        tmp[<span class="number">0</span>]=s[i++];</span><br><span class="line">        p[j]=p[j]+tmp;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j=numRows<span class="number">-2</span>;j&gt;<span class="number">0</span>&amp;&amp;i&lt;s.size();j--)</span><br><span class="line">      &#123;</span><br><span class="line">        tmp[<span class="number">0</span>]=s[i++];</span><br><span class="line">        p[j]=p[j]+tmp;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;numRows;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    result+=p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> test=<span class="string">"PAYPALISHIRING"</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;convert(test,<span class="number">4</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1>]]></content>
+    
+    <summary type="html">
+    
+      我们这个世界的一个问题是，蠢人信誓旦旦，智人满腹狐疑。
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-No.5 最长回文子串</title>
@@ -391,13 +413,13 @@
   </entry>
   
   <entry>
-    <title>Mon Mar 26 2018 00:00:00 GMT+0800 (中国标准时间)</title>
-    <link href="http://yoursite.com/2018/03/26/2016-03-26/"/>
-    <id>http://yoursite.com/2018/03/26/2016-03-26/</id>
+    <title>学校景致</title>
+    <link href="http://yoursite.com/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/"/>
+    <id>http://yoursite.com/2018/03/26/学校景致/</id>
     <published>2018-03-26T08:32:52.000Z</published>
-    <updated>2018-03-26T09:13:36.755Z</updated>
+    <updated>2018-03-29T12:44:53.553Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/8.png" alt=""><img src="/2018/03/26/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/11.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
     
     <summary type="html">
     
@@ -411,13 +433,13 @@
   </entry>
   
   <entry>
-    <title>学校景致</title>
-    <link href="http://yoursite.com/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/"/>
-    <id>http://yoursite.com/2018/03/26/学校景致/</id>
+    <title>Mon Mar 26 2018 00:00:00 GMT+0800 (中国标准时间)</title>
+    <link href="http://yoursite.com/2018/03/26/2016-03-26/"/>
+    <id>http://yoursite.com/2018/03/26/2016-03-26/</id>
     <published>2018-03-26T08:32:52.000Z</published>
-    <updated>2018-03-29T12:44:53.553Z</updated>
+    <updated>2018-03-26T09:13:36.755Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/8.png" alt=""><img src="/2018/03/26/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/11.png" alt=""></p>]]></content>
     
     <summary type="html">
     
