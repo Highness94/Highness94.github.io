@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-10T06:07:12.316Z</updated>
+  <updated>2018-07-30T13:20:52.626Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>沐20180730Plan_LTS</title>
+    <link href="http://yoursite.com/2018/07/30/%E6%B2%9020180730Plan/"/>
+    <id>http://yoursite.com/2018/07/30/沐20180730Plan/</id>
+    <published>2018-07-30T11:24:07.000Z</published>
+    <updated>2018-07-30T13:20:52.626Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2018/07/30/沐20180730Plan/P1.jpg" alt="P1"></p><h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>Summary time：2018 07 30 19:36</p><p>Aim:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>完成遗留的任务，主要指导师部分的。</span><br><span class="line"><span class="number">2.</span>完成代号沐文的工作</span><br><span class="line"><span class="number">3.</span>习惯的养成</span><br><span class="line"><span class="number">4.</span>健身</span><br><span class="line"><span class="number">5.</span>吉他</span><br><span class="line"><span class="number">6.</span>工作方向</span><br><span class="line"><span class="number">7.</span>etc</span><br></pre></td></tr></table></figure><h1 id="Recent-mission"><a href="#Recent-mission" class="headerlink" title="Recent mission"></a>Recent mission</h1><p>西安项目—-需求报告完善—开发文档完善–实施文档暂定</p><p>专利交底书书写</p><p>沐文zigbee无线传感器设计</p><p>小论文写作—&gt;目前不太急迫</p><hr><p>；】】健身——-&gt;习惯</p><p>吉他  ——&gt;修身</p><p>跨界读书 —–读书笔记—-&gt;习惯</p><p>早睡早起 —&gt;习惯养成训练</p><hr><p>独立思考</p><p>学会投资</p><hr><p>工作方向</p><hr><h1 id="Specific-plan"><a href="#Specific-plan" class="headerlink" title="Specific plan"></a>Specific plan</h1>]]></content>
+    
+    <summary type="html">
+    
+      像产品或服务一样,计划如果被管理者作为进行战略决策的工具，那么它本身也必须被加以管理和塑造。
+    
+    </summary>
+    
+      <category term="Personal," scheme="http://yoursite.com/categories/Personal/"/>
+    
+    
+      <category term="Plan" scheme="http://yoursite.com/tags/Plan/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-No.6 Z字形变换</title>
@@ -420,26 +442,6 @@
     <updated>2018-03-29T12:44:53.553Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      一个人吃饭旅行，一路走走挺挺
-    
-    </summary>
-    
-    
-      <category term="school life" scheme="http://yoursite.com/tags/school-life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mon Mar 26 2018 00:00:00 GMT+0800 (中国标准时间)</title>
-    <link href="http://yoursite.com/2018/03/26/2016-03-26/"/>
-    <id>http://yoursite.com/2018/03/26/2016-03-26/</id>
-    <published>2018-03-26T08:32:52.000Z</published>
-    <updated>2018-03-26T09:13:36.755Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/8.png" alt=""><img src="/2018/03/26/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/2016-03-26/11.png" alt=""></p>]]></content>
     
     <summary type="html">
     
