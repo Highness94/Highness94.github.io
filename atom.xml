@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>xuzhixiang&#39;s Blog</title>
+  <title>muxin&#39;s Blog</title>
   <icon>https://www.gravatar.com/avatar/18d4fc6e466a8c32a8b91dfebad50ca5</icon>
   <subtitle>contact me by email:dreamcore@126.com</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-30T13:20:52.626Z</updated>
+  <updated>2018-09-18T12:37:25.114Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>xuzhixiang</name>
+    <name>muxin</name>
     <email>dreamcore@126.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 7反转整数</title>
+    <link href="http://yoursite.com/2018/09/18/LeetCode-7%E5%8F%8D%E8%BD%AC%E6%95%B4%E6%95%B0/"/>
+    <id>http://yoursite.com/2018/09/18/LeetCode-7反转整数/</id>
+    <published>2018-09-18T12:13:51.000Z</published>
+    <updated>2018-09-18T12:37:25.114Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>沐20180730Plan_LTS</title>
@@ -431,26 +445,6 @@
     
     
       <category term="Machine-learning" scheme="http://yoursite.com/tags/Machine-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学校景致</title>
-    <link href="http://yoursite.com/2018/03/26/%E5%AD%A6%E6%A0%A1%E6%99%AF%E8%87%B4/"/>
-    <id>http://yoursite.com/2018/03/26/学校景致/</id>
-    <published>2018-03-26T08:32:52.000Z</published>
-    <updated>2018-03-29T12:44:53.553Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="校园景致"><a href="#校园景致" class="headerlink" title="校园景致"></a>校园景致</h3><p><img src="/2018/03/26/学校景致/2016-03-26/1.png" alt="水杉林"></p><p><img src="/2018/03/26/学校景致/2016-03-26/2.png" alt=""></p><p> <img src="/2018/03/26/学校景致/2016-03-26/3.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/4.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/5.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/6.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/7.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/8.png" alt=""><img src="/2018/03/26/学校景致/2016-03-26/9.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/10.png" alt=""></p><p><img src="/2018/03/26/学校景致/2016-03-26/11.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      一个人吃饭旅行，一路走走挺挺
-    
-    </summary>
-    
-    
-      <category term="school life" scheme="http://yoursite.com/tags/school-life/"/>
     
   </entry>
   
