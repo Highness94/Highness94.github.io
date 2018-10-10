@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-18T12:37:25.114Z</updated>
+  <updated>2018-10-10T07:46:48.603Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>c/c++学习路线</title>
+    <link href="http://yoursite.com/2018/10/10/c-c-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    <id>http://yoursite.com/2018/10/10/c-c-学习路线/</id>
+    <published>2018-10-10T07:42:17.000Z</published>
+    <updated>2018-10-10T07:46:48.603Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-C-学习路线"><a href="#C-C-学习路线" class="headerlink" title="C/C++学习路线"></a><a href="https://www.cnblogs.com/chengjian-physique/p/8076346.html" target="_blank" rel="noopener">C/C++学习路线</a></h1><p>随着互联网及互联网+深入蓬勃的发展，经过40余年的时间洗礼，C/C++俨然已成为一门贵族语言，出色的性能使之成为高级语言中的性能王者。而在今天，它又扮演着什么样重要的角色呢？请往下看：</p><p>后端服务器，移动互联网后端，经典Windows界面开发，移动互联网端界面开发，跨平台界面开发，图形分析，系统架构，应用设计，还有现在最为流行的分布架构等一些新的技术领域。</p><p> 这么牛的语言，你是不是想知道怎样学习和掌握它呢？接下来请看经过小编整理过C/C++工程师必备知识的思维导图。</p><p><img src="/2018/10/10/c-c-学习路线/1.png" alt="1"></p><p>初学者看到这么密集的知识点，是不是有点眼晕呢？的确，C/C++是一门知识面覆盖很广的学科。想学好C/C++的你并不需要慌张，内容虽多，但依然有法可依。只要有足够的耐心和毅力，加上正确的学习方法，就不怕你学不好C/C++。</p><p>既然如此，C/C++开发到底需要学些什么呢，又应该怎么学呢？接下来由黑马程序员C/C++学院教你如何从零基础学习C/C++开发，快速进入牛人之列，掌握这门贵族语言。</p><p><strong>一、初级入门阶段</strong></p><p>在入门之初，首先要做的是通过C/C++语言的学习培养编程思维和动手能力，深刻理解面向过程和面向对象的思想方法。这个阶段你需要学习：</p><p><strong>① C语言</strong></p><p>数据类型、变量、内存布局、指针基础；</p><p>字符串、一维数组、二维数组；</p><p>一级指针，二级指针，三级指针，N级指针概念，指针数组和数组指针；</p><p>结构体、文件的使用；</p><p>动态库的封装和设计；</p><p>函数指针回调函数。</p><p> <strong>② C++语言</strong></p><p>面向对象编程思想；</p><p>类的封装，构造和析构、静态成员、对象管理；</p><p>类的构造(有参构造函数、无参构造、拷贝构造、默认构造函数)和析构；</p><p>对象动态管理、友元函数、友元类、操作符重载；</p><p>C++编译器对象管理模型分析；</p><p>类对象的动态管理(new/delete)；</p><p>友元函数和友元类；</p><p>运算符重载(一元运算符、二元运算符、运算符重载难点、项目开发中的运算符重载)；</p><p>类的继承、多继承及其二义性、虚继承；</p><p>多态(概念、意义、原理剖析、多态案例)；</p><p>虚函数、纯虚函数、抽象类(面向抽象类编程思想案例)；</p><p>函数模板、类模板，模板的继承；</p><p>C++类型转换；</p><p>C++输入输出流(标准I/O 文件I/O 字符流I/O)；</p><p>C++异常处理(异常机制、异常类型、异常变量、异常层次结构、标准异常库)；</p><p><strong>③ 常**</strong>见常用的IDE开发工具**</p><p>诸如Windows平台VC系列：VC++6.0(比较古老) ；Visual Studio2013, Visual Studio2015；Mac平台的XCode系列，还有CodeBlock，另附一些高级编辑器Notepad++, EditPlus,UE等一些开发工具的常用设置和一些常见快捷键的使用。</p><p>此阶段的学习难度系数不大，掌握这些内容之后，可以做些简单的小项目。当然了如果你想用这些技能找工作的话确实是比较困难的。这时你还应该在加把劲进一步学习第二阶段。</p><p><strong>二、C/C++开发进阶</strong></p><p>这一阶段的目标才是达到C/C++软件工程师开发行业的基本要求，这个阶段是我们走向C/C++开发的进阶之路，更是一个让自己找份薪水比较体面的工作的筹码。</p><p>如果在此部分遇到不懂的或者没有见过的知识点和名词，可先将本文收藏，供以后细细研读。</p><p>那么这个阶段，我们又应该掌握什么呢，继续往下看：</p><p><strong>①   **</strong> C++<strong>**进阶之STL</strong></p><p>STL = Standard Template Library，即标准模板库。这是提高开发效率的极品工具。通过学习此阶段，应掌握泛型编程技巧，理解容器类在C++语言中的应用模式，以及熟练掌握全部STL类的使用方法。</p><p><strong>②   **</strong> C++<strong>**进阶之设计模式</strong></p><p>决定一个项目成败最重要的因素是项目总体的设计，通过本阶段的学习，可掌握面向对象编程中重要的一环，是编码前建模的技巧所在。单例模式；工厂模式；代理模式；迭代模式等，这些都是你要掌握的哦。</p><p><strong>③   **</strong> C++<strong>**进阶之数据结构基础</strong></p><p>这是所有编程语言中最应该学习的部分，程序组成的基础之一。</p><p>顺序存储、链式存储、循环链表；</p><p>双向链表、栈(顺序和链式)、队列(顺序和链式)；</p><p>栈的应用、树基本概念及遍历、二叉树；</p><p>排序算法、并归算法、选择、插入、快速、希尔。</p><p>以上这些内容你知道吗?</p><p><strong>④   **</strong> C++<strong>**进阶之UI界面开发</strong></p><p>掌握QT类库构架，图形界面开发模型；</p><p>掌握QT开发技巧，消息机制，图形处理；</p><p>掌握QT网络编程，UDP，TCP使用方式；</p><p>掌握QT文件处理方式，序列化；</p><p>掌握QT在windows，linux，ios，android不同平台下的移植技术。</p><p><strong>⑤   **</strong> C++<strong>**进阶之Unix/Linux网络服务器</strong></p><p>掌握Unix/Linux平台开发方式；</p><p>熟练使用系统调用；</p><p>熟练Unix/Linux内存管理，进程，线程调度；</p><p>熟悉网络服务器开发方式，熟练编写TCP，UCP网络服务程序；</p><p>掌握同步/异步IO模型在网络编程中的使用方式。</p><p><strong>⑥ C++进阶之数据库开发</strong></p><p>掌握SQL语言的实用技巧。Oracle,MySQL数据库的使用方式。</p><p>如果你能熟练掌握以上列出的技能，具备解决复杂问题和技术难点的能力，而且你能独立开发一些比较复杂的功能模块，那么很荣幸地告诉你，你已经达到中级水平，薪资过万对你来说简直是小菜一碟。</p><p><strong>三、C++开发高级 </strong></p><p>读到此处的你，相信你有更高的目标。即是当下炙手可热的全栈开发工程师，既晓前端，又通后台。快速定位问题，解决问题对他们来说已是小菜一碟，就是人们常说的神秘大牛，只在公司技术攻关的时候才会才看到他们的身影。</p><p>①此阶段软件开发工作所需的知识和技能相对较难，高级软件工程师编码熟练度和规范性需要达到一定要求；</p><p>②具备一定的项目能力(包括调试能力、文档编写能力、测试能力等)和综合技术素质(包括对软件生命周期的理解、对设计模式的理解、必备的行业知识和经验等)；.</p><p>③了解主流的后台技术和前后端协作方式，能从全局角度理解项目的整个生命周期。</p><p>如果你能熟练掌握以上三个阶段的知识技能,那么你就可以满足C++开发行业的高级需求。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-C-学习路线&quot;&gt;&lt;a href=&quot;#C-C-学习路线&quot; class=&quot;headerlink&quot; title=&quot;C/C++学习路线&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.cnblogs.com/chengjian-physique/p/8076346
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>LeetCode 7反转整数</title>
@@ -423,28 +444,6 @@
     
     
       <category term="github pages处理" scheme="http://yoursite.com/tags/github-pages%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Machine-learning(Andrew Ng)_Summary_Week1</title>
-    <link href="http://yoursite.com/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/"/>
-    <id>http://yoursite.com/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/</id>
-    <published>2018-03-27T08:43:07.000Z</published>
-    <updated>2018-03-27T09:24:43.196Z</updated>
-    
-    <content type="html"><![CDATA[<p> <img src="/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/1.jpg" alt="machine-learning"></p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1-Octave"><a href="#1-Octave" class="headerlink" title="1.Octave"></a>1.Octave</h3><h3 id="2-奇异值分解"><a href="#2-奇异值分解" class="headerlink" title="2.奇异值分解"></a>2.奇异值分解</h3><p>SVD，鸡尾酒算法</p><h3 id="3-分类和回归"><a href="#3-分类和回归" class="headerlink" title="3.分类和回归"></a>3.分类和回归</h3><h3 id="4-线性回归问题"><a href="#4-线性回归问题" class="headerlink" title="4.线性回归问题"></a>4.线性回归问题</h3><h3 id="5-梯度下降"><a href="#5-梯度下降" class="headerlink" title="5.梯度下降"></a>5.梯度下降</h3><h3 id="6-轮廓图"><a href="#6-轮廓图" class="headerlink" title="6.轮廓图"></a>6.轮廓图</h3><p>轮廓图的思想非常简单、直观，它是在横坐标上取 p 个点，依次表示各个指标(即变量)；横坐标上则对应各个指标的值(或者经过标准化变换后的值)，然后将每一组数据对应的点依次连接即可。 （一个参数代价函数可以用<strong>均方误差</strong>，</p><p><img src="/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/3.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">m：训练样本的个数；</span><br><span class="line"></span><br><span class="line">hθ(x)：用参数θ和x预测出来的y值；</span><br><span class="line"></span><br><span class="line">y：原训练样本中的y值，也就是标准答案</span><br><span class="line"></span><br><span class="line">上角标(i)：第i个样本</span><br></pre></td></tr></table></figure><p>两个参数可以用轮廓图，更多代价函数请参考：<strong><a href="https://www.cnblogs.com/Belter/p/6653773.html" target="_blank" rel="noopener">https://www.cnblogs.com/Belter/p/6653773.html</a></strong>）</p><p><img src="/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/4.png" alt="三维图形"></p><p> <img src="/2018/03/27/Machine-learning-Andrew-Ng-Summary-Week1/2.png" alt="二维图形"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">% Contour plot----轮廓图的绘制</span><br><span class="line">figure;</span><br><span class="line"></span><br><span class="line">% Plot J_vals as 15 contours spaced logarithmically between 0.01 and 100</span><br><span class="line"></span><br><span class="line">contour(theta0_vals, theta1_vals, J_vals, logspace(-2, 3, 20))</span><br><span class="line">xlabel(&apos;\theta_0&apos;); ylabel(&apos;\theta_1&apos;);</span><br><span class="line">hold on;</span><br><span class="line">plot(theta(1), theta(2), &apos;rx&apos;, &apos;MarkerSize&apos;, 10, &apos;LineWidth&apos;, 2);</span><br></pre></td></tr></table></figure><p>则如下图上右图所示，在一条等高线上J(θ0，θ1)J(θ0，θ1)相同</p>]]></content>
-    
-    <summary type="html">
-    
-      Machine-learning第一周学习总结，第一周课程比较简单，所以总结的不是太详细
-    
-    </summary>
-    
-      <category term="Study" scheme="http://yoursite.com/categories/Study/"/>
-    
-    
-      <category term="Machine-learning" scheme="http://yoursite.com/tags/Machine-learning/"/>
     
   </entry>
   
