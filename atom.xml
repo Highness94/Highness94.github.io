@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-12T08:28:18.723Z</updated>
+  <updated>2018-10-29T12:17:01.170Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>临时文件</title>
+    <link href="http://yoursite.com/2018/10/29/%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2018/10/29/临时文件/</id>
+    <published>2018-10-29T12:13:48.000Z</published>
+    <updated>2018-10-29T12:17:01.170Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> maxx,minn,total=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> table[<span class="number">3</span>][<span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++)</span><br><span class="line">&#123;</span><br><span class="line"> <span class="built_in">cin</span>&gt;&gt;table[i][j];</span><br><span class="line"> <span class="keyword">if</span>(i==<span class="number">0</span>&amp;&amp;j==<span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line">  maxx=minn=total=table[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">  total+=table[i][j];</span><br><span class="line">   <span class="keyword">if</span>(table[i][j]&gt;maxx)</span><br><span class="line">   &#123;</span><br><span class="line">   maxx=table[i][j];</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(minn&gt;table[i][j])</span><br><span class="line">   &#123;</span><br><span class="line">   minn=table[i][j];</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"the max number is"</span>&lt;&lt;maxx&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"the min number is"</span>&lt;&lt;minn&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"the total is"</span>&lt;&lt;total&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/2018/10/29/临时文件/1.png" alt="1"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="C++ 临时" scheme="http://yoursite.com/tags/C-%E4%B8%B4%E6%97%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 常用命令小结（一）</title>
@@ -417,28 +440,6 @@
     
     
       <category term="gradient-descent" scheme="http://yoursite.com/tags/gradient-descent/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无题</title>
-    <link href="http://yoursite.com/2018/03/29/%E6%97%A0%E9%A2%98/"/>
-    <id>http://yoursite.com/2018/03/29/无题/</id>
-    <published>2018-03-29T11:32:49.000Z</published>
-    <updated>2018-03-29T11:47:36.176Z</updated>
-    
-    <content type="html"><![CDATA[<p> <img src="/2018/03/29/无题/4.jpg" alt="4"></p>]]></content>
-    
-    <summary type="html">
-    
-      加密测试
-    
-    </summary>
-    
-      <category term="github" scheme="http://yoursite.com/categories/github/"/>
-    
-    
-      <category term="github pages处理" scheme="http://yoursite.com/tags/github-pages%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
