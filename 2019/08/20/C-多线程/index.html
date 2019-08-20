@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon (1).ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="muxin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、C/C++多线程操作说明 C/C++多线程基本操作如下：\1. 线程的建立结束\2. 线程的互斥和同步\3. 使用信号量控制线程\4. 线程的基本属性配置   在C/C++代码编写时，使用多线程机制，首先需要做的事情就是声明引用，具体如下： 1#include &amp;quot;pthread.h&amp;quot; 二、线程基本操作方法基本线程操作： \1. pthread_create()：创建线程开始">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 多线程">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/C-多线程/index.html">
+<meta property="og:site_name" content="muxin&#39;s Blog">
+<meta property="og:description" content="一、C/C++多线程操作说明 C/C++多线程基本操作如下：\1. 线程的建立结束\2. 线程的互斥和同步\3. 使用信号量控制线程\4. 线程的基本属性配置   在C/C++代码编写时，使用多线程机制，首先需要做的事情就是声明引用，具体如下： 1#include &amp;quot;pthread.h&amp;quot; 二、线程基本操作方法基本线程操作： \1. pthread_create()：创建线程开始">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2019-08-20T14:30:10.590Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ 多线程">
+<meta name="twitter:description" content="一、C/C++多线程操作说明 C/C++多线程基本操作如下：\1. 线程的建立结束\2. 线程的互斥和同步\3. 使用信号量控制线程\4. 线程的基本属性配置   在C/C++代码编写时，使用多线程机制，首先需要做的事情就是声明引用，具体如下： 1#include &amp;quot;pthread.h&amp;quot; 二、线程基本操作方法基本线程操作： \1. pthread_create()：创建线程开始">
+<meta name="twitter:image" content="https://common.cnblogs.com/images/copycode.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9A6H83NNE8',
+      apiKey: '88b14b97a1038f62aa1e4ad1d03ad369',
+      indexName: 'search',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/C-多线程/"/>
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('Please enter your password') !== ''){
+                alert('wrong password��');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  <title>C++ 多线程 | muxin's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">muxin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">contact me by email:dreamcore@126.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+			
+			<!--���ӵĴ��� start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/C-多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="muxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="muxin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++ 多线程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T22:23:28+08:00">
+                2019-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/20/C-多线程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/08/20/C-多线程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、C-C-多线程操作说明"><a href="#一、C-C-多线程操作说明" class="headerlink" title="一、C/C++多线程操作说明"></a>一、C/C++多线程操作说明</h1><ol>
+<li>C/C++多线程基本操作如下：<br>\1. 线程的建立结束<br>\2. 线程的互斥和同步<br>\3. 使用信号量控制线程<br>\4. 线程的基本属性配置 </li>
+</ol>
+<p>在C/C++代码编写时，使用多线程机制，首先需要做的事情就是声明引用，具体如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;pthread.h&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="二、线程基本操作方法"><a href="#二、线程基本操作方法" class="headerlink" title="二、线程基本操作方法"></a>二、线程基本操作方法</h1><p>基本线程操作：</p>
+<p>\1. pthread_create()：创建线程开始运行相关线程函数，运行结束则线程退出</p>
+<p>\2. pthread_eixt()：因为exit()是用来结束进程的，所以则需要使用特定结束线程的函数</p>
+<p>\3. pthread_join()：挂起当前线程，用于阻塞式地等待线程结束，如果线程已结束则立即返回，0=成功</p>
+<p>\4. pthread_cancel()：发送终止信号给thread线程，成功返回0，但是成功并不意味着thread会终止</p>
+<p>\5. pthread_testcancel()：在不包含取消点，但是又需要取消点的地方创建一个取消点，以便在一个没有包含取消点的执行代码线程中响应取消请求.</p>
+<p>\6. pthread_setcancelstate()：设置本线程对cancle线程的反应</p>
+<p>\7. pthread_setcanceltype()：设置取消状态 继续运行至下一个取消点再退出或者是立即执行取消动作</p>
+<p>\8. pthread_setcancel()：设置取消状态</p>
+<h1 id="三、线程互斥与同步机制"><a href="#三、线程互斥与同步机制" class="headerlink" title="三、线程互斥与同步机制"></a>三、线程互斥与同步机制</h1><p>基本的互斥与同步的操作方法：</p>
+<p>\1. pthread_mutex_init()：互斥锁的初始化</p>
+<p>\2. pthread_mutex_lock()：锁定互斥锁，如果尝试锁定已经被上锁的互斥锁则阻塞至可用为止</p>
+<p>\3. pthread_mutex_trylock()：非阻塞的锁定互斥锁</p>
+<p>\4. pthread_mutex_unlock()：释放互斥锁</p>
+<p>\5. pthread_mutex_destory()：互斥锁销毁函数</p>
+<h1 id="四、信号量线程控制机制"><a href="#四、信号量线程控制机制" class="headerlink" title="四、信号量线程控制机制"></a>四、信号量线程控制机制</h1><p>C/C++在使用信号量机制的时候，默认的信号量为匿名信号量。</p>
+<p>\1. sem_init(sem)：初始化一个定位在sem的匿名信号量</p>
+<p>\2. sem_wait()：把信号量减1操作，如果信号量的当前值为0则进入阻塞，为原子操作</p>
+<p>\3. sem_trywait()：如果信号量的当前值为0则返回错误而不是阻塞调用(errno=EAGAIN),其实是sem_wait()的非阻塞版本</p>
+<p>\4. sem_post()：给信号量的值加1，它是一个“原子操作”，即同时对同一个信号量做加1,操作的两个线程是不会冲突的</p>
+<p>\5. sem_getvalue(sval)：把sem指向的信号量当前值放置在sval指向的整数上</p>
+<p>\6. sem_destory(sem)：销毁由sem指向的匿名信号量</p>
+<h1 id="五、多线程实践"><a href="#五、多线程实践" class="headerlink" title="五、多线程实践"></a>五、多线程实践</h1><h3 id="1-基本的线程及建立运行"><a href="#1-基本的线程及建立运行" class="headerlink" title="1. 基本的线程及建立运行"></a>1. 基本的线程及建立运行</h3><p>下面的代码是C/C++开发的基本的线程的运行，使用的就是最基本的pthread.h：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* thread.c */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THREAD_NUMBER       3                 <span class="comment">/*线程数*/</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REPEAT_NUMBER       5                 <span class="comment">/*每个线程中的小任务数*/</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DELAY_TIME_LEVELS  10.0             <span class="comment">/*小任务之间的最大时间间隔*/</span></span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thrd_func</span><span class="params">(<span class="keyword">void</span> *arg)</span> </span>&#123; </span><br><span class="line">    <span class="comment">/* 线程函数例程 */</span></span><br><span class="line">    <span class="keyword">int</span> thrd_num = (<span class="keyword">int</span>)arg;</span><br><span class="line">    <span class="keyword">int</span> delay_time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Thread %d is starting\n"</span>, thrd_num);</span><br><span class="line">    <span class="keyword">for</span> (count = <span class="number">0</span>; count &lt; REPEAT_NUMBER; count++) &#123;</span><br><span class="line">        delay_time = (<span class="keyword">int</span>)(rand() * DELAY_TIME_LEVELS/(RAND_MAX)) + <span class="number">1</span>;</span><br><span class="line">        sleep(delay_time);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\tThread %d: job %d delay = %d\n"</span>, thrd_num, count, delay_time);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Thread %d finished\n"</span>, thrd_num);</span><br><span class="line">    pthread_exit(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">pthread_t</span> thread[THREAD_NUMBER];</span><br><span class="line">     <span class="keyword">int</span> no = <span class="number">0</span>, res;</span><br><span class="line">     <span class="keyword">void</span> * thrd_ret;</span><br><span class="line">     srand(time(<span class="literal">NULL</span>));    </span><br><span class="line">     <span class="keyword">for</span> (no = <span class="number">0</span>; no &lt; THREAD_NUMBER; no++) &#123;</span><br><span class="line">          <span class="comment">/* 创建多线程 */</span></span><br><span class="line">          res = pthread_create(&amp;thread[no], <span class="literal">NULL</span>, thrd_func, (<span class="keyword">void</span>*)no);</span><br><span class="line">          <span class="keyword">if</span> (res != <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"Create thread %d failed\n"</span>, no);</span><br><span class="line">               <span class="built_in">exit</span>(res);</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"Create treads success\n Waiting for threads to finish...\n"</span>);</span><br><span class="line">     <span class="keyword">for</span> (no = <span class="number">0</span>; no &lt; THREAD_NUMBER; no++) &#123;</span><br><span class="line">          <span class="comment">/* 等待线程结束 */</span></span><br><span class="line">          res = pthread_join(thread[no], &amp;thrd_ret);</span><br><span class="line">          <span class="keyword">if</span> (!res) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Thread %d joined\n"</span>, no);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Thread %d join failed\n"</span>, no);</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例程中循环3次建立3条线程，并且使用pthread_join函数依次等待线程结束；<br>线程中使用rand()获取随机值随机休眠5次，随意会出现后执行的线程先执行完成；<br>运行结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ gcc thread.c -lpthread</span><br><span class="line">$ ./a.out </span><br><span class="line">Create treads success</span><br><span class="line"> Waiting <span class="keyword">for</span> threads to finish...</span><br><span class="line">Thread <span class="number">0</span> is starting</span><br><span class="line">Thread <span class="number">1</span> is starting</span><br><span class="line">Thread <span class="number">2</span> is starting</span><br><span class="line">Thread <span class="number">1</span>: job <span class="number">0</span> delay = <span class="number">2</span></span><br><span class="line">Thread <span class="number">1</span>: job <span class="number">1</span> delay = <span class="number">2</span></span><br><span class="line">Thread <span class="number">0</span>: job <span class="number">0</span> delay = <span class="number">8</span></span><br><span class="line">Thread <span class="number">2</span>: job <span class="number">0</span> delay = <span class="number">10</span></span><br><span class="line">Thread <span class="number">2</span>: job <span class="number">1</span> delay = <span class="number">3</span></span><br><span class="line">Thread <span class="number">1</span>: job <span class="number">2</span> delay = <span class="number">10</span></span><br><span class="line">Thread <span class="number">0</span>: job <span class="number">1</span> delay = <span class="number">8</span></span><br><span class="line">Thread <span class="number">0</span>: job <span class="number">2</span> delay = <span class="number">3</span></span><br><span class="line">Thread <span class="number">0</span>: job <span class="number">3</span> delay = <span class="number">1</span></span><br><span class="line">Thread <span class="number">2</span>: job <span class="number">2</span> delay = <span class="number">8</span></span><br><span class="line">Thread <span class="number">1</span>: job <span class="number">3</span> delay = <span class="number">8</span></span><br><span class="line">Thread <span class="number">1</span>: job <span class="number">4</span> delay = <span class="number">1</span></span><br><span class="line">Thread <span class="number">1</span> finished</span><br><span class="line">        Thread <span class="number">2</span>: job <span class="number">3</span> delay = <span class="number">6</span></span><br><span class="line">        Thread <span class="number">0</span>: job <span class="number">4</span> delay = <span class="number">7</span></span><br><span class="line">Thread <span class="number">0</span> finished</span><br><span class="line">Thread <span class="number">0</span> joined</span><br><span class="line">Thread <span class="number">1</span> joined</span><br><span class="line">        Thread <span class="number">2</span>: job <span class="number">4</span> delay = <span class="number">10</span></span><br><span class="line">Thread <span class="number">2</span> finished</span><br><span class="line">Thread <span class="number">2</span> joined</span><br></pre></td></tr></table></figure>
+<p>可以看到，线程1先于线程0执行，但是pthread_join的调用时间顺序，先等待线程0执行；<br>由于线程1已经早结束，所以线程0被pthread_join等到的时候，线程1已结束，就在等待到线程1时，直接返回； </p>
+<h3 id="2-线程执行的互斥和同步pthread-mutex-lock"><a href="#2-线程执行的互斥和同步pthread-mutex-lock" class="headerlink" title="2. 线程执行的互斥和同步pthread_mutex_lock"></a>2. 线程执行的互斥和同步pthread_mutex_lock</h3><p>下面我们在上面的程序中增加互斥锁：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">/*thread_mutex.c*/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line"> </span><br><span class="line">#define THREAD_NUMBER        3            /* 线程数 */</span><br><span class="line">#define REPEAT_NUMBER        3            /* 每个线程的小任务数 */</span><br><span class="line">#define DELAY_TIME_LEVELS 10.0         /*小任务之间的最大时间间隔*/</span><br><span class="line">pthread_mutex_t mutex;</span><br><span class="line"> </span><br><span class="line">void *thrd_func(void *arg) &#123;</span><br><span class="line">     int thrd_num = (int)arg;</span><br><span class="line">     int delay_time = 0, count = 0;</span><br><span class="line">     int res;</span><br><span class="line">     /* 互斥锁上锁 */</span><br><span class="line">     res = pthread_mutex_lock(&amp;mutex);</span><br><span class="line">     if (res) &#123;</span><br><span class="line">          printf(&quot;Thread %d lock failed\n&quot;, thrd_num);</span><br><span class="line">          pthread_exit(NULL);</span><br><span class="line">     &#125;</span><br><span class="line">     printf(&quot;Thread %d is starting\n&quot;, thrd_num);</span><br><span class="line">     for (count = 0; count &lt; REPEAT_NUMBER; count++) &#123;          </span><br><span class="line">         delay_time = (int)(rand() * DELAY_TIME_LEVELS/(RAND_MAX)) + 1;</span><br><span class="line">         sleep(delay_time);</span><br><span class="line">         printf(&quot;\tThread %d: job %d delay = %d\n&quot;, </span><br><span class="line">                                      thrd_num, count, delay_time);</span><br><span class="line">     &#125;</span><br><span class="line">     printf(&quot;Thread %d finished\n&quot;, thrd_num);</span><br><span class="line">     pthread_exit(NULL);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void) &#123;</span><br><span class="line">     pthread_t thread[THREAD_NUMBER];</span><br><span class="line">     int no = 0, res;</span><br><span class="line">     void * thrd_ret;</span><br><span class="line"> </span><br><span class="line">     srand(time(NULL));</span><br><span class="line">     /* 互斥锁初始化 */</span><br><span class="line">     pthread_mutex_init(&amp;mutex, NULL);</span><br><span class="line">     for (no = 0; no &lt; THREAD_NUMBER; no++) &#123;</span><br><span class="line">          res = pthread_create(&amp;thread[no], NULL, thrd_func, (void*)no);</span><br><span class="line">          if (res != 0) &#123;</span><br><span class="line">              printf(&quot;Create thread %d failed\n&quot;, no);</span><br><span class="line">              exit(res);</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;     </span><br><span class="line">     printf(&quot;Create treads success\n Waiting for threads to finish...\n&quot;);</span><br><span class="line">     for (no = 0; no &lt; THREAD_NUMBER; no++) &#123;</span><br><span class="line">          res = pthread_join(thread[no], &amp;thrd_ret);</span><br><span class="line">          if (!res) &#123;</span><br><span class="line">                printf(&quot;Thread %d joined\n&quot;, no);</span><br><span class="line">          &#125; else  &#123;</span><br><span class="line">              printf(&quot;Thread %d join failed\n&quot;, no);</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;   </span><br><span class="line">     /****互斥锁解锁***/</span><br><span class="line">     pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">     pthread_mutex_destroy(&amp;mutex);          </span><br><span class="line">     return 0;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例程中直接添加同步锁pthread_mutex_t；<br>在线程中加入，于是程序在执行线程程序时；<br>调用pthread_mutex_lock上锁，发现上锁时候后进入等待，等待锁再次释放后重新上锁；<br>所以线程程序加载到队列中等待，等待成功上锁后继续执行程序代码；<br>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$gcc thread_mutex.c -lpthread</span><br><span class="line">$ ./a.out </span><br><span class="line">Create treads success</span><br><span class="line"> Waiting for threads to finish...</span><br><span class="line">Thread 0 is starting</span><br><span class="line">        Thread 0: job 0 delay = 9</span><br><span class="line">        Thread 0: job 1 delay = 4</span><br><span class="line">        Thread 0: job 2 delay = 7</span><br><span class="line">Thread 0 finished</span><br><span class="line">Thread 0 joined</span><br><span class="line">Thread 1 is starting</span><br><span class="line">        Thread 1: job 0 delay = 6</span><br><span class="line">        Thread 1: job 1 delay = 4</span><br><span class="line">        Thread 1: job 2 delay = 7</span><br><span class="line">Thread 1 finished</span><br><span class="line">Thread 1 joined</span><br><span class="line">Thread 2 is starting</span><br><span class="line">        Thread 2: job 0 delay = 3</span><br><span class="line">        Thread 2: job 1 delay = 1</span><br><span class="line">        Thread 2: job 2 delay = 6</span><br><span class="line">Thread 2 finished</span><br><span class="line">Thread 2 joined</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用信号量控制线程的执行顺序sem-post"><a href="#3-使用信号量控制线程的执行顺序sem-post" class="headerlink" title="3. 使用信号量控制线程的执行顺序sem_post"></a>3. 使用信号量控制线程的执行顺序sem_post</h3><p>修改上面例程，上面的是使用pthread_mutex_lock互斥锁控制线程执行顺序，<br>使用另外一种线程执行顺序的控制：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">/* thread_sem.c */</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;semaphore.h&gt;</span><br><span class="line"> </span><br><span class="line">#define THREAD_NUMBER       3</span><br><span class="line">#define REPEAT_NUMBER       3</span><br><span class="line">#define DELAY_TIME_LEVELS   10.0</span><br><span class="line"> </span><br><span class="line">sem_t sem[THREAD_NUMBER];</span><br><span class="line"> </span><br><span class="line">void * thrd_func(void *arg) &#123;</span><br><span class="line">    int thrd_num = (int)arg;</span><br><span class="line">    int delay_time = 0;</span><br><span class="line">    int count = 0;</span><br><span class="line">    sem_wait(&amp;sem[thrd_num]);</span><br><span class="line">    printf(&quot;Thread %d is starting\n&quot;, thrd_num);</span><br><span class="line">    for (count = 0; count &lt; REPEAT_NUMBER; count++) &#123;</span><br><span class="line">        delay_time = (int)(rand() * DELAY_TIME_LEVELS/(RAND_MAX)) + 1;</span><br><span class="line">        sleep(delay_time);</span><br><span class="line">        printf(&quot;\tThread %d: job %d delay = %d\n&quot;, thrd_num, count, delay_time);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Thread %d finished\n&quot;, thrd_num);</span><br><span class="line">    pthread_exit(NULL);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void) &#123;</span><br><span class="line">    pthread_t thread[THREAD_NUMBER];</span><br><span class="line">    int no = 0, res;</span><br><span class="line">    void * thrd_ret;</span><br><span class="line">    srand(time(NULL));</span><br><span class="line">    for (no = 0; no &lt; THREAD_NUMBER; no++) &#123;</span><br><span class="line">        sem_init(&amp;sem[no], 0, 0);</span><br><span class="line">        res = pthread_create(&amp;thread[no], NULL, thrd_func, (void*)no);</span><br><span class="line">        if (res != 0) &#123;</span><br><span class="line">            printf(&quot;Create thread %d failed\n&quot;, no);</span><br><span class="line">            exit(res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    printf(&quot;Create treads success\n Waiting for threads to finish...\n&quot;);</span><br><span class="line">    sem_post(&amp;sem[THREAD_NUMBER - 1]);</span><br><span class="line">    for (no = THREAD_NUMBER - 1; no &gt;= 0; no--) &#123;</span><br><span class="line">        res = pthread_join(thread[no], &amp;thrd_ret);</span><br><span class="line">        if (!res) &#123;</span><br><span class="line">            printf(&quot;Thread %d joined\n&quot;, no);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            printf(&quot;Thread %d join failed\n&quot;, no);</span><br><span class="line">        &#125;</span><br><span class="line">        sem_post(&amp;sem[(no + THREAD_NUMBER - 1) % THREAD_NUMBER]);           </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    for (no = 0; no &lt; THREAD_NUMBER; no++) &#123;</span><br><span class="line">        sem_destroy(&amp;sem[no]);      </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果，仍然是建立3条线程，每条线程执行时休眠随机时长：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ gcc thread_sem.c -lpthread </span><br><span class="line">$ ./a.out </span><br><span class="line">Create treads success</span><br><span class="line"> Waiting for threads to finish...</span><br><span class="line">Thread 2 is starting</span><br><span class="line">        Thread 2: job 0 delay = 9</span><br><span class="line">        Thread 2: job 1 delay = 9</span><br><span class="line">        Thread 2: job 2 delay = 5</span><br><span class="line">Thread 2 finished</span><br><span class="line">Thread 2 joined</span><br><span class="line">Thread 1 is starting</span><br><span class="line">        Thread 1: job 0 delay = 5</span><br><span class="line">        Thread 1: job 1 delay = 7</span><br><span class="line">        Thread 1: job 2 delay = 4</span><br><span class="line">Thread 1 finished</span><br><span class="line">Thread 1 joined</span><br><span class="line">Thread 0 is starting</span><br><span class="line">        Thread 0: job 0 delay = 3</span><br><span class="line">        Thread 0: job 1 delay = 9</span><br><span class="line">        Thread 0: job 2 delay = 8</span><br><span class="line">Thread 0 finished</span><br><span class="line">Thread 0 joined</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>执行结果与第2个例程非常相似，只不过教材中进行倒序执行而已；<br>那么这种方式其实与使用互斥锁相比，代码量可读性基本持平不相上下；</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Tipping via QR code</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="muxin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifu.jpg" alt="muxin 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/20/C-并发/" rel="next" title="C++  并发">
+                <i class="fa fa-chevron-left"></i> C++  并发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://xzx.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/20/C-多线程/';
+          this.page.identifier = '2019/08/20/C-多线程/';
+          this.page.title = 'C++ 多线程';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xzx.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+	
+
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+ 
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.JPG"
+                alt="muxin" />
+            
+              <p class="site-author-name" itemprop="name">muxin</p>
+              <p class="site-description motion-element" itemprop="description">Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、C-C-多线程操作说明"><span class="nav-number">1.</span> <span class="nav-text">一、C/C++多线程操作说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、线程基本操作方法"><span class="nav-number">2.</span> <span class="nav-text">二、线程基本操作方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、线程互斥与同步机制"><span class="nav-number">3.</span> <span class="nav-text">三、线程互斥与同步机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、信号量线程控制机制"><span class="nav-number">4.</span> <span class="nav-text">四、信号量线程控制机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、多线程实践"><span class="nav-number">5.</span> <span class="nav-text">五、多线程实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本的线程及建立运行"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. 基本的线程及建立运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-线程执行的互斥和同步pthread-mutex-lock"><span class="nav-number">5.0.2.</span> <span class="nav-text">2. 线程执行的互斥和同步pthread_mutex_lock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用信号量控制线程的执行顺序sem-post"><span class="nav-number">5.0.3.</span> <span class="nav-text">3. 使用信号量控制线程的执行顺序sem_post</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+	<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=""&auto=1&height=66"></iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muxin</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  Number of Visitor:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 | Search by algolia</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
