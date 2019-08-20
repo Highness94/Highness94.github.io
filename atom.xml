@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-15T13:01:38.079Z</updated>
+  <updated>2019-08-20T13:45:34.276Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Seek Offer</title>
+    <link href="http://yoursite.com/2019/08/20/Seek-Offer/"/>
+    <id>http://yoursite.com/2019/08/20/Seek-Offer/</id>
+    <published>2019-08-20T13:45:34.000Z</published>
+    <updated>2019-08-20T13:45:34.276Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>20190129记记录-Day_01</title>
+    <link href="http://yoursite.com/2019/01/29/20190129%E8%AE%B0%E8%AE%B0%E5%BD%95-Day-01/"/>
+    <id>http://yoursite.com/2019/01/29/20190129记记录-Day-01/</id>
+    <published>2019-01-29T02:42:05.000Z</published>
+    <updated>2019-02-08T12:40:48.556Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一动态规划"><a href="#一动态规划" class="headerlink" title="一动态规划"></a>一动态规划</h1><h1 id="二-C-进阶"><a href="#二-C-进阶" class="headerlink" title="二 C++进阶"></a>二 C++进阶</h1><p><img src="https://img-blog.csdn.net/20180710145044258?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5na2VfMTIyNw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p>C只读一本书《 The C Proguamming Language 》 读读C之父的著作，抛开老谭写的那本；</p><p>C++你可以读《C++ primer》，其实当你把这两本书读通后，我想对于C/C++语言的经验（除此之外要积累项目经验）来讲找工作是一定没问题的，可能还会比很多工作了的程序员在语言方面基础好。<br>如果想精通，结合我自己的体会，建议在C++方面阅读《effective c++》《more effective c++》这时至少语言的特性你会了解很多。之后可以把c++之父写的《C++ Programming Language》当做工具书来查看。<br>要想用好C++，有两个库不得不学，stl和boost。</p><hr><p>我刚找完工作，说下自己的看法吧。<br>首先，精通就算了，如果在简历中写“精通C/C++”，一般会死的灰常灰常灰常难看。<br>其次，如果以大公司为目标，如果你就读学校够好，其实把《程序员面试宝典》看熟了理解了，笔试就没啥问题了。笔试题，千篇一律啊~~<br>第三，选择一个小方向深入研究准备面试。比如说熟悉STL，就要把相关的内存分配机制、回收机制、vector漏洞什么的搞清楚，推荐侯捷那本STL源码剖析。<br>最后，光有语言基础是不够的，还需要学会经典的算法，能顺利写出快排的代码这个难度就可以了。Linux环境也稍微熟悉一下。其实大公司校招更看重你的学习能力、思考问题的方法。语言只是工具，人人都能用笔，但不见得人人都能作画。</p><p>参考博文：<a href="https://blog.csdn.net/qq_20996129/article/details/80218771" target="_blank" rel="noopener">https://blog.csdn.net/qq_20996129/article/details/80218771</a></p><h1 id="编程技巧"><a href="#编程技巧" class="headerlink" title="编程技巧"></a>编程技巧</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">把数值作为 key，它的下标作为 value</span><br><span class="line">* 遍历数组，判断 map 是否含有这个目标值-当前数值，</span><br><span class="line">* 有直接返回，没有的话放到map里面</span><br><span class="line">*</span><br><span class="line">* 所以以后写代码，如果有双层 for 循环，首先考虑一下能否用 map 替换一层</span><br><span class="line"></span><br><span class="line">--&gt;   https://blog.csdn.net/yusiguyuan/article/details/12883727</span><br></pre></td></tr></table></figure><p><strong> 看一下hashmap和map和maptable等等的区别和联系</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispaly</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;nums[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">常见的通信方式：</span><br><span class="line"><span class="number">1.</span> 管道pipe：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</span><br><span class="line"><span class="number">2.</span> 命名管道FIFO：有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</span><br><span class="line"><span class="number">4.</span> 消息队列MessageQueue：消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</span><br><span class="line"><span class="number">5.</span> 共享存储SharedMemory：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号两，配合使用，来实现进程间的同步和通信。</span><br><span class="line"><span class="number">6.</span> 信号量Semaphore：信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</span><br><span class="line"><span class="number">7.</span> 套接字Socket：套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信。</span><br><span class="line"><span class="number">8.</span> 信号 ( sinal ) ： 信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一动态规划&quot;&gt;&lt;a href=&quot;#一动态规划&quot; class=&quot;headerlink&quot; title=&quot;一动态规划&quot;&gt;&lt;/a&gt;一动态规划&lt;/h1&gt;&lt;h1 id=&quot;二-C-进阶&quot;&gt;&lt;a href=&quot;#二-C-进阶&quot; class=&quot;headerlink&quot; title=&quot;二
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>如何将好的技术产品化</title>
@@ -396,49 +431,6 @@
     
     
       <category term="Maltab" scheme="http://yoursite.com/tags/Maltab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BP神经网络学习笔记</title>
-    <link href="http://yoursite.com/2018/04/04/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/04/04/BP神经网络学习笔记/</id>
-    <published>2018-04-04T10:16:35.000Z</published>
-    <updated>2018-04-19T11:06:10.541Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一CDF-累积分布函数图作用"><a href="#一CDF-累积分布函数图作用" class="headerlink" title="一CDF 累积分布函数图作用"></a>一CDF 累积分布函数图作用</h1><p>定义：对<a href="http://baike.baidu.com/view/150456.htm" target="_blank" rel="noopener">连续函数</a>，所有小于等于a的值，其出现概率的和。F(a)=P(x&lt;=a)</p><p>数据的累积分布，也即小于等于当前数据值的所有数据的概率分布，对于表示数据点在某个区间内出现的概率有很大的帮助。</p><p>根据这张累积分布函数图（无图），可以很方便地回答之前的两个问题：</p><ol><li>CDF中横轴上的2对应的Y值约为0.98，因此所有大于2的数据点所占比例约为2%。</li><li>CDF中横轴上的1.3对应的Y值约为0.75，因此所有介于1.3和2之间的数据点所占比例约为23% (0.98-0.75)。</li></ol><p>与直方图、核密度估计相比，累积分布函数存在以下几个特点：</p><ul><li>累积分布函数是X轴单调递增函数。</li><li>累积分布函数更加平滑，图像中噪音更小。</li><li>累积分布函数没有引入带宽等外部概念，因此不会丢失任何数据信息。对于给定的数据集，累积分布函数是唯一的。</li><li>累积分布函数一般都经过归一化处理，单调递增且趋近于1。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;一CDF-累积分布函数图作用&quot;&gt;&lt;a href=&quot;#一CDF-累积分布函数图作用&quot; class=&quot;headerlink&quot; title=&quot;一CDF 累积分布函数图作用&quot;&gt;&lt;/a&gt;一CDF 累积分布函数图作用&lt;/h1&gt;&lt;p&gt;定义：对&lt;a href=&quot;http://ba
-      
-    
-    </summary>
-    
-    
-      <category term="NN" scheme="http://yoursite.com/tags/NN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的简历</title>
-    <link href="http://yoursite.com/2018/04/02/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/"/>
-    <id>http://yoursite.com/2018/04/02/我的简历/</id>
-    <published>2018-04-02T11:33:23.000Z</published>
-    <updated>2018-04-02T11:48:34.453Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="一-基本信息"><a href="#一-基本信息" class="headerlink" title="一 基本信息"></a>一 基本信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">姓    名：徐志翔   </span><br><span class="line">原    籍：江苏南京</span><br><span class="line">目前所在：南京</span><br><span class="line">电    话：13770330366</span><br><span class="line">电子信箱：dreamcore@126.com </span><br><span class="line">英语等级：六级</span><br></pre></td></tr></table></figure><h3 id="二项目经验"><a href="#二项目经验" class="headerlink" title="二项目经验"></a>二项目经验</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  《基于LPC1768和CC2530的智能家居设计》      独立完成</span><br><span class="line">  《基于ASP.NET的翔宇学院竞赛管理系统》       负责前台和部分后台</span><br><span class="line">   《基于路况分析的智能路灯物联网系统》          负责STC89C52主控部分</span><br><span class="line">   《基于opencv3的车标识别》校大学生创新项目    负责识别部分</span><br><span class="line">   《基于.NET的毕业审核系统》                   独立完成</span><br><span class="line">   《基于STC89C52的智能小车设计》              独立完成</span><br><span class="line">   《基于RFID门禁系统设计》                    独立完成</span><br></pre></td></tr></table></figure><h3 id="三获奖经历"><a href="#三获奖经历" class="headerlink" title="三获奖经历"></a>三获奖经历</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2014，2015年获国家励志奖学金</span><br><span class="line">2014年江苏省十八届省运会“优秀志愿者”                                </span><br><span class="line">2014年获江苏省大学生暑期社会实践“先进个人”</span><br><span class="line">2015年获全国大学生物联网设计竞赛华东区特等奖，全国三等奖</span><br><span class="line">2015年江苏省“互联网+”大学生创新创业大赛创意组三等奖</span><br><span class="line">获校科技活动奖，校三好学生 ,校二等奖学金三次，校编程大赛一等奖，优秀导生      </span><br><span class="line">江苏省蓝桥杯大赛C/C++三等奖                 </span><br><span class="line">省级大学生创新项目，成功结题，并获得团体软件专利权一项。</span><br></pre></td></tr></table></figure><h3 id="Dividual-Works"><a href="#Dividual-Works" class="headerlink" title="Dividual Works*"></a><strong>Dividual Works*</strong></h3><h4 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本设计采用“物物相连”的物联网思想作为设计理念，搭建了一个基于LPC1768的智能家居网关系统。本次设计包括的模块有ZigBee数据采集模块、ZigBee数据汇聚模块、网关 模块、服务器端模块、PC客户端模块、APP模块等六大模块。主要实现的具体功能有，PC客户端可以通过与远程服务器端中的数据库交互显示当前ZigBee节点采集的数据以及通过对数据库反馈控制ZigBee终端，使用户可以实时通过客户端检测家里的情况并可以加以控制。同样的操作也可以通过APP控制实现。PC机与ZigBee终端节点之间的通信和APP与ZigBee终端节点之间的通信，都需要经过网关进行转接，因此网关是整个系统的通信桥梁。为了实现网关通信桥梁的角色，本次网关的设计，硬件上采用恩智浦公司的LPC1768作为主控MCU，该系统由LPC1768内嵌以太网模块和LAN8720A芯片构建一个以太网服务控制器，即搭建成一个网关系统。软件上将成功将RL-TCPnet的协议栈移植到目标板上，实现了与远程服务器socket通信的能力。通过设计相关的PC客户端及APP手机端，即PC机终端和手机终端，实现了“使用方便”的设计理念，数据采集实现了“贴近生活”设计理念，从而搭建成一个物联网的智能家居网关系统。</span><br></pre></td></tr></table></figure><h4 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h4><p> <img src="/2018/04/02/我的简历/1.jpg" alt="1"></p><p>图一：Zigbee协调器+嵌入式网关（LPC1768）</p><p> <img src="/2018/04/02/我的简历/2.png" alt="2"></p><p>PC客户端 </p><p> <img src="/2018/04/02/我的简历/3.jpg" alt="3"></p><p>远程服务器处理程序</p><p>  <img src="/2018/04/02/我的简历/4.png" alt="4"></p><p>android客户端</p><p> <img src="/2018/04/02/我的简历/5.jpg" alt="5"></p><p>Zigbee终端+传感器采集数据</p><h3 id="智能办公系统"><a href="#智能办公系统" class="headerlink" title="智能办公系统"></a>智能办公系统</h3><p> <img src="/2018/04/02/我的简历/6.png" alt="6"></p><p>应用框图<em>**</em></p><p> <img src="/2018/04/02/我的简历/7.png" alt="7"></p><p>通信框架</p>]]></content>
-    
-    <summary type="html">
-    
-      加密测试
-    
-    </summary>
-    
-      <category term="Personal" scheme="http://yoursite.com/categories/Personal/"/>
-    
     
   </entry>
   
