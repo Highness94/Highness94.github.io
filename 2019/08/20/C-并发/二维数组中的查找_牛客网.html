@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!-- saved from url=(0158)https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="google-site-verification" content="lFSmn0rlLR-OPkas5c2GxdhTKP4J4PyaahhQ2TNanjs">
+<meta itemprop="image" content="https://static.nowcoder.com/images/logo_87_87.png">
+<meta name="description" content="牛客网是互联网求职神器，C++、Java、前端、产品、运营技能学习/备考/求职题库，在线进行百度阿里腾讯网易等互联网名企笔试面试模拟考试练习,和牛人一起讨论经典试题,全面提升你的技术能力">
+<meta name="keywords" content="牛客网,C++笔试面试，Java笔试面试，计算机笔试,计算机面试, IT笔试,笔试题库,笔试练习,IT面试,在线编程,编程学习,牛客网">
+<title>二维数组中的查找_牛客网</title>
+<link rel="stylesheet" href="./二维数组中的查找_牛客网_files/global.css">
+<link rel="stylesheet" href="./二维数组中的查找_牛客网_files/global(1).css">
+<link rel="stylesheet" href="./二维数组中的查找_牛客网_files/ui.css">
+<link rel="stylesheet" href="./二维数组中的查找_牛客网_files/base.css">
+<link rel="stylesheet" href="./二维数组中的查找_牛客网_files/default.css">
+<link rel="stylesheet" href="./二维数组中的查找_牛客网_files/coding.css">
+<script src="./二维数组中的查找_牛客网_files/hm.js.下载"></script><script>
+window.globalInfo = {};
+window.globalInfo.ownerId = '901311802';
+window.globalInfo.ownerName = '山有木兮木有枝💤';
+window.globalInfo.ownerTinyHead = 'https://images.nowcoder.com/images/20190822/901311802_1566475973352_4EE55D214E73849EE25318CDD1511679?x-oss-process=image/resize,m_mfit,h_100,w_100';
+window.globalInfo.ownerMainHead = 'https://images.nowcoder.com/images/20190822/901311802_1566475973352_4EE55D214E73849EE25318CDD1511679?x-oss-process=image/resize,m_mfit,h_200,w_200';
+window.globalInfo.ownerEmail = '1639416517@qq.com';
+window.globalInfo.status = '0';
+window.globalInfo.honorLevel = '5';
+</script>
+<script charset="utf-8" async="" src="./二维数组中的查找_牛客网_files/index.js.下载"></script><script charset="utf-8" async="" src="./二维数组中的查找_牛客网_files/share.js.下载"></script><link charset="utf-8" rel="stylesheet" href="./二维数组中的查找_牛客网_files/codemirror.css"><link charset="utf-8" rel="stylesheet" href="./二维数组中的查找_牛客网_files/monokai.css"><script charset="utf-8" async="" src="./二维数组中的查找_牛客网_files/codemirror.js.下载"></script><style data-name="js-show-invisibles">.cm-whitespace::before {position: absolute;pointer-events: none;color: #666666;}
+
+.CodeMirror .cm-whitespace-1::before { content: "·";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-1::before { content: "";}
+.CodeMirror .cm-whitespace-2::before { content: "··";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-2::before { content: "";}
+.CodeMirror .cm-whitespace-3::before { content: "···";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-3::before { content: "";}
+.CodeMirror .cm-whitespace-4::before { content: "····";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-4::before { content: "";}
+.CodeMirror .cm-whitespace-5::before { content: "·····";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-5::before { content: "";}
+.CodeMirror .cm-whitespace-6::before { content: "······";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-6::before { content: "";}
+.CodeMirror .cm-whitespace-7::before { content: "·······";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-7::before { content: "";}
+.CodeMirror .cm-whitespace-8::before { content: "········";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-8::before { content: "";}
+.CodeMirror .cm-whitespace-9::before { content: "·········";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-9::before { content: "";}
+.CodeMirror .cm-whitespace-10::before { content: "··········";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-10::before { content: "";}
+.CodeMirror .cm-whitespace-11::before { content: "···········";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-11::before { content: "";}
+.CodeMirror .cm-whitespace-12::before { content: "············";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-12::before { content: "";}
+.CodeMirror .cm-whitespace-13::before { content: "·············";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-13::before { content: "";}
+.CodeMirror .cm-whitespace-14::before { content: "··············";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-14::before { content: "";}
+.CodeMirror .cm-whitespace-15::before { content: "···············";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-15::before { content: "";}
+.CodeMirror .cm-whitespace-16::before { content: "················";}
+.cm-nc-tab-space-close .CodeMirror .cm-whitespace-16::before { content: "";}
+</style><link charset="utf-8" rel="stylesheet" href="./二维数组中的查找_牛客网_files/katex.min.css"><script charset="utf-8" async="" src="./二维数组中的查找_牛客网_files/katex.min.js.下载"></script><script charset="utf-8" async="" src="./二维数组中的查找_牛客网_files/auto-render.min.js.下载"></script></head>
+<body class="full-screen-body code-body-hidden">
+<div class="nk-container">
+<div class="nk-main full-screen-subject clearfix" style="padding-bottom: 0px; height: 566px; width: 1350px;">
+<div class="nowcoder-topic js-left code-body-hidden" style="height: 566px;">
+<div class="terminal-topic-wrap js-topic-title">
+<div class="terminal-topic-title js-question-title"><i class="icon-list"></i>二维数组中的查找<a href="javascript:void(0);" class="float-right link-white"><i class="icon-nc-similar"></i> 相似的企业真题</a></div>
+</div>
+<div class="terminal-topic" style="padding-bottom: 40px; height: 476px; overflow-y: auto; width: 578px;">
+<div class="subject-question" style="margin:10px 0;">
+<div class="subject-item-wrap">
+<span>时间限制：1秒</span>
+<span>空间限制：32768K</span>
+<span>热度指数：1323359</span>
+</div>
+<div class="tags-box">
+本题知识点：
+<a class="tag-label" href="https://www.nowcoder.com/questionCenter?questionTypes=000100&amp;mutiTagIds=589" target="_blank">查找</a>
+<a class="tag-label" href="https://www.nowcoder.com/questionCenter?questionTypes=000100&amp;mutiTagIds=578" target="_blank">数组</a>
+</div>
+<a target="_blank" href="https://www.nowcoder.com/courses/semester/2018algorithm-higher" class="link-green video-explain">
+<i class="fui-video"></i>
+算法知识视频讲解
+</a>
+</div>
+<div class="nk-warning js-nk-warning" style="display:none;">
+校招时部分企业笔试将禁止编程题跳出页面，为提前适应，练习时请使用在线自测，而非本地IDE。
+</div>
+<h2 class="subject-item-title">题目描述</h2>
+<div class="subject-describe">
+<div class="js-question-content" style="margin-bottom:10px;">在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</div>
+<!--  -->
+</div>
+<ul class="oprt-tool clearfix" style="width: 608px;">
+<li><a href="javascript:void(0);" class="oprt-item icon-notes js-add-note nc-req-auth">笔记</a></li>
+<li><a href="javascript:void(0);" data-id="23296" class="oprt-item oprt-collect js-click-follow nc-req-auth">收藏</a></li>
+<li><a href="javascript:void(0);" class="oprt-item oprt-error click-correction">纠错</a></li>
+</ul>
+</div>
+<div class="full-separator" style="z-index: 998; right: 0px; left: auto; height: 476px; top: 50px;"></div>
+<div class="topic-popup js-topic-menu" style="z-index: 999; height: 566px; display: none;">
+<div class="terminal-topic-wrap">
+<div class="terminal-topic-title"><i class="icon-list"></i>二维数组中的查找</div>
+<div class="topic-popup-bd">
+<a href="https://www.nowcoder.com/ta/coding-interviews?page=1" class="back-to-all"><i class="icon-angle-left"></i>返回全部题目</a>
+<div class="topic-title-list">
+<h2>剑指Offer_编程题</h2>
+<div class="js-list" style="overflow-y: auto; height: 566px;">
+<div class="js-list-tips" style="display: none;">列表加载中...</div>
+<div class="js-ul-list"><ul class="js-page-1"><li class="active"><a class="topic-title-txt" href="https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&amp;tqId=11154&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">二维数组中的查找</a><span class="green-spot"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&amp;tqId=11155&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">替换空格</a><span class="green-spot"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&amp;tqId=11156&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">从尾到头打印链表</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/8a19cbe657394eeaac2f6ea9b0f6fcf6?tpId=13&amp;tqId=11157&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">重建二叉树</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&amp;tqId=11158&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">用两个栈实现队列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba?tpId=13&amp;tqId=11159&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">旋转数组的最小数字</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/c6c7742f5ba7442aada113136ddea0c3?tpId=13&amp;tqId=11160&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">斐波那契数列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/8c82a5b80378478f9484d87d1c5f12a4?tpId=13&amp;tqId=11161&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">跳台阶</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/22243d016f6b47f2a6928b4313c85387?tpId=13&amp;tqId=11162&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">变态跳台阶</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/72a5a919508a4251859fb2cfb987a0e6?tpId=13&amp;tqId=11163&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">矩形覆盖</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/8ee967e43c2c4ec193b040ea7fbb10b8?tpId=13&amp;tqId=11164&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">二进制中1的个数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/1a834e5e3e1a4b7ba251417554e07c00?tpId=13&amp;tqId=11165&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">数值的整数次方</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&amp;tqId=11166&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">调整数组顺序使奇数位于偶数前面</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/529d3ae5a407492994ad2a246518148a?tpId=13&amp;tqId=11167&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">链表中倒数第k个结点</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=13&amp;tqId=11168&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">反转链表</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337?tpId=13&amp;tqId=11169&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">合并两个排序的链表</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/6e196c44c7004d15b1610b9afca8bd88?tpId=13&amp;tqId=11170&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">树的子结构</a><span class="green-spot"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/564f4c26aa584921bc75623e48ca3011?tpId=13&amp;tqId=11171&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">二叉树的镜像</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/9b4c81a02cd34f76be2659fa0d54342a?tpId=13&amp;tqId=11172&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">顺时针打印矩阵</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49?tpId=13&amp;tqId=11173&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=1">包含min函数的栈</a><span class="icon-lock"></span></li></ul><ul class="js-page-2"><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/d77d11405cc7470d82554cb392585106?tpId=13&amp;tqId=11174&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">栈的压入、弹出序列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/7fe2212963db4790b57431d9ed259701?tpId=13&amp;tqId=11175&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">从上往下打印二叉树</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/a861533d45854474ac791d90e447bafd?tpId=13&amp;tqId=11176&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">二叉搜索树的后序遍历序列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/b736e784e3e34731af99065031301bca?tpId=13&amp;tqId=11177&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">二叉树中和为某一值的路径</a><span class="green-spot"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/f836b2c43afc4b35ad6adc41ec941dba?tpId=13&amp;tqId=11178&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">复杂链表的复制</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/947f6eb80d944a84850b0538bf0ec3a5?tpId=13&amp;tqId=11179&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">二叉搜索树与双向链表</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/fe6b651b66ae47d7acce78ffdd9a96c7?tpId=13&amp;tqId=11180&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">字符串的排列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/e8a1b01a2df14cb2b228b30ee6a92163?tpId=13&amp;tqId=11181&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">数组中出现次数超过一半的数字</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf?tpId=13&amp;tqId=11182&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">最小的K个数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/459bd355da1549fa8a49e350bf3df484?tpId=13&amp;tqId=11183&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">连续子数组的最大和</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/bd7f978302044eee894445e244c7eee6?tpId=13&amp;tqId=11184&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">整数中1出现的次数（从1到n整数中1出现的次数）</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/8fecd3f8ba334add803bf2a06af1b993?tpId=13&amp;tqId=11185&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">把数组排成最小的数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/6aa9e04fc3794f68acf8778237ba065b?tpId=13&amp;tqId=11186&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">丑数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/1c82e8cf713b4bbeb2a5b31cf5b0417c?tpId=13&amp;tqId=11187&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">第一个只出现一次的字符位置</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/96bd6684e04a44eb80e6a68efc0ec6c5?tpId=13&amp;tqId=11188&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">数组中的逆序对</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/6ab1d9a29e88450685099d45c9e31e46?tpId=13&amp;tqId=11189&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">两个链表的第一个公共结点</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/70610bf967994b22bb1c26f9ae901fa2?tpId=13&amp;tqId=11190&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">数字在排序数组中出现的次数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/435fb86331474282a3499955f0a41e8b?tpId=13&amp;tqId=11191&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">二叉树的深度</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/8b3b95850edb4115918ecebdf1b4d222?tpId=13&amp;tqId=11192&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">平衡二叉树</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/e02fdb54d7524710a7d664d082bb7811?tpId=13&amp;tqId=11193&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=2">数组中只出现一次的数字</a><span class="icon-lock"></span></li></ul><ul class="js-page-3"><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/c451a3fd84b64cb19485dad758a55ebe?tpId=13&amp;tqId=11194&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">和为S的连续正数序列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&amp;tqId=11195&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">和为S的两个数字</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/12d959b108cb42b1ab72cef4d36af5ec?tpId=13&amp;tqId=11196&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">左旋转字符串</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/3194a4f4cf814f63919d0790578d51f3?tpId=13&amp;tqId=11197&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">翻转单词顺序列</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/762836f4d43d43ca9deb273b3de8e1f4?tpId=13&amp;tqId=11198&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">扑克牌顺子</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/f78a359491e64a50bce2d89cff857eb6?tpId=13&amp;tqId=11199&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">孩子们的游戏(圆圈中最后剩下的数)</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId=13&amp;tqId=11200&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">求1+2+3+...+n</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/59ac416b4b944300b617d4f7f111b215?tpId=13&amp;tqId=11201&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">不用加减乘除做加法</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/1277c681251b4372bdef344468e4f26e?tpId=13&amp;tqId=11202&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">把字符串转换成整数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&amp;tqId=11203&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">数组中重复的数字</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/94a4d381a68b47b7a8bed86f2975db46?tpId=13&amp;tqId=11204&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">构建乘积数组</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/45327ae22b7b413ea21df13ee7d6429c?tpId=13&amp;tqId=11205&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">正则表达式匹配</a><span class="red-spot"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/6f8c901d091949a5837e24bb82a731f2?tpId=13&amp;tqId=11206&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">表示数值的字符串</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/00de97733b8e4f97a3fb5c680ee10720?tpId=13&amp;tqId=11207&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">字符流中第一个不重复的字符</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=13&amp;tqId=11208&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">链表中环的入口结点</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/fc533c45b73a41b0b44ccba763f866ef?tpId=13&amp;tqId=11209&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">删除链表中重复的结点</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/9023a0c988684a53960365b889ceaf5e?tpId=13&amp;tqId=11210&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">二叉树的下一个结点</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/ff05d44dfdb04e1d83bdbdab320efbcb?tpId=13&amp;tqId=11211&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">对称的二叉树</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0?tpId=13&amp;tqId=11212&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">按之字形顺序打印二叉树</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/445c44d982d04483b04a54f298796288?tpId=13&amp;tqId=11213&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=3">把二叉树打印成多行</a><span class="icon-lock"></span></li></ul><ul class="js-page-4"><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/cf7e25aa97c04cc1a68c8f040e71fb84?tpId=13&amp;tqId=11214&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=4">序列化二叉树</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/ef068f602dde4d28aab2b210e859150a?tpId=13&amp;tqId=11215&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=4">二叉搜索树的第k个结点</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/9be0172896bd43948f8a32fb954e1be1?tpId=13&amp;tqId=11216&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=4">数据流中的中位数</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788?tpId=13&amp;tqId=11217&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=4">滑动窗口的最大值</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/c61c6999eecb4b8f88a98f66b273a3cc?tpId=13&amp;tqId=11218&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=4">矩阵中的路径</a><span class="icon-lock"></span></li><li class=""><a class="topic-title-txt" href="https://www.nowcoder.com/practice/6e5207314b5241fb83f2329e89fdecc8?tpId=13&amp;tqId=11219&amp;rp=1&amp;ru=%2Fta%2Fcoding-interviews&amp;qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&amp;tPage=4">机器人的运动范围</a><span class="icon-lock"></span></li></ul></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="similar-topic-popup js-topic-similar" style="display: none; z-index: 999; height: 566px;">
+<div class="terminal-topic-wrap">
+<div class="topic-popup-hd clearfix">
+<span>相似的企业真题</span>
+<a href="javascript:void(0);" class="js-close-popup icon-nc-cancel"></a>
+</div>
+<div class="topic-popup-bd">
+<dl class="pop-challenge-test"><dd><a href="https://www.nowcoder.com/practice/00fccaa8e30d414ab86b9bb229bd8e68" data-href="/practice/00fccaa8e30d414ab86b9bb229bd8e68" data-paper="/test/10617414/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">回文数组</span><span class="pop-exam-txt">搜狐2018秋招第二批-技术类试卷</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">中等</span></a></dd><dd><a href="https://www.nowcoder.com/practice/325483e19dab4609baf00157e5ebeb6f" data-href="/practice/325483e19dab4609baf00157e5ebeb6f" data-paper="/test/15226084/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">数组操作</span><span class="pop-exam-txt">小米2019秋招测试开发笔试题（A）</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">中等</span></a></dd><dd><a href="https://www.nowcoder.com/practice/47232470945644458213ddd07580e121" data-href="/practice/47232470945644458213ddd07580e121" data-paper="/test/15750036/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">中位数</span><span class="pop-exam-txt">Momenta2019秋招技术岗笔试题</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">困难</span></a></dd><dd><a href="https://www.nowcoder.com/practice/3783c394c5d84d5ab9e55d91a6efeb8c" data-href="/practice/3783c394c5d84d5ab9e55d91a6efeb8c" data-paper="/test/6663173/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">找出指定数在数组中的范围</span><span class="pop-exam-txt">欢聚时代2017校招笔试题目（Android工程师类）B卷</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">中等</span></a></dd><dd><a href="https://www.nowcoder.com/practice/673454422d1b4a168aed31e449d87c00" data-href="/practice/673454422d1b4a168aed31e449d87c00" data-paper="/test/13956292/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">查找第K大的元素</span><span class="pop-exam-txt">有赞2019校招Java笔试（B卷）</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">中等</span></a></dd><dd><a href="https://www.nowcoder.com/practice/6b372fae97c84c3681d2be03923e7eaa" data-href="/practice/6b372fae97c84c3681d2be03923e7eaa" data-paper="/test/756729/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">文本嗅探</span><span class="pop-exam-txt">去哪儿2016研发工程师编程题</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">中等</span></a></dd><dd><a href="https://www.nowcoder.com/practice/07bca1eb592146eab534bdfc099db7f5" data-href="/practice/07bca1eb592146eab534bdfc099db7f5" data-paper="/test/15226467/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">设计一个函数1</span><span class="pop-exam-txt">小米2019秋招前端开发笔试题（B）</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">中等</span></a></dd><dd><a href="https://www.nowcoder.com/practice/cf461b37e53447ccbb5bf6ec8d5c9b22" data-href="/practice/cf461b37e53447ccbb5bf6ec8d5c9b22" data-paper="/test/11453349/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">排序次数</span><span class="pop-exam-txt">摩拜2018校招数据工程师笔试卷</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">困难</span></a></dd><dd><a href="https://www.nowcoder.com/practice/dd5b5b2df5f84bae9b26c99a0a8f8660" data-href="/practice/dd5b5b2df5f84bae9b26c99a0a8f8660" data-paper="/test/14701967/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">矩阵查数</span><span class="pop-exam-txt">第四范式2019校园招聘算法笔试题</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">困难</span></a></dd><dd><a href="https://www.nowcoder.com/practice/6fadc1dac83a443c9434f350a5803b51" data-href="/practice/6fadc1dac83a443c9434f350a5803b51" data-paper="/test/826830/summary" target="_blank"><i class="icon-spot-green"></i><span class="pop-test-txt">二维数组打印</span><span class="pop-exam-txt">美团点评2016研发工程师编程题(二)</span><span class="pop-exam-tag js-paper-btn">查看试卷</span><span class="pop-exam-level-txt">简单</span></a></dd></dl>
+</div>
+</div>
+</div>
+</div>
+<div class="nowcoder-topic-answer js-right code-body-hidden" style="height: 566px;">
+<div class="topic-nav clearfix">
+<div class="topic-nav-cont">
+<div class="topic-path">
+<a href="https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&amp;tqId=11155&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking">下一题<i class="icon-angle-right"></i></a>
+</div>
+<a href="https://www.nowcoder.com/profile/901311802" class="head-pic">
+<img src="./二维数组中的查找_牛客网_files/901311802_1566475973352_4EE55D214E73849EE25318CDD1511679">
+</a>
+<ul class="code-list-box clearfix">
+<li><a title="看本题题解" href="https://www.nowcoder.com/questionTerminal/abc3fe2ce8e146608e868a70efebf62e?answerType=1&amp;f=discussion" class="code-list-dis" target="_blank"><i class="icon-edit"></i> 题解</a></li>
+<li><a title="看本题讨论" href="https://www.nowcoder.com/questionTerminal/abc3fe2ce8e146608e868a70efebf62e?f=discussion" class="code-list-dis" target="_blank"><i class="icon-comment"></i> 讨论</a></li>
+<li><a href="https://www.nowcoder.com/ta/coding-interviews/question-ranking?tpId=13&amp;tqId=11154&amp;uuid=abc3fe2ce8e146608e868a70efebf62e&amp;rp=1" class="code-list-rank" target="_blank" data-title="查看本题通过的代码" data-tips-index="1"><i class="icon-trophy"></i>通过的代码</a></li>
+<li><a title="查看我的提交记录" href="https://www.nowcoder.com/profile/901311802/codeBooks?problemId=3695" class="code-list-sub" target="_blank"><i class="icon-file-alt"></i> 我的提交</a></li>
+</ul>
+</div>
+</div>
+<div class="subject-eidt-box" id="jsCodeEditor" style="height: 459px;"><div id="jsCpn_2_component_0" class="subject-eidt-box" style="position: relative; height: 459px;"><div class="subject-eidt-header"><div id="jsCpn_3_component_0" role="group" class="btn-group"><button class="btn btn-default dropdown-toggle"><span class="dropdown-value">C++11(clang++ 3.9)</span><span class="caret"></span></button><ul class="dropdown-menu"></ul></div><a href="javascript:void(0);" class="ico-fresh js-fresh-code" title="还原模板代码">重置</a><div class="subject-edit-oprt js-head-tool"><a href="javascript:void(0);" class="icon-fullscreen js-full-screen"></a><div class="format-setting"><a href="javascript:void(0);" class="icon-cog"></a><ul class="dropdown-menu js-switch"><li style="width:180px;"><a href="javascript:void(0);"><label id="jsCpn_4_checkbox_0" class="checkbox checked"><span class="icons"></span><input type="checkbox" data-toggle="checkbox" value="" name="" checked="checked">代码自动补全</label></a></li><li style="width:180px;"><a href="javascript:void(0);"><label id="jsCpn_5_checkbox_1" class="checkbox checked"><span class="icons"></span><input type="checkbox" data-toggle="checkbox" value="" name="" checked="checked">空格tab提示</label></a></li><li style="width:180px;"><div class="code-typography-item"><span class="code-typography-txt">Tab长度</span><span class="code-typography-oprt"><a href="javascript:void(0);" class="typography-oprt js-space-action" data-type="-">-</a><span class="js-result">4</span><a href="javascript:void(0);" class="typography-oprt js-space-action" data-type="+">+</a></span></div></li></ul></div></div></div><div class="js-editor-body code-font"><div class="CodeMirror cm-s-monokai CodeMirror-focused" style="width: 100%; height: 411px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 88px; left: 293.344px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="false"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: -17px; border-right-width: 13px; min-height: 155px; min-width: 468.875px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>9</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 264.344px; top: 84px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword cm-overlay cm-cm-eol">class</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-def cm-overlay cm-cm-eol">Solution</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-overlay cm-cm-eol">{</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword cm-overlay cm-cm-eol">public</span><span class="cm-overlay cm-cm-eol">:</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-whitespace cm-whitespace-4">    </span><span class="cm-variable-3 cm-overlay cm-cm-eol">bool</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-variable cm-overlay cm-cm-eol">Find</span><span class="cm-overlay cm-cm-eol">(</span><span class="cm-variable-3 cm-overlay cm-cm-eol">int</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-variable cm-overlay cm-cm-eol">target</span><span class="cm-overlay cm-cm-eol">,</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-variable cm-overlay cm-cm-eol">vector</span><span class="cm-operator cm-overlay cm-cm-eol">&lt;</span><span class="cm-variable cm-overlay cm-cm-eol">vector</span><span class="cm-operator cm-overlay cm-cm-eol">&lt;</span><span class="cm-variable-3 cm-overlay cm-cm-eol">int</span><span class="cm-operator cm-overlay cm-cm-eol">&gt;</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-operator cm-overlay cm-cm-eol">&gt;</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-variable cm-overlay cm-cm-eol">array</span><span class="cm-overlay cm-cm-eol">)</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-overlay cm-cm-eol">{</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-whitespace cm-whitespace-8">        </span><span class="cm-variable-3 cm-overlay cm-cm-eol">int</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-variable cm-overlay cm-cm-eol">m</span><span class="cm-operator cm-overlay cm-cm-eol">=</span><span class="cm-variable cm-overlay cm-cm-eol">array</span><span class="cm-overlay cm-cm-eol">.</span><span class="cm-variable cm-overlay cm-cm-eol">size</span><span class="cm-overlay cm-cm-eol">();</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-whitespace cm-whitespace-8">        </span><span class="cm-variable-3 cm-overlay cm-cm-eol">int</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span><span class="cm-variable cm-overlay cm-cm-eol">n</span><span class="cm-operator cm-overlay cm-cm-eol">=</span><span class="cm-variable cm-overlay cm-cm-eol">array</span><span class="cm-overlay cm-cm-eol">[</span><span class="cm-number cm-overlay cm-cm-eol">0</span><span class="cm-overlay cm-cm-eol">].</span><span class="cm-variable cm-overlay cm-cm-eol">size</span><span class="cm-overlay cm-cm-eol">();</span><span class="cm-overlay cm-whitespace cm-whitespace-1"> </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-whitespace cm-whitespace-4">    </span><span class="cm-overlay cm-cm-eol">}</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-overlay cm-cm-eol">};</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 155px;"></div><div class="CodeMirror-gutters" style="height: 168px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></div></div></div>
+<div class="code-edit-fold js-fold">
+<a href="javascript:void(0);" class="icon-angle-up"></a>
+</div>
+<div class="code-edit-oprt">
+<a id="jsRunCode" href="javascript:void(0);" class="btn btn-info">保存并调试</a>
+<a id="jsLoadAcceptCode" href="javascript:void(0);" class="btn btn-large btn-primary btn-auto nc-req-auth">加载上次通过的代码</a>
+<div class="code-help-wrap js-help-wrap">
+<a href="javascript:void(0);"><i class="icon-question-sign"></i>求助</a>
+<div class="code-help-pop">
+<div class="code-help-hd">
+做题遇到困难？
+<a href="javascript:void(0);" class="icon-close"></a>
+</div>
+<div class="code-help-bd">
+<a href="javascript:void(0);" class="js-call-help">场外求助</a>
+<a href="https://www.nowcoder.com/ta/coding-interviews/question-ranking?uuid=abc3fe2ce8e146608e868a70efebf62e&amp;rp=1" target="_blank">查看通过的代码</a>
+<a href="https://www.nowcoder.com/questionTerminal/abc3fe2ce8e146608e868a70efebf62e" target="_blank">参与大家的讨论</a>
+<a href="javascript:void(0);" class="js-coding-help">查看编程常见问题</a>
+</div>
+</div>
+</div>
+<div class="nk-toggle-box js-sumit-type" style="">
+<label class="nk-checkbox-toggle" data-type="0" data-title="练习模式下会提示未通过的测试用例，便于代码调试，正式笔试时测试用例不会给出" data-tips-index="2">
+<input type="checkbox" class="toggle-button-original" value="练习">
+<span class="toggle-button-inner">练习</span>
+</label>
+<label class="nk-checkbox-toggle" data-type="1" data-title="考试模式不提示未通过的测试用例，在此模式下使用在线编码可提前适应正式笔试" data-tips-index="3">
+<input type="checkbox" class="toggle-button-original" value="练习">
+<span class="toggle-button-inner">考试</span>
+</label>
+</div>
+&lt;<!-- div class="model-channel-wrapper js-sumit-type" style="display:none;">
+<a href="javascript:void(0);" class="model-channel-item js-sumit-type-result"><i class="model-channel-icon1"></i> 练习模式</a>
+<div class="model-channel-pop">
+<div class="model-channel-hd">切换考试模式，提前熟悉考试环境</div>
+<div class="model-channel-bd">
+<a href="javascript:void(0);" class="model-channel-item" data-type="0"><i class="model-channel-icon1"></i> 练习模式</a>
+<a href="javascript:void(0);" class="model-channel-item" data-type="1"><i class="model-channel-icon2"></i> 考试模式</a>
+</div>
+</div>
+</div> -->
+</div>
+<div class="passed-wrapper js-right-bottom" style="margin: 0px; padding: 5px 10px; overflow: hidden; display: none; width: 722px; height: 103.2px;">
+<div id="jsRunInfo" style="margin: 0px; overflow-y: auto; color: rgb(0, 188, 155); font-size: 14px; height: 103px;">保存并调试之后，这里将会显示运行结果</div>
+</div>
+</div>
+</div>
+</div>
+<textarea id="javaTpl" style="display:none;">public class Solution {
+    public boolean Find(int target, int [][] array) {
+
+    }
+}
+</textarea>
+<textarea id="cTpl" style="display:none;">class Solution {
+public:
+    bool Find(int target, vector&lt;vector&lt;int&gt; &gt; array) {
+        
+    }
+};
+
+
+
+</textarea>
+<textarea id="pythonTpl" style="display:none;"># -*- coding:utf-8 -*-
+class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        # write code here
+
+</textarea>
+<textarea id="cSharpTpl" style="display:none;">class Solution
+{
+    public bool Find(int target, int[][] array)
+    {
+        // write code here
+    }
+}
+</textarea>
+<textarea id="jsTpl" style="display:none;">function Find(target, array)
+{
+    // write code here
+}
+module.exports = {
+    Find : Find
+};
+</textarea>
+<textarea id="phpTpl" style="display:none;">&lt;?php
+
+function Find($target, $array)
+{
+    // write code here
+}
+</textarea>
+<textarea id="jsV8Tpl" style="display:none;">function Find(target, array)
+{
+    // write code here
+}
+</textarea>
+<script type="text/javascript">
+window.codeJudgeType = '1';
+window.supportLang = 'java,cpp';
+window.codingInfo = {
+//    tagId: '0', //主站应该都是0吧,需要考虑面试的情况
+subTagId: '3', //CodingSubmitModeEnum
+}
+</script>
+<script>
+window.isLogin = true;
+window.globalInfo = {
+ownerId: '901311802',
+ownerName: '山有木兮木有枝💤',
+ownerTinyHead: 'https://images.nowcoder.com/images/20190822/901311802_1566475973352_4EE55D214E73849EE25318CDD1511679?x-oss-process=image/resize,m_mfit,h_100,w_100',
+ownerMainHead: 'https://images.nowcoder.com/images/20190822/901311802_1566475973352_4EE55D214E73849EE25318CDD1511679?x-oss-process=image/resize,m_mfit,h_200,w_200',
+ownerEmail:  true ,
+ownerPhone:  true ,
+ownerType: '1',
+status: '0',
+honorLevel: '5',
+gender: '男',
+isCompleteInfo: true,
+canLoadInIframe: 'true'
+};
+window.useNeteaseCaptcha = true;
+</script>
+<script type="text/javascript">
+window.ncDeployImageRoot = "//static.nowcoder.com/";
+window.ncJsVersion = "1.03.12";
+window.ncJsPluginVersion = "1.0.17";
+window.ncIsInNowcoderMainSite = true;
+</script>
+<script type="text/javascript">
+(function () {
+var oBody = document.body;
+var sOverflow = oBody.style.overflow;
+var sUa = (window.navigator || {}).userAgent || '';
+var m = sUa.match(/MSIE ([^;]*)|Trident.*; rv(?:\s|:)?([0-9.]+)/) || [];
+var nVersion = +m[1] || +m[2] || 0;
+nVersion && nVersion <= 8 && _fShowMask();
+function _fShowMask() {
+oBody.style.overflow = 'hidden';
+var nWidth = window.document.documentElement.clientWidth;
+var nHeight = window.document.documentElement.clientHeight;
+var nTop = ('pageYOffset' in window ? window.pageYOffset : document.documentElement.scrollTop) || 0;
+var sHtml = [
+'<div style="position:absolute;left:0;top:' + nTop + 'px;z-index:99999;width:' + nWidth + 'px;height:' + nHeight + 'px;">',
+'<div style="position:absolute;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);"></div>',
+'<div class="pop-box" style="width:800px;z-index:100000;left:' + (nWidth - 800) / 2 + 'px;top:' + Math.max(0, (nHeight - 624) / 2) + nTop + 'px;">',
+'<div class="pop-title"><h1>浏览器版本过低提示</h1><a href="javascript:void(0);" onclick="closeIE8GlobalMask()" class="pop-close" title="关闭"></a></div>',
+'<div class="pop-content clearfix">',
+'<div class="pop-subject-tips-wrapper">',
+'<a href="javascript:void(0);"><img src="//static.nowcoder.com/fe/style/images/common/res/tips/13.png"></a>',
+'<div class="pop-exit-main">你使用的浏览器版本过低，无法正常访问牛客<br />请使用牛客APP或更换浏览器。</div>',
+'<div class="pop-download-browser">',
+'<ul class="pop-browser-list">',
+'<li><p>下载牛客APP</p><div class="pic"><img src="https://uploadfiles.nowcoder.com/app/app_download.png"></div></li>',
+'<li><a href="https://static.nowcoder.com/b/i/googlechrome74_32.exe" target="_blank"><p>下载Chrome浏览器</p><div class="pic"><img src="//static.nowcoder.com/images/res/browser/chrome.png"></div></a></li>',
+'<li><a href="https://www.firefox.com.cn/download/#more" target="_blank"><p>下载Firefox浏览器</p><div class="pic"><img src="//static.nowcoder.com/images/res/browser/firefox.png"></div></a></li>',
+'</ul>',
+'<a href="javascript:void(0);" onclick="closeIE8GlobalMask()" class="link-green">我知道访问会出错，但是我还要继续用这个浏览器浏览 &gt;&gt;</a>',
+'</div>',
+'</div>',
+'</div>',
+'</div>',
+'</div>'].join('');
+var oDv = document.createElement('div');
+oDv.innerHTML = sHtml;
+oBody.appendChild(oDv);
+window.closeIE8GlobalMask = function () {
+oBody.removeChild(oDv);
+oBody.style.overflow = sOverflow;
+_fShowBar();
+};
+}
+function _fShowBar() {
+var oDv = document.createElement('div');
+oDv.innerHTML = '<div class="tip-block-box" onclick="closeIE8GlobalBar()" style="position:fixed;left:0;top:54px;width:100%;z-index:99999;"><div class="tip-block">你使用的浏览器版本过低，无法正常访问牛客，请使用牛客APP或更换浏览器，<a href="javascript:void(0);">点击查看详情</a>。</div></div>';
+oBody.appendChild(oDv);
+window.closeIE8GlobalBar  = function () {
+oBody.removeChild(oDv);
+_fShowMask();
+};
+}
+})();
+</script>
+<script src="./二维数组中的查找_牛客网_files/sea.js.下载" type="text/javascript"></script>
+<script type="text/javascript">
+if (!window.seajs) {
+var oBody = document.body;
+var aChild = oBody.childNodes;
+var oDv = document.createElement('div');
+oDv.innerHTML = [
+'<div style="text-align:center;">',
+'<div style="font-size:18px;margin:20px 0;font-weight: bold;">',
+'静态文件加载出错，请检查当前网络情况是否正常，或者按照下面步骤修改电脑的DNS',
+'<br />推荐使用以下DNS: 223.5.5.5(首选) 和 223.6.6.6(备用)，建议使用手机热点',
+'</div>',
+'<img style="border:1px solid #ccc;" src="//qqstatic.nowcoder.com/files/cdn.jpg" />',
+'</div>'].join('');
+aChild.length === 0 && oBody.appendChild(oDv);
+aChild.length > 0 && oBody.insertBefore(oDv, aChild[0]);
+}
+</script>
+<script src="./二维数组中的查找_牛客网_files/nc.cpn.js.下载" type="text/javascript"></script>
+<script src="./二维数组中的查找_牛客网_files/pc.js.下载" type="text/javascript"></script>
+<script src="./二维数组中的查找_牛客网_files/base.js.下载" type="text/javascript"></script>
+<script type="text/javascript">
+seajs.use('nowcoder/1.2.1280/javascripts/site/common/index');
+</script>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?a808a1326b6c06c437de769d1b85b870";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script type="text/javascript">
+window.pageInfo = {
+questionId: '23256',
+problemId: '3695',
+uuid : 'abc3fe2ce8e146608e868a70efebf62e',
+nextTqId : '11155',
+nextTqUuid : '4060ac7e3e404ad1a894ef3e17650423',
+tPage : '0',
+tpId : '13',
+codeJudgeType: '1',
+supportLang: 'java,cpp'
+};
+</script>
+<script type="text/javascript">
+seajs.use('nowcoder/1.2.1280/javascripts/site/ta/question/index');
+</script>
+
+
+</body></html>

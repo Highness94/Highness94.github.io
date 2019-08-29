@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon (1).ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="muxin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="@charset &quot;UTF-8&quot;;.full-screen-body{overflow-x:auto}.full-screen-subject{width:100%}.full-screen-subject .nowcoder-topic{width:45%;border-radius:0;position:relative}.full-screen-subject .nowcoder-topic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="muxin&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/index.html">
+<meta property="og:site_name" content="muxin&#39;s Blog">
+<meta property="og:description" content="@charset &quot;UTF-8&quot;;.full-screen-body{overflow-x:auto}.full-screen-subject{width:100%}.full-screen-subject .nowcoder-topic{width:45%;border-radius:0;position:relative}.full-screen-subject .nowcoder-topic">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-27T11:24:00.219Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="muxin&#39;s Blog">
+<meta name="twitter:description" content="@charset &quot;UTF-8&quot;;.full-screen-body{overflow-x:auto}.full-screen-subject{width:100%}.full-screen-subject .nowcoder-topic{width:45%;border-radius:0;position:relative}.full-screen-subject .nowcoder-topic">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9A6H83NNE8',
+      apiKey: '88b14b97a1038f62aa1e4ad1d03ad369',
+      indexName: 'search',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/"/>
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('Please enter your password') !== ''){
+                alert('wrong password��');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  <title> | muxin's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">muxin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">contact me by email:dreamcore@126.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+			
+			<!--���ӵĴ��� start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="muxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="muxin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T19:24:00+08:00">
+                2019-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        @charset "UTF-8";.full-screen-body{overflow-x:auto}.full-screen-subject{width:100%}.full-screen-subject .nowcoder-topic{width:45%;border-radius:0;position:relative}.full-screen-subject .nowcoder-topic-answer{margin-left:45%;width:55%;padding:0;left:0;border-radius:0;background:#3d444c}.icon-notes{margin-left:10px}.nk-acm-container .full-screen-subject .nowcoder-topic{width:45%}.nk-acm-container .full-screen-subject .nowcoder-topic-answer{margin-left:45%;width:55%}.code-body-hidden{overflow:hidden!important}.terminal-topic-wrap{background:#171e22;color:#fff}.terminal-topic-title{cursor:pointer;padding:0 20px;height:50px;line-height:50px;font-size:14px}.terminal-topic-title .icon-remove-sign{font-size:18px;vertical-align:middle;margin-right:7px}.terminal-topic-title .icon-list{margin-right:8px}.terminal-topic-title:hover{background:#3c444c;color:#01b292}.terminal-topic{padding:0 10px}.subject-item-title{padding:10px 0;margin-bottom:0;font-weight:700}.subject-question{border-radius:4px;border:1px solid #ddd;background:#ebebeb;padding:10px;line-height:1.8;margin-bottom:10px}.subject-describe{font-size:14px;line-height:1.8;color:#5a676f}.subject-describe img{max-width:100%}.subject-item-wrap>span{display:inline-block;margin-right:10px}.code-tool-bar{background:#3d444c;color:#fff}.code-tool{padding:10px;font-size:14px;text-align:center}.code-tool li{display:inline-block;background:url(//static.nowcoder.com/images/img/icons/icon-tool.png) no-repeat;line-height:1.8;cursor:pointer}.code-tool li:hover{text-decoration:underline}.code-tool .icon-code-note{background-position:0 4px}.code-tool .icon-code-error{background-position:0 -33px}.code-tool .icon-code-collect{background-position:0 -70px}.code-tool li+li{margin-left:25px;padding-left:22px}.similar-topic-popup,.topic-popup{position:absolute;background:#171e22;left:0;top:0;width:100%}.icon-close{display:inline-block;width:16px;height:16px;vertical-align:middle;margin-right:10px}.back-to-all{display:block;color:#fff;font-size:14px;padding-bottom:10px;margin-bottom:10px}.back-to-all .icon-angle-left{background:#56606a;border-radius:50%;text-align:center;width:18px;height:18px;line-height:18px;color:#465058;display:inline-block;font-size:16px;margin-right:8px}.topic-popup-hd{padding:10px 20px 20px;border-bottom:1px solid #28363e}.topic-popup-hd .back-to-all{float:left;margin:4px 0 0;padding:0}.topic-popup-hd .search-input-wrap{float:right;width:180px;height:28px;line-height:28px}.topic-popup-hd .search-input-wrap input{margin-left:25px;width:140px;padding:3px}.topic-popup-hd .search-input-wrap .ico-search{width:25px;height:25px}.topic-popup-hd .search-tips{top:29px}.topic-popup-hd .search-tips>a,.topic-popup-hd .search-tips>li{padding:3px 10px}.topic-popup-bd{padding:10px 20px 20px}.topic-popup-bd .pop-exam-txt{max-width:18em}.topic-title-list h2{font-size:18px;border-bottom:1px solid #28363e;padding-bottom:10px;margin-bottom:5px}.topic-title-more{color:#66acff;display:block;margin-bottom:5px}.topic-title-more:hover{text-decoration:underline}.topic-title-list ul{overflow-y:auto;margin-left:-10px}.topic-title-list li{line-height:24px;margin:0;padding:0 20px 0 10px;position:relative;cursor:pointer}.topic-title-list li:hover{background:#28363e}.topic-title-list li.active{background:#00bc9b}.topic-title-txt{white-space:nowrap;text-overflow:ellipsis;width:90%;overflow:hidden;display:inline-block;vertical-align:middle;color:#fff}.green-spot,.red-spot{display:inline-block;width:6px;height:6px;background:#00bc9b;border-radius:50%;position:absolute;right:20px;top:10px}.red-spot{background:#f07b12}.topic-title-list .icon-lock{font-size:14px;position:absolute;right:20px;top:5px}.similar-topic-popup{top:50px}.similar-topic-popup .topic-popup-hd{font-size:16px;padding:10px 20px;border-bottom:none;position:relative}.similar-topic-popup .icon-nc-cancel{color:#fff;position:absolute;right:20px;top:14px}.similar-topic-popup .pop-challenge-test{border-top:none;padding-top:0}.similar-topic-popup .pop-challenge-test a{color:#787878}.similar-topic-popup .pop-challenge-test a:hover{background:#2e3940;color:#25bb9b}.similar-topic-popup .pop-challenge-test .icon-lock{color:#fff;top:10px}.topic-nav{background:#232c31;color:#fff}.topic-nav-cont{padding:0 20px;height:50px;line-height:50px;font-size:14px}.topic-path{float:left;font-size:14px}.topic-path a{color:#fff}.topic-path a:hover{color:#21a88b}.topic-path a+a{border-left:1px solid #fff;margin-left:10px;padding-left:10px}.topic-path i{font-size:16px}.topic-path .icon-angle-left{margin-right:5px}.topic-path .icon-angle-right{margin-left:4px}.code-list-box{float:right;margin-top:12px}.code-list-box li{float:left;margin-left:30px}.code-list-box li a{display:block;height:24px;font-size:14px;line-height:24px;color:#fff}.code-list-box a:hover{color:#25bb9b}.code-list-box i{font-size:16px;margin-right:3px}.topic-nav-cont .head-pic{float:right;width:30px;height:30px;margin:10px 0 0 50px}.subject-eidt-box{margin-bottom:0}.subject-eidt-header{border-radius:0}.code-edit-fold{background:#3d444c;height:12px;text-align:center;font-weight:700}.icon-angle-down,.icon-angle-up{color:#fff;font-size:18px;background:#232c31;padding:0 8px;line-height:12px;vertical-align:top;display:inline-block}.code-edit-oprt{height:45px;background:#161b1e;font-size:14px}.code-edit-oprt .btn{margin:5px 5px 0 6px}.code-edit-oprt .checkbox{color:#fff}.code-edit-oprt .checkbox.checked,.code-edit-oprt .checkbox:hover{color:#00bc9b}.code-help-wrap{position:relative;float:right;margin-right:20px}.code-help-wrap a{color:#fff;font-size:14px;display:inline-block;line-height:46px;padding:0 10px}.code-help-wrap>a:hover{background:#232c31}.code-help-wrap .icon-question-sign{font-size:16px;margin-right:5px}.code-help-wrap:hover .code-help-pop{display:block}.code-help-pop{display:none;border-radius:4px 4px 0 0;position:absolute;bottom:45px;right:0;background:#2b333a;width:150px;z-index:1000}.code-help-hd{text-align:center;position:relative;color:#fff;padding:10px;font-size:14px;background:#2b333a;border-radius:4px 4px 0 0}.code-help-hd{background:#3d444c}.code-help-hd .icon-close{position:absolute;right:5px;top:12px;padding:0;margin:0}.code-help-bd{padding:10px}.code-help-bd a{display:block;white-space:nowrap;line-height:30px}.code-help-bd a:hover{color:#21a88b}.ico-part-passed,.ico-passed,.ico-unpass{background:url(//static.nowcoder.com/images/img/icons/ico-pass.png) 0 5px no-repeat;padding-left:24px;margin-bottom:5px}.ico-unpass{background-position:0 -40px;color:#b6b79a}.ico-passed{color:#00bc9b}.code-question-pannel{position:fixed;right:0;bottom:12px;color:#fff;background:#4e5761;padding:5px 15px;border-radius:6px 6px 0 0;width:130px;cursor:pointer}.code-question-pannel.new-msg-notice{background:#ff795e}.code-question-pannel .icon-angle-up{color:#fff;font-size:14px;float:right;background:0 0}.ico-q-msg{background:url(//static.nowcoder.com/images/img/icons/ico-msg.png) no-repeat;display:inline-block;width:16px;height:16px;position:relative;vertical-align:middle;margin-right:5px}.new-msg-notice .ico-q-msg:after{content:"";position:absolute;background:#ff6547;right:2px;top:-3px;border-radius:50%;width:6px;height:6px}.terminal-topic .icon-fullscreen,.terminal-topic .icon-resize-small{color:#25bb9b;margin-top:0;font-size:14px}.nowcoder-topic .oprt-tool{position:fixed;bottom:0;left:0;background:#fff;width:30%;padding:10px 0;text-align:right;box-shadow:0 0 2px rgba(0,0,0,.2)}.fake-div{width:100%;height:100%;z-index:9;position:relative;background:#fff;opacity:.1}.model-channel-wrapper{float:right;position:relative;width:135px}.model-channel-wrapper:hover .model-channel-pop{display:block}.model-channel-pop{display:none;position:absolute;bottom:45px;left:0;color:#caced2;z-index:1000}.model-channel-hd{background:#3c444c;font-size:14px;padding:10px;border-radius:6px 6px 0 0}.model-channel-wrapper a{display:block;text-align:center;color:#caced2;line-height:40px;font-size:14px}.model-channel-wrapper a:hover{color:#00bc9b;background:#3c444c}.model-channel-wrapper>a{line-height:45px}.model-channel-item i{background:url(//static.nowcoder.com/images/img/icons/icon-exercise.png) no-repeat;display:inline-block;vertical-align:middle;width:20px;height:18px;margin-right:5px}.model-channel-item .model-channel-icon1{background-position:0 -60px}.model-channel-item:hover .model-channel-icon1{background-position:0 0}.model-channel-item .model-channel-icon2{background-position:0 -89px}.model-channel-item:hover .model-channel-icon2{background-position:0 -30px}.model-channel-bd{background:#2c323b}.code-list-rank{position:relative}.code-list-rank .nav-msg-num{left:6px;top:-6px}.topic-nav-account{float:right;line-height:24px;margin-top:12px;margin-left:20px;font-size:0}.topic-nav-account a{color:#fff;font-size:14px}.topic-nav-account a+a{border-left:1px solid #fff;padding-left:5px;margin-left:5px}.nk-toggle-box{float:right;margin-top:8px}.nk-toggle-box .nk-checkbox-toggle:first-child .toggle-button-inner{border-color:#56606c}.nk-toggle-box .toggle-button-inner{background:#161b1e;color:#738191;border-color:#56606c}.nk-toggle-box .toggle-button-original:checked+.toggle-button-inner{background:#56606c}
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Tipping via QR code</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="muxin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifu.jpg" alt="muxin 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/27/C-并发/二维数组中的查找_牛客网_files/codemirror/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://xzx.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/';
+          this.page.identifier = '2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/';
+          this.page.title = '';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xzx.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+	
+
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+ 
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.JPG"
+                alt="muxin" />
+            
+              <p class="site-author-name" itemprop="name">muxin</p>
+              <p class="site-description motion-element" itemprop="description">Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+	<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=""&auto=1&height=66"></iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muxin</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  Number of Visitor:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 | Search by algolia</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

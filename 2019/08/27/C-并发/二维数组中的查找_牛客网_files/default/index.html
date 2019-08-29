@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon (1).ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="muxin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="@charset &quot;UTF-8&quot;;.nowcoder-header{background:#3d444c;position:fixed;width:100%;z-index:101;left:0;margin-bottom:30px}.header-main{width:1200px;margin:0 auto}.nowcoder-logo{background:url(//static.nowc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="muxin&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/index.html">
+<meta property="og:site_name" content="muxin&#39;s Blog">
+<meta property="og:description" content="@charset &quot;UTF-8&quot;;.nowcoder-header{background:#3d444c;position:fixed;width:100%;z-index:101;left:0;margin-bottom:30px}.header-main{width:1200px;margin:0 auto}.nowcoder-logo{background:url(//static.nowc">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-27T11:24:00.197Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="muxin&#39;s Blog">
+<meta name="twitter:description" content="@charset &quot;UTF-8&quot;;.nowcoder-header{background:#3d444c;position:fixed;width:100%;z-index:101;left:0;margin-bottom:30px}.header-main{width:1200px;margin:0 auto}.nowcoder-logo{background:url(//static.nowc">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9A6H83NNE8',
+      apiKey: '88b14b97a1038f62aa1e4ad1d03ad369',
+      indexName: 'search',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/"/>
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('Please enter your password') !== ''){
+                alert('wrong password��');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  <title> | muxin's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">muxin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">contact me by email:dreamcore@126.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+			
+			<!--���ӵĴ��� start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="muxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="muxin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T19:24:00+08:00">
+                2019-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        @charset "UTF-8";.nowcoder-header{background:#3d444c;position:fixed;width:100%;z-index:101;left:0;margin-bottom:30px}.header-main{width:1200px;margin:0 auto}.nowcoder-logo{background:url(//static.nowcoder.com/images/res/logo/logo-v3.png) no-repeat;background:url(//static.nowcoder.com/images/res/logo/logo-v3-ie.png) no-repeat\9;background-size:147px 42px;display:block;width:147px;height:42px;float:left;margin:6px 5px 0 0}.ico-nav-new{position:absolute;right:5px;top:8px;width:9px;height:12px;background:url(//static.nowcoder.com/images/img/icons/ico-new.png) no-repeat}.nowcoder-navbar{float:left}.nowcoder-other-nav{float:right}.nowcoder-other-nav li{position:relative}.nowcoder-other-nav>li:after{content:"|";position:absolute;right:0;top:16px;color:#8a96a7}.nowcoder-other-nav .profile-item:after{display:none}.nowcoder-other-nav .profile-item:hover:after{display:block;content:"";bottom:-1px;right:24px;border:6px solid #fff;border-color:transparent transparent #fff}.nowcoder-other-nav a[class^=icon-]:before{margin-right:5px;vertical-align:middle}.nowcoder-other-nav .icon-mobile-phone:before{font-size:20px}.nowcoder-navbar li{float:left;text-align:center;height:54px;position:relative}.nowcoder-navbar a{color:#ccc;font-size:16px;display:block;line-height:53px;padding:0 10px}.nowcoder-navbar .active a,.nowcoder-navbar a:hover{color:#fff;text-decoration:none}.nowcoder-navbar li.active,.nowcoder-navbar li:hover{background-color:#31363d}.nowcoder-navbar .nav-profile{position:relative;z-index:2}.nowcoder-navbar .nav-profile .img-box{display:inline-block;*display:inline;zoom:1;width:36px;height:36px;overflow:hidden;vertical-align:middle;-webkit-border-radius:22px;-moz-border-radius:22px;border-radius:22px}.nowcoder-navbar .nav-profile img{width:36px;display:block}.nav-msg-tips{left:20px;position:absolute;background:#e84a4a;width:6px;height:6px;border-radius:50%;top:18px}.nav-msg-num{display:block;position:absolute;background:#e84a4a;color:#fff;border-radius:50px;line-height:14px;min-height:16px;outline:medium none;padding:0 4px;font-size:12px;text-align:center;left:20px;top:8px}.nav-msg-num.msg-dot{min-height:8px;top:16px}.nowcoder-navbar li:hover .sub-nav{display:block}.nowcoder-navbar .sub-nav{display:none;position:absolute;top:54px;left:0;border-top:1px solid #272b31}.nowcoder-navbar .sub-nav li{height:auto;border:none;width:100%;*width:134px;background:#31363d}.nowcoder-navbar .sub-nav a{line-height:36px;color:#ccc;white-space:nowrap}.nowcoder-navbar .sub-nav a:hover{color:#fff}.nowcoder-navbar .profile-item .nav-coins,.nowcoder-navbar .profile-item .nav-out,.nowcoder-navbar .profile-item .nav-profile-page,.nowcoder-navbar .profile-item .nav-set,.profile-item .icon-resume{background:url(//static.nowcoder.com/images/img/icons/ico-nav3.png) 15px -98px no-repeat;padding-left:35px}.nowcoder-navbar .profile-item .nav-set{background-position:15px -99px}.nowcoder-navbar .profile-item a:hover.nav-set{background-position:15px 10px}.nowcoder-navbar .profile-item .nav-out{background-position:15px -135px}.nowcoder-navbar .profile-item a:hover.nav-out{background-position:15px -27px}.nowcoder-navbar .profile-item .nav-coins{background-position:18px -205px}.nowcoder-navbar .profile-item a:hover.nav-coins{background-position:18px -240px}.nowcoder-navbar .profile-item .nav-profile-page{background-position:18px -273px}.nowcoder-navbar .profile-item a:hover.nav-profile-page{background-position:18px -306px}.nowcoder-navbar .profile-item .icon-resume{background-position:18px -341px}.nowcoder-navbar .profile-item a:hover.icon-resume{background-position:18px -375px}.nowcoder-other-nav a{font-size:14px}.nowcoder-navbar .nav-search{height:auto;margin-right:5px;position:relative}.nav-search-wrap{position:absolute;left:0;top:54px;background:#31363d;padding:10px;display:none}.nav-search:hover .nav-search-wrap{display:block}.nav-search .nav-search-txt{width:180px;height:25px;padding:0 5px;line-height:25px;background:#fff;border:none;border-radius:0;-webkit-transition:background-color .4s;-moz-transition:background-color .4s;transition:background-color .4s}.nav-search-ico.icon-search{position:absolute;right:10px;top:10px;height:25px;width:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;background:#0b9}.nav-search-tips{position:absolute;background:#fff;box-shadow:0 2px 2px #eee;width:165px;top:90px;left:10px}.nav-search-tips a{line-height:26px;font-size:12px;color:#666;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:135px;word-wrap:normal}.nav-search-tips a.hover{background:#efefef}.nav-search.onfocus .nav-search-txt{background:#fff}.nav-search-tips a:hover{color:#333;background:#eee}.newnav-search-wrap{position:absolute;z-index:1000;left:25px;top:0;background:#31363d;height:34px;padding:10px 10px 10px 0;display:none}.nowcoder-navbar .newnav-search.onfocus,.nowcoder-navbar .newnav-search:hover{background:#363c43}.newnav-search.onfocus .newnav-search-wrap,.newnav-search:hover .newnav-search-wrap{display:block;background:#363c43}.newnav-search.onfocus .icon-search,.newnav-search:hover .icon-search{color:#00bc9b}.newnav-search-wrap .nav-search-txt,.newnav-search.onfocus .nav-search-txt{background:0 0;color:#fff;line-height:32px;height:32px;width:150px;transition:background-color 0s}.newnav-search-cont{margin-left:-22px;padding-left:18px;padding-right:15px;border-bottom:1px solid #00bc9b}.newnav-search-cont .icon-search-colse{padding:0;position:absolute;right:15px;top:20px;width:9px;height:9px;background:url(//static.nowcoder.com/images/img/icons/icon-search-colse.png) no-repeat}.nav-account{background:#ff411c;border-radius:20px;color:#fff;line-height:24px;float:right;padding:2px 0;margin-top:12px;margin-left:10px;white-space:nowrap}.nav-account:hover{background:#fe6000}.nav-account a{display:inline-block;color:#fff;font-size:14px;padding:0 20px}.nav-account a:hover{color:#fff}.nav-account .nav-account-login{padding:0 3px 0 20px}.nav-account .nav-account-reg{padding:0 20px 0 3px}.profile-item:hover{cursor:pointer}.profile-item:hover .profile-hover-wrapper{display:block}.profile-hover-wrapper{display:none;position:absolute;right:0;top:54px;font-size:14px;background:#fff;width:260px;padding:10px;box-shadow:0 0 4px rgba(0,0,0,.2);border-radius:4px;border:1px solid #eee}.profile-hover-info{text-align:left;border-bottom:1px solid #e8eaed;padding-bottom:10px}.profile-hover-info .identity-hr-icon14{vertical-align:text-top}.profile-hover-name{display:inline-block;white-space:nowrap;overflow:hidden;vertical-align:middle;text-overflow:ellipsis;max-width:10em}.profile-hover-wrapper .profile-hover-btn,.profile-hover-wrapper .profile-hover-btn:hover{display:inline-block;border:1px solid #25bb9b;padding:4px 5px;font-size:12px;float:right;border-radius:4px;color:#25bb9b;line-height:1}.item-profile-box{margin-right:-10px;text-align:left;padding:10px 0}.profile-hover-wrapper .item-profile{display:inline-block;vertical-align:top;width:76px;height:50px;padding:13px 0;color:#6f6f6f;line-height:1;text-align:center;margin:0 10px 0 0}.profile-hover-wrapper .item-profile:hover{background:#f5f5f5;border-radius:4px;color:#6f6f6f}.hover-item-ico{background:url(//static.nowcoder.com/images/img/home/icon-person.png) no-repeat;width:24px;height:22px;margin:0 auto;margin-bottom:10px;display:block}.hover-item-ico1{background-position:0 0}.hover-item-ico2{background-position:-24px 0}.hover-item-ico3{background-position:-48px 0}.hover-item-ico4{background-position:-73px 0}.hover-item-ico5{background-position:-98px 0}.hover-item-ico6{background-position:-123px 0}.hover-accout-wrapper{border-top:1px solid #e8eaed}.hover-accout-wrapper a{color:#8a96a7;display:inline-block;width:45%;padding:15px 2% 10px;line-height:1}.hover-accout-wrapper a:hover{color:#25bb9b}.hover-accout-icon,.hover-accout-logout{display:inline-block;vertical-align:middle;width:16px;height:16px;margin-bottom:0;margin-right:10px;background-position:-153px 0}.hover-accout-wrapper a:hover .hover-accout-icon{background-position:-195px 0}.hover-accout-logout{background-position:-174px 0}.hover-accout-wrapper a:hover .hover-accout-logout{background-position:-216px 0}.written-video{display:none;position:absolute;background:#3d444c;padding:5px;line-height:1.6;right:0}.written-video a{margin-top:5px;font-size:14px;color:#fff}.written-video a:hover{color:#25bb9b}.written-video-inner{background:#a8b2bd;width:125px;height:94px;display:block}.ico-change-video,.ico-video-sm{display:inline-block;vertical-align:text-bottom;width:22px;height:18px;margin-right:5px;background:url(//static.nowcoder.com/fe/style/images/common/img/icons/ico-camera.png) no-repeat}.ico-video-sm{background-position:-57px 0}a:hover .ico-change-video{background-position:-29px 0}.nav-search-box{display:none;position:absolute;z-index:1001;background:#fff;border-radius:0 0 3px 3px;box-shadow:0 3px 4px rgba(0,0,0,.2);width:200px;top:53px;left:0;font-size:14px}.nav-search-box dl{margin-bottom:10px;text-align:left}.nav-search-box dt{font-weight:700;border-bottom:1px solid #ddd;padding:10px;margin-bottom:5px;position:relative}.nav-search-box dt:hover .icon-nc-delete{display:block}.nav-search-box dt .icon-nc-delete{display:none;position:absolute;right:5px;top:5px;margin-right:0}.nav-search-box dd{color:#404040;padding:0 10px;position:relative}.nav-search-box dd:hover{background:#f5f5f5;cursor:pointer}.nav-search-box dd:hover .icon-nc-close{display:block}.nav-search-box a{color:#404040;display:inline-block;line-height:30px;padding:0;display:inline-block;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;max-width:75%}.nav-search-box a:hover{color:#25bb9b}.nav-search-box .icon-nc-close{position:absolute;display:none;right:0;top:0;font-size:12px}.nav-search-box .nav-ad-tag{border:1px solid #cbcbcb;display:inline-block;padding:0 2px;vertical-align:middle;color:#bbb;font-size:12px;margin-left:5px;background:#fff;line-height:16px;border-radius:2px;position:relative}.nav-search-more{background:#f5f5f5;color:#7d7d7d;display:inline-block;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;max-width:100%;display:block;line-height:36px}.nav-search-more:hover{color:#25bb9b}.nowcoder-navbar .nav-search-wrapper:hover{background:0 0}.nowcoder-navbar .nav-search-wrapper:after{display:none}.nowcoder-navbar .nav-search-wrapper .search-input-wrap{margin-top:10px;background:#31363e;height:34px;line-height:34px;overflow:hidden;border:none;border-radius:3px}.nowcoder-navbar .nav-search-wrapper .search-input-wrap input{color:#fff;background:#31363e;padding:5px}.nowcoder-navbar .nav-search-wrapper .search-input-wrap .icon-search-btn{border-radius:0 3px 3px 0;height:34px;line-height:34px;width:auto;padding:0 5px 0 8px}.nowcoder-navbar .nav-search-wrapper .search-input-wrap .icon-search-btn:before{display:none}.search-input-wrap.focus .icon-search-btn{background:#25bb9b;color:#fff}
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Tipping via QR code</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="muxin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifu.jpg" alt="muxin 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/27/C-并发/二维数组中的查找_牛客网_files/base/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/27/C-并发/二维数组中的查找_牛客网_files/coding/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://xzx.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/';
+          this.page.identifier = '2019/08/27/C-并发/二维数组中的查找_牛客网_files/default/';
+          this.page.title = '';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xzx.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+	
+
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+ 
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.JPG"
+                alt="muxin" />
+            
+              <p class="site-author-name" itemprop="name">muxin</p>
+              <p class="site-description motion-element" itemprop="description">Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+	<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=""&auto=1&height=66"></iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muxin</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  Number of Visitor:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 | Search by algolia</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
