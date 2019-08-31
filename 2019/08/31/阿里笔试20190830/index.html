@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon (1).ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="校招 笔试 C++ 总结," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="muxin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="选择题知识点总结网络协议相关12345678OSI:物理层：EIA/TIA-232, EIA/TIA-499, V.35, V.24, RJ45, Ethernet, 802.3, 802.5, FDDI, NRZI, NRZ, B8ZS数据链路层：Frame Relay, HDLC, PPP, IEEE 802.3/802.2, FDDI, ATM,  IEEE 802.5/802.2, 【AR">
+<meta name="keywords" content="校招 笔试 C++ 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里笔试20190830">
+<meta property="og:url" content="http://yoursite.com/2019/08/31/阿里笔试20190830/index.html">
+<meta property="og:site_name" content="muxin&#39;s Blog">
+<meta property="og:description" content="选择题知识点总结网络协议相关12345678OSI:物理层：EIA/TIA-232, EIA/TIA-499, V.35, V.24, RJ45, Ethernet, 802.3, 802.5, FDDI, NRZI, NRZ, B8ZS数据链路层：Frame Relay, HDLC, PPP, IEEE 802.3/802.2, FDDI, ATM,  IEEE 802.5/802.2, 【AR">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/08/31/阿里笔试20190830/1567215650(1">
+<meta property="og:updated_time" content="2019-08-31T01:49:24.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里笔试20190830">
+<meta name="twitter:description" content="选择题知识点总结网络协议相关12345678OSI:物理层：EIA/TIA-232, EIA/TIA-499, V.35, V.24, RJ45, Ethernet, 802.3, 802.5, FDDI, NRZI, NRZ, B8ZS数据链路层：Frame Relay, HDLC, PPP, IEEE 802.3/802.2, FDDI, ATM,  IEEE 802.5/802.2, 【AR">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/31/阿里笔试20190830/1567215650(1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9A6H83NNE8',
+      apiKey: '88b14b97a1038f62aa1e4ad1d03ad369',
+      indexName: 'search',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/31/阿里笔试20190830/"/>
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('Please enter your password') !== ''){
+                alert('wrong password��');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  <title>阿里笔试20190830 | muxin's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">muxin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">contact me by email:dreamcore@126.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+			
+			<!--���ӵĴ��� start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/31/阿里笔试20190830/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="muxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="muxin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">阿里笔试20190830</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-31T09:10:57+08:00">
+                2019-08-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/31/阿里笔试20190830/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/08/31/阿里笔试20190830/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="选择题知识点总结"><a href="#选择题知识点总结" class="headerlink" title="选择题知识点总结"></a>选择题知识点总结</h1><h2 id="网络协议相关"><a href="#网络协议相关" class="headerlink" title="网络协议相关"></a>网络协议相关</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">OSI:</span><br><span class="line">物理层：EIA/TIA<span class="number">-232</span>, EIA/TIA<span class="number">-499</span>, V<span class="number">.35</span>, V<span class="number">.24</span>, RJ45, Ethernet, <span class="number">802.3</span>, <span class="number">802.5</span>, FDDI, NRZI, NRZ, B8ZS</span><br><span class="line">数据链路层：Frame Relay, HDLC, PPP, IEEE <span class="number">802.3</span>/<span class="number">802.2</span>, FDDI, ATM,  IEEE <span class="number">802.5</span>/<span class="number">802.2</span>, 【ARP,RARP】</span><br><span class="line">网络层：IP，IPX，AppleTalk DDP</span><br><span class="line">传输层：TCP，UDP，SPX </span><br><span class="line">会话层：RPC,SQL,NFS,NetBIOS,names,AppleTalk,ASP,DECnet,SCP </span><br><span class="line">表示层:TIFF,GIF,JPEG,PICT,ASCII,EBCDIC,encryption,MPEG,MIDI,HTML </span><br><span class="line">应用层：FTP,WWW,Telnet,NFS,SMTP,Gateway,SNMP</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/08/31/阿里笔试20190830/1567215650(1" alt="1567215650(1)">.jpg)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RPC（Remote Procedure Call Protocol）——远程过程调用协议，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。</span><br><span class="line"></span><br><span class="line">RPC是基于Socket的，即工作在会话层</span><br><span class="line">RPC协议假定某些传输协议的存在，如TCP或UDP，为通信程序之间携带信息数据。在OSI网络通信模型中，RPC跨越了传输层和应用层。RPC使得开发包括网络分布式多程序在内的应用程序更加容易。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ARP协议是“Address Resolution Protocol”（地址解析协议）的缩写。在局域网中，网络中实际传输的是“帧”，帧里面是有目标主机的MAC地址的。在以太网中，一个主机要和另一个主机进行直接通信，必须要知道目标主机的MAC地址。但这个目标MAC地址是如何获得的呢？它就是通过地址解析协议获得的。所谓“地址解析”就是主机在发送帧前将目标IP地址转换成目标MAC地址的过程。ARP协议的基本功能就是通过目标设备的IP地址，查询目标设备的MAC地址，以保证通信的顺利进行。</span><br><span class="line">反向地址转换协议（RARP）允许局域网的物理机器从网关服务器的 ARP 表或者缓存上请求其 IP 地址。网络管理员在局域网网关路由器里创建一个表以映射物理地址（MAC）和与其对应的 IP 地址。当设置一台新的机器时，其 RARP 客户机程序需要向路由器上的 RARP 服务器请求相应的 IP 地址。假设在路由表中已经设置了一个记录，RARP 服务器将会返回 IP 地址给机器，此机器就会存储起来以便日后使用。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IGMP协议是一个组管理协议，它帮助多播路由器创建以及更新与每一个路由接口相连的忠实成员列表（就是与该路由接口连接频率较高）。ICMP协议实际上就是差错控制协议，弥补了IP协议没有差错纠正机制以及差错报告的缺憾。ARP是一个地址映射协议，可以把一个IP地址映射为MAC地址。</span><br></pre></td></tr></table></figure>
+<h2 id="红黑树相关操作"><a href="#红黑树相关操作" class="headerlink" title="红黑树相关操作"></a>红黑树相关操作</h2><p>参考：<a href="https://blog.csdn.net/weixin_40170902/article/details/80877147" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40170902/article/details/80877147</a></p>
+<h1 id="编程题总结"><a href="#编程题总结" class="headerlink" title="编程题总结"></a>编程题总结</h1><h2 id="第一道"><a href="#第一道" class="headerlink" title="第一道"></a>第一道</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">题意：链表跳表 </span><br><span class="line">给出整个实现类的基本框架，补全插入和查找函数</span><br></pre></td></tr></table></figure>
+<p>参考代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LinkNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint64_t</span> key;</span><br><span class="line">    <span class="keyword">uint64_t</span> value;</span><br><span class="line">    LinkNode* next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SkipLinkNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint64_t</span> key;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    LinkNode* pointer = <span class="literal">NULL</span>;</span><br><span class="line">    SkipLinkNode* next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SkipLinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SkipLinkList(<span class="keyword">int</span> skipStep = <span class="number">128</span>);</span><br><span class="line">    ~SkipLinkList();</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">simpleCheck</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">uint64_t</span> key, <span class="keyword">uint64_t</span> value)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(<span class="keyword">uint64_t</span> key, <span class="keyword">uint64_t</span> &amp;value)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    LinkNode* _listHeader = <span class="literal">NULL</span>;</span><br><span class="line">    SkipLinkNode* _skipListHeader = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> _skipStep;</span><br><span class="line">    <span class="keyword">int</span> _itemCount;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">SkipLinkList::SkipLinkList(<span class="keyword">int</span> skipStep)</span><br><span class="line">: _skipStep(skipStep)</span><br><span class="line">, _listHeader(<span class="literal">NULL</span>)</span><br><span class="line">, _skipListHeader(<span class="literal">NULL</span>)</span><br><span class="line">, _itemCount(<span class="number">0</span>)</span><br><span class="line">&#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SkipLinkList::~SkipLinkList()</span><br><span class="line">&#123;</span><br><span class="line">    LinkNode* node = _listHeader;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        LinkNode* toDelNode = node;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> toDelNode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    SkipLinkNode* skipNode = _skipListHeader;</span><br><span class="line">    <span class="keyword">while</span> (skipNode != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        SkipLinkNode* toDelNode = skipNode;</span><br><span class="line">        skipNode = skipNode-&gt;next;</span><br><span class="line">        <span class="keyword">delete</span> toDelNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> SkipLinkList::simpleCheck()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">uint64_t</span> lastKey = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nodeCount = <span class="number">0</span>;</span><br><span class="line">    LinkNode* node = _listHeader;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        nodeCount++;</span><br><span class="line">        <span class="keyword">if</span> (node-&gt;key &lt; lastKey)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        lastKey = node-&gt;key;</span><br><span class="line">        node = node-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (nodeCount &lt; _skipStep)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (_skipListHeader == <span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    lastKey = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> skipNodeCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> expectNodeCount = <span class="number">0</span>;</span><br><span class="line">    SkipLinkNode* skipNode = _skipListHeader;</span><br><span class="line">    <span class="keyword">while</span> (skipNode != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        skipNodeCount++;</span><br><span class="line">        <span class="keyword">if</span> (skipNode-&gt;key &lt; lastKey)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        lastKey = skipNode-&gt;key;</span><br><span class="line">        expectNodeCount += skipNode-&gt;count;</span><br><span class="line">        skipNode = skipNode-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nodeCount == expectNodeCount &amp;&amp;</span><br><span class="line">        skipNodeCount &gt;= ((nodeCount + _skipStep - <span class="number">1</span>) / _skipStep);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 请完成下面这个函数，实现题目要求的功能 **/</span></span><br><span class="line"><span class="keyword">void</span> SkipLinkList::insert(<span class="keyword">uint64_t</span> key, <span class="keyword">uint64_t</span> value)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> char</span></span><br><span class="line">    <span class="keyword">if</span>(_skipListHeader==<span class="literal">NULL</span>)<span class="comment">//</span></span><br><span class="line">    &#123;</span><br><span class="line">        _listHeader=<span class="keyword">new</span> LinkNode();</span><br><span class="line">        _listHeader-&gt;key=key;</span><br><span class="line">        _listHeader-&gt;value=value;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        _skipListHeader=<span class="keyword">new</span> SkipLinkNode();</span><br><span class="line">        _skipListHeader-&gt;key=key;</span><br><span class="line">        _skipListHeader-&gt;count=<span class="number">1</span>;</span><br><span class="line">         _skipListHeader-&gt;pointer=_listHeader;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        SkipLinkNode *tmpskiphead=_skipListHeader;</span><br><span class="line">        <span class="keyword">while</span> (tmpskiphead-&gt;next!=<span class="literal">NULL</span>) &#123;</span><br><span class="line">            tmpskiphead=tmpskiphead-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//zhodao</span></span><br><span class="line">        LinkNode *tmplistnode=tmpskiphead-&gt;pointer;</span><br><span class="line">        <span class="keyword">while</span> (tmplistnode-&gt;next!=<span class="literal">NULL</span>) &#123;</span><br><span class="line">            tmplistnode=tmplistnode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">         LinkNode *newnode=<span class="keyword">new</span> LinkNode();</span><br><span class="line">         newnode-&gt;key=key;</span><br><span class="line">         newnode-&gt;value=value;</span><br><span class="line">         tmplistnode-&gt;next=tmplistnode;</span><br><span class="line">         tmplistnode=tmplistnode-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(tmpskiphead-&gt;count&gt;<span class="number">128</span>)</span><br><span class="line">        &#123;</span><br><span class="line">           SkipLinkNode *newskipList=<span class="keyword">new</span> SkipLinkNode();</span><br><span class="line">            _skipListHeader-&gt;key=key;</span><br><span class="line">            _skipListHeader-&gt;count=<span class="number">1</span>;</span><br><span class="line">             _skipListHeader-&gt;pointer=tmplistnode;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            _skipListHeader-&gt;count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> SkipLinkList::find(<span class="keyword">uint64_t</span> key, <span class="keyword">uint64_t</span> &amp;value)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span></span></span><br><span class="line">    SkipLinkNode *tmpskiphead=_skipListHeader;</span><br><span class="line">     SkipLinkNode *pre=_skipListHeader;</span><br><span class="line">    <span class="keyword">if</span>(tmpskiphead==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (tmpskiphead-&gt;key&lt;key) &#123;</span><br><span class="line">        pre=tmpskiphead;</span><br><span class="line">        tmpskiphead=tmpskiphead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tmpskiphead-&gt;key==key) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   LinkNode *tmplistnode=pre-&gt;pointer;</span><br><span class="line">   <span class="keyword">while</span> (tmpskiphead-&gt;key&lt;=key) &#123;</span><br><span class="line">       <span class="keyword">if</span>(tmpskiphead-&gt;key==key)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">return</span>  <span class="literal">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       tmpskiphead=tmpskiphead-&gt;next;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 请完成上面的函数，实现题目要求的功能 **/</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; splitString(<span class="keyword">const</span> <span class="built_in">string</span>&amp; text, <span class="keyword">const</span> <span class="built_in">string</span> &amp;sepStr) &#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vec;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(text)</span></span>;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">sep</span><span class="params">(sepStr)</span></span>;</span><br><span class="line">    <span class="keyword">size_t</span> n = <span class="number">0</span>, old = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (n != <span class="built_in">string</span>::npos)</span><br><span class="line">    &#123;</span><br><span class="line">        n = str.find(sep, n);</span><br><span class="line">        <span class="keyword">if</span> (n != <span class="built_in">string</span>::npos)</span><br><span class="line">        &#123;</span><br><span class="line">            vec.push_back(str.substr(old, n - old));</span><br><span class="line">            n += sep.length();</span><br><span class="line">            old = n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vec.push_back(str.substr(old, str.length() - old));</span><br><span class="line">    <span class="keyword">return</span> vec;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">stringToInteger</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; text, T&amp; value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* str = text.c_str();</span><br><span class="line">    <span class="keyword">char</span>* endPtr = <span class="literal">NULL</span>;</span><br><span class="line">    value = (T)strtol(str, &amp;endPtr, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> (endPtr &amp;&amp; *endPtr == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">testSkipLinkList</span><span class="params">(<span class="built_in">string</span> inputParam)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; inputVec = splitString(inputParam, <span class="string">":"</span>);</span><br><span class="line">    <span class="keyword">if</span> (inputVec.size() != <span class="number">2</span> || (inputVec[<span class="number">0</span>] != <span class="string">"list"</span> &amp;&amp; inputVec[<span class="number">0</span>] != <span class="string">"count"</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"input format error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// prepare data</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">uint64_t</span>, <span class="keyword">uint64_t</span>&gt; &gt; keyValueVec;</span><br><span class="line">    <span class="keyword">if</span> (inputVec[<span class="number">0</span>] == <span class="string">"list"</span>) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; kvVec = splitString(inputVec[<span class="number">1</span>], <span class="string">";"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; kvVec.size(); i++) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; kvStr = splitString(kvVec[i], <span class="string">","</span>);</span><br><span class="line">            <span class="keyword">uint64_t</span> key, value;</span><br><span class="line">            <span class="keyword">if</span> (kvStr.size() != <span class="number">2</span> ||</span><br><span class="line">                !stringToInteger&lt;<span class="keyword">uint64_t</span>&gt;(kvStr[<span class="number">0</span>], key) ||</span><br><span class="line">                !stringToInteger&lt;<span class="keyword">uint64_t</span>&gt;(kvStr[<span class="number">1</span>], value))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"key-value list format error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            keyValueVec.push_back(make_pair(key, value));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (inputVec[<span class="number">0</span>] == <span class="string">"count"</span>) &#123;</span><br><span class="line">        <span class="keyword">uint64_t</span> count;</span><br><span class="line">        <span class="keyword">if</span> (!stringToInteger&lt;<span class="keyword">uint64_t</span>&gt;(inputVec[<span class="number">1</span>], count)) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"count format error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">uint64_t</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">            keyValueVec.push_back(make_pair(i, i));</span><br><span class="line">        &#125;</span><br><span class="line">        random_shuffle(keyValueVec.begin(), keyValueVec.end());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint64_t</span> maxKey = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">uint64_t</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="function">SkipLinkList <span class="title">list</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; keyValueVec.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">list</span>.insert(keyValueVec[i].first, keyValueVec[i].second);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// test find</span></span><br><span class="line">        <span class="keyword">bool</span> ret = <span class="built_in">list</span>.find(keyValueVec[i].first, value);</span><br><span class="line">        <span class="keyword">if</span> (!ret || value != keyValueVec[i].second)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"test find error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// test replace</span></span><br><span class="line">        <span class="built_in">list</span>.insert(keyValueVec[i].first, keyValueVec[i].second + <span class="number">1</span>);</span><br><span class="line">        ret = <span class="built_in">list</span>.find(keyValueVec[i].first, value);</span><br><span class="line">        <span class="keyword">if</span> (!ret || value != keyValueVec[i].second + <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"test replace error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        maxKey = max(maxKey, keyValueVec[i].first);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// test not exist key</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">list</span>.find(maxKey + <span class="number">1</span>, value))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"find not exist error!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>.simpleCheck();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> res;</span><br><span class="line">    <span class="built_in">string</span> _inputParam;</span><br><span class="line">    getline(<span class="built_in">cin</span>, _inputParam);</span><br><span class="line">    res = testSkipLinkList(_inputParam);</span><br><span class="line">    <span class="keyword">if</span> (res)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"PASS"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"FAIL"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">题意：飞鸽传书</span><br><span class="line">一只鸽子能发出两种不同的声音，</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span>  <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>  maxbirdmount=<span class="number">20</span>;<span class="comment">//   6 per</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Getlocbit</span><span class="params">(<span class="keyword">int</span> n)</span><span class="comment">//最少的位置位数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;;i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">if</span>(<span class="built_in">pow</span>(<span class="number">2</span>,i)&lt;n)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">return</span> i;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetMaxdatamount</span><span class="params">()</span><span class="comment">//单披最大传输量</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i;i++)<span class="comment">//weizhi</span></span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">int</span> birdmount=<span class="built_in">pow</span>(<span class="number">2</span>,i);</span><br><span class="line">       <span class="keyword">if</span>(birdmount&gt;maxbirdmount)</span><br><span class="line">       &#123;</span><br><span class="line">          <span class="keyword">return</span> res;</span><br><span class="line">       &#125;</span><br><span class="line">       res=max(res,birdmount*(<span class="number">6</span>-i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetMinBatchnumber</span><span class="params">(<span class="keyword">int</span> bitlen)</span><span class="comment">//获取最少的批数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>  Maxdatamount=GetMaxdatamount();</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;;i++)<span class="comment">//批次</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(Maxdatamount*i&gt;=bitlen)&#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetMmaxSing</span><span class="params">(<span class="keyword">int</span> bitlen )</span><span class="comment">//  在最小批数已知的情况下 每批最小放飞的鸽子数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> MinBatchnumber=GetMinBatchnumber(bitlen);</span><br><span class="line">    <span class="keyword">int</span> avgbit=<span class="built_in">ceil</span>(bitlen/MinBatchnumber);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">4</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> birdnum=<span class="built_in">pow</span>(<span class="number">2</span>,i);</span><br><span class="line">       <span class="keyword">int</span> minlocbit=Getlocbit(birdnum);</span><br><span class="line">       <span class="keyword">if</span>((<span class="number">6</span>-minlocbit)*birdnum&gt;=avgbit)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">return</span>  birdnum;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//求放飞批次最小的情况下每批次最小大放飞量</span></span><br><span class="line">    <span class="comment">//放飞批次最小</span></span><br><span class="line">    <span class="keyword">char</span>* str=<span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">30</span>];</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;str)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">         <span class="keyword">int</span> bitlen=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(str[len]!=<span class="string">'\0'</span>)&#123;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;;</span><br><span class="line">        len++;</span><br><span class="line">        bitlen=<span class="number">5</span>*len;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;GetMmaxSing(bitlen)&lt;&lt;<span class="string">" "</span>&lt;&lt;GetMinBatchnumber(bitlen)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">个人题意理解：</span><br><span class="line">一只信鸽携带的数据应该包括：信包序号+数据</span><br><span class="line">至于信鸽序号的位数确定：因为信鸽不会丢失，所以解码人可以根据一次接受到的信鸽数来判断信包序号的位数</span><br><span class="line">题意给出的需要传输的字符有31个，所以数据位是5位，因为2^5=32,所以提意我们可以假定用11111表示结束位，如果最后一只信鸽收到的不是结束位，说明还要继续接受下一批次的信鸽，直至收到结束位为止。(抑或将一只信鸽能传输的六位中的最后一位设为接受标志位，不然相对浪费资源，故舍去)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Tipping via QR code</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="muxin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifu.jpg" alt="muxin 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/校招-笔试-C-总结/" rel="tag"><i class="fa fa-tag"></i> 校招 笔试 C++ 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/29/huawei20190928-笔试/" rel="next" title="huawei20190928-笔试">
+                <i class="fa fa-chevron-left"></i> huawei20190928-笔试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://xzx.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/31/阿里笔试20190830/';
+          this.page.identifier = '2019/08/31/阿里笔试20190830/';
+          this.page.title = '阿里笔试20190830';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xzx.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+	
+
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+ 
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.JPG"
+                alt="muxin" />
+            
+              <p class="site-author-name" itemprop="name">muxin</p>
+              <p class="site-description motion-element" itemprop="description">Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#选择题知识点总结"><span class="nav-number">1.</span> <span class="nav-text">选择题知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络协议相关"><span class="nav-number">1.1.</span> <span class="nav-text">网络协议相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树相关操作"><span class="nav-number">1.2.</span> <span class="nav-text">红黑树相关操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程题总结"><span class="nav-number">2.</span> <span class="nav-text">编程题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一道"><span class="nav-number">2.1.</span> <span class="nav-text">第一道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二题"><span class="nav-number">2.2.</span> <span class="nav-text">第二题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+	<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=""&auto=1&height=66"></iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muxin</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  Number of Visitor:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 | Search by algolia</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
