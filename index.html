@@ -416,8 +416,8 @@
       
         
           
-          
-          
+          农业物联网终端系统12345678在农业环境（大田、大棚）布置传感器采集环境数据，通过物联网终端传输到大数据平台，平台提供用户数据存储、访问、下载、上传。用户不需要自己搭建物联网系统、也不需要自己建设大数据系统，只需要从我们平台上下载数据进行自己所从事的专业数据建模与分析。应用示范，本系统与江苏省农
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/09/PersonaDocument/#more" rel="contents">
@@ -1887,9 +1887,21 @@ TCP：
 
 
 <div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  Number of Visitor:<span id="busuanzi_value_site_uv"></span>
-</span>
+<i class="fa fa-user-md"></i>
+
+
+<% if (theme.busuanzi && theme.busuanzi.enable){ %>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <% } %>
+ 
 </div>
 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 | Search by algolia</div>
@@ -1906,6 +1918,26 @@ TCP：
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
