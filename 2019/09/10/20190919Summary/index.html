@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.">
+<meta name="description" content="选择题知识点回顾1.排序算法的时间复杂度分析  12345678910111213141516171819202122&amp;gt; 研究排序算法的稳定性有何意义？&amp;gt; &amp;gt; 　　首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前两个相等的数据其在序列中的先后位置顺序与排序后它们两个先后位置顺序相同。&amp;gt; &amp;gt; 再简单具体一点，如果A i == A j，Ai 原来在 Aj 位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20190919Summary">
 <meta property="og:url" content="http://yoursite.com/2019/09/10/20190919Summary/index.html">
 <meta property="og:site_name" content="muxin&#39;s Blog">
-<meta property="og:description" content="Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.">
+<meta property="og:description" content="选择题知识点回顾1.排序算法的时间复杂度分析  12345678910111213141516171819202122&amp;gt; 研究排序算法的稳定性有何意义？&amp;gt; &amp;gt; 　　首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前两个相等的数据其在序列中的先后位置顺序与排序后它们两个先后位置顺序相同。&amp;gt; &amp;gt; 再简单具体一点，如果A i == A j，Ai 原来在 Aj 位">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T03:05:11.779Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/20190919Summary/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/20190919Summary/touchafa1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/20190919Summary/yuandi.png">
+<meta property="og:updated_time" content="2019-09-10T09:14:47.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="20190919Summary">
-<meta name="twitter:description" content="Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.">
+<meta name="twitter:description" content="选择题知识点回顾1.排序算法的时间复杂度分析  12345678910111213141516171819202122&amp;gt; 研究排序算法的稳定性有何意义？&amp;gt; &amp;gt; 　　首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前两个相等的数据其在序列中的先后位置顺序与排序后它们两个先后位置顺序相同。&amp;gt; &amp;gt; 再简单具体一点，如果A i == A j，Ai 原来在 Aj 位">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/10/20190919Summary/1.png">
 
 
 
@@ -423,7 +427,18 @@
       
 
       
-        
+        <h2 id="选择题知识点回顾"><a href="#选择题知识点回顾" class="headerlink" title="选择题知识点回顾"></a>选择题知识点回顾</h2><p>1.排序算法的时间复杂度分析</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; 研究排序算法的稳定性有何意义？</span><br><span class="line">&gt; </span><br><span class="line">&gt; 　　首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前两个相等的数据其在序列中的先后位置顺序与排序后它们两个先后位置顺序相同。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 再简单具体一点，如果A i == A j，Ai 原来在 Aj 位置前，排序后 Ai  仍然是在 Aj 位置前。 </span><br><span class="line">&gt; </span><br><span class="line">&gt; 下面我们分析一下稳定性的好处：</span><br><span class="line">&gt; </span><br><span class="line">&gt; （1）如果排序算法是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所利用。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 基数排序就是这样，先按低位排序，逐次按高位排序，那么，低位相同的数据元素其先后位置顺序即使在高位也相同时是不会改变的。详细请参见随笔《基数排序》。</span><br><span class="line">&gt; </span><br><span class="line">&gt; （2）学习排序原理时，可能编的程序里面要排序的元素都是简单类型，实际上真正应用时，可能是对一个复杂类型（自定义类型）的数组排序，</span><br><span class="line">&gt; </span><br><span class="line">&gt; 而排序的键值仅仅只是这个元素中的一个属性，对于一个简单类型，数字值就是其全部意义，即使交换了也看不出什么不同。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 但是，对于复杂类型，交换的话可能就会使原本不应该交换的元素交换了。比如：一个“学生”数组，欲按照年龄排序，“学生”这个对象不仅含有“年龄”，还有其它很多属性。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 假使原数组是把学号作为主键由小到大进行的数据整理。而稳定的排序会保证比较时，如果两个学生年龄相同，一定不会交换。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 那也就意味着尽管是对“年龄”进行了排序，但是学号顺序仍然是由小到大的要求。</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="/2019/09/10/20190919Summary/1.png" alt="1"></p>
+<h2 id="编程题回顾"><a href="#编程题回顾" class="headerlink" title="编程题回顾"></a>编程题回顾</h2><h3 id="1-redbook书券使用问题"><a href="#1-redbook书券使用问题" class="headerlink" title="1 . redbook书券使用问题"></a>1 . redbook书券使用问题</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> money;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;res;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;arry,<span class="keyword">int</span> loc,<span class="keyword">int</span> CurPrice,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;Curarry)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(CurPrice==money)&#123;</span><br><span class="line">        res.insert(Curarry);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(CurPrice&gt;money||loc&gt;=arry.size())&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     dfs(arry,loc+<span class="number">1</span>, CurPrice,Curarry);</span><br><span class="line">     Curarry.push_back(arry[loc]);</span><br><span class="line">     dfs(arry,loc, CurPrice+arry[loc],Curarry);</span><br><span class="line">     dfs(arry,loc+<span class="number">1</span>, CurPrice+arry[loc],Curarry);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;money;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;arry;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line">    getchar();</span><br><span class="line">    getchar();</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span>&gt;&gt;tmp) &#123;</span><br><span class="line">        arry.push_back(tmp);</span><br><span class="line">        <span class="keyword">if</span>(getchar()==<span class="string">']'</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;tmpvec;</span><br><span class="line">    sort(arry.begin(),arry.end());</span><br><span class="line">    dfs(arry,<span class="number">0</span>, <span class="number">0</span>,tmpvec);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;res.size()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-字符串倒序"><a href="#2-字符串倒序" class="headerlink" title="2 字符串倒序"></a>2 字符串倒序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxlen=<span class="number">10001</span>;</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="built_in">string</span>&gt;test;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> a;</span><br><span class="line">    getline(<span class="built_in">cin</span>,a);</span><br><span class="line">    <span class="keyword">int</span> loc=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> pre;</span><br><span class="line">    <span class="keyword">int</span> wordlen=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (loc&lt;=a.length()) &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[loc]==<span class="string">' '</span>&amp;&amp;loc&lt;=a.length()) &#123;</span><br><span class="line">            loc++;</span><br><span class="line">        &#125;</span><br><span class="line">        pre=loc;</span><br><span class="line">        <span class="keyword">while</span> (a[loc++]!=<span class="string">' '</span>&amp;&amp;loc&lt;=a.length()) &#123;</span><br><span class="line">            wordlen++;</span><br><span class="line">        &#125;</span><br><span class="line">        test.push(a.substr(pre,wordlen));</span><br><span class="line">         wordlen=<span class="number">0</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">while</span> (!test.empty()) &#123;</span><br><span class="line">        <span class="keyword">if</span>(test.size()==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;test.top()&lt;&lt;<span class="built_in">endl</span>;;</span><br><span class="line">            test.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;test.top()&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">            test.pop();</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="单链表逆置"><a href="#单链表逆置" class="headerlink" title="单链表逆置"></a>单链表逆置</h3><h4 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h4><p>基本思路</p>
+<p>定义一个链表类型的指针l，指针l指向的是链表的首地址，而不是链表的第一个数，指针l指向的下一个链表类型才是链表的第一个数，每次往链表中加数都加到链表中的第1个位置（即指针l指向的位置）</p>
+<p><img src="/2019/09/10/20190919Summary/touchafa1.png" alt="touchafa1"></p>
+<h4 id="原地逆置"><a href="#原地逆置" class="headerlink" title="原地逆置"></a>原地逆置</h4><p> <img src="/2019/09/10/20190919Summary/yuandi.png" alt="yuandi"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">头插法相对简便，但插入的数据与插入的顺序相反；</span><br><span class="line">尾插法操作相对复杂，但插入的数据与插入顺序相同。</span><br><span class="line">两种创建的方法各有千秋，根据实际情况选择不同的方法。</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -485,6 +500,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/10/数据结构——树专题总结/" rel="prev" title="数据结构——树专题总结">
+                数据结构——树专题总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -628,8 +647,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -648,7 +676,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -700,6 +728,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择题知识点回顾"><span class="nav-number">1.</span> <span class="nav-text">选择题知识点回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程题回顾"><span class="nav-number">2.</span> <span class="nav-text">编程题回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-redbook书券使用问题"><span class="nav-number">2.1.</span> <span class="nav-text">1 . redbook书券使用问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字符串倒序"><span class="nav-number">2.2.</span> <span class="nav-text">2 字符串倒序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单链表逆置"><span class="nav-number">2.3.</span> <span class="nav-text">单链表逆置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#头插法"><span class="nav-number">2.3.1.</span> <span class="nav-text">头插法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原地逆置"><span class="nav-number">2.3.2.</span> <span class="nav-text">原地逆置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
