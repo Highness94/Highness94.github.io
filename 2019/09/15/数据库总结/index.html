@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/> 
+<script src="/live2d/autoload.js"></script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon (1).ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="muxin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1.数据库事务的四个特性1.原子性、一致性、隔离性、持久性  事务的ACID特性：原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持续性(Durability)。  事务是并发控制的基本单位。所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，他是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事物结束时，都能保持数据一致性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库总结">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/数据库总结/index.html">
+<meta property="og:site_name" content="muxin&#39;s Blog">
+<meta property="og:description" content="1.数据库事务的四个特性1.原子性、一致性、隔离性、持久性  事务的ACID特性：原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持续性(Durability)。  事务是并发控制的基本单位。所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，他是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事物结束时，都能保持数据一致性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/09/15/数据库总结/sql.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/15/数据库总结/1568516479834.png">
+<meta property="og:updated_time" content="2019-09-15T03:09:53.057Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库总结">
+<meta name="twitter:description" content="1.数据库事务的四个特性1.原子性、一致性、隔离性、持久性  事务的ACID特性：原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持续性(Durability)。  事务是并发控制的基本单位。所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，他是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事物结束时，都能保持数据一致性">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/15/数据库总结/sql.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9A6H83NNE8',
+      apiKey: '88b14b97a1038f62aa1e4ad1d03ad369',
+      indexName: 'search',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/15/数据库总结/"/>
+
+  <script>
+    (function(){
+        if(''){
+            if (prompt('Please enter your password') !== ''){
+                alert('wrong password��');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+  <title>数据库总结 | muxin's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <script src="https://highness94.github.io/live2d/autoload.js"></script>
+  
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">muxin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">contact me by email:dreamcore@126.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-github-alt"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+			
+			<!--���ӵĴ��� start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/数据库总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="muxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/photo.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="muxin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-15T10:12:26+08:00">
+                2019-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/15/数据库总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/09/15/数据库总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-数据库事务的四个特性"><a href="#1-数据库事务的四个特性" class="headerlink" title="1.数据库事务的四个特性"></a>1.数据库事务的四个特性</h2><p><strong>1.原子性、一致性、隔离性、持久性</strong></p>
+<ul>
+<li><strong>事务的ACID特性：原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持续性(Durability)。</strong></li>
+</ul>
+<p>事务是并发控制的基本单位。所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，他是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事物结束时，都能保持数据一致性。<br>1）<strong>原子性</strong>：事务是数据库的逻辑工作单位，它数据库的修改要么全部执行，要么全部不执行。<br>2）<strong>一致性</strong>：事务前后，数据库的转台都满足所有的完整性约束。<br>3）<strong>隔离性</strong>：并发执行的事务是隔离的，一个不影响一个。如果有两个事务，运行在相同的时间内，执行相同的任务，同一时间仅有一个请求用于同一数据。设置数据库的隔离级别，可以达到不同的隔离的效果。<br>4）<strong>持久性</strong>：在事务完成以后，该事务所对数据库所做的更改便持久的保存在数据库之中，并不会被回滚。</p>
+<h2 id="2-数据库之存储过程"><a href="#2-数据库之存储过程" class="headerlink" title="2.数据库之存储过程"></a>2.数据库之存储过程</h2><p>什么是存储过程：存储过程可以说是一个记录集，它是由一些T-SQL语句组成的代码块，这些T-SQL语句代码块像Java语言里的方法一样实现一些功能（对单表或多表的增删改查），然后再给这个代码块取一个名字，在用到这个功能的时候调用他就行了。<br>存储过程的好处：<br>1）由于数据库执行动作时，是先编译后执行的。然而存储过程是一个编译过的代码块，所以执行效率要比T-SQL语句高。<br>2）一个存储过程在程序在网络交互时可以替代大堆的T-SQL语句，所以能降低网络的通信量，提高通信速率。<br>3）通过存储过程能够使没有权限的用户早控制之下间接的存储数据库，从而确保数据的安全。<br>为什么使用存储过程：<br>1、增加性能 本地存储发送的内容少、调用快、预编译、高速缓存<br>一般语句的执行：检查权限、检查语法，建立执行计划处理语句的要求<br>存储过程：创建时已经检查了语法；第一次执行的时候执行计划被创建，被编译；<br>再次执行时不需要重检查语法、不需要重编译、根据已经缓存的计划来决定是否需要重创建执行计划。</p>
+<h2 id="3-数据库建表的三种范式"><a href="#3-数据库建表的三种范式" class="headerlink" title="3.数据库建表的三种范式"></a>3.数据库建表的三种范式</h2><p><strong>第一范式</strong>：(确保每列保持原子性)。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满足了第一范式。<br><strong>第二范式</strong>：（确保表中的每列都和主键相关）。第二范式在第一范式的基础上更进一步。第二范式需要确保数据库表中的每列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。<br><strong>第三范式</strong>：（确保每列都和主键直接相关，而不是间接相关）。</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">&gt; 数据库中范式相关知识点：</span><br><span class="line">&gt; </span><br><span class="line">&gt; A.   有关“键”的概念</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1)   超键：在关系中能唯一标识元组的属性或属性集称为关键模式的超键。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 2)   候选键：不含有多余属性的超键称为候选键。也就是在候选键中在删除属性就不是键了。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 3)   主键：用户选作元组标识的候选键称为主键。一般不加说明，键就是指主键。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 4)   外键：如果模式R中属性K是其他模式的主键，那么K在模式R中称为外键。</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt; </span><br><span class="line">&gt; B.   关系数据库中的“依赖”定义</span><br><span class="line">&gt; </span><br><span class="line">&gt; 若在一张表中，在属性（或属性组）X的值确定的情况下，必定能确定属性Y的值，那么就可以说Y函数依赖于X，写作 X → Y。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 例如在学生表中，找不到任何一条记录，它们的学号相同而对应的姓名不同。所以我们可以说姓名函数依赖于学号，写作 学号 → 姓名。但是反过来，因为可能出现同名的学生，所以有可能不同的两条学生记录，它们在姓名上的值相同，但对应的学号不同，所以我们不能说学号函数依赖于姓名。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1)   部分函数依赖：设X,Y是关系R的两个属性集合，存在X→Y，若X’是X的真子集，存在X’→Y，则称Y部分函数依赖于X。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 举个例子：学生基本信息表R中（学号，身份证号，姓名）当然学号属性取值是唯一的，在R关系中，（学号，身份证号）-&gt;（姓名），（学号）-&gt;（姓名），（身份证号）-&gt;（姓名）；所以姓名部分函数依赖与（学号，身份证号）；</span><br><span class="line">&gt; </span><br><span class="line">&gt; 2)   完全函数依赖：设X,Y是关系R的两个属性集合，X’是X的真子集，存在X→Y，但对每一个X’都有X’!→Y，则称Y完全函数依赖于X。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 例子：学生基本信息表R（学号，班级，姓名）假设不同的班级学号有相同的，班级内学号不能相同，在R关系中，（学号，班级）-&gt;（姓名），但是（学号）-&gt;(姓名)不成立，（班级）-&gt;(姓名)不成立，所以姓名完全函数依赖与（学号，班级）；</span><br><span class="line">&gt; </span><br><span class="line">&gt; 3)   传递函数依赖：设X,Y,Z是关系R中互不相同的属性集合，存在X→Y(Y !→X),Y→Z，则称Z传递函数依赖于X。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 例子：在关系R(学号 ,宿舍, 费用)中，(学号)-&gt;(宿舍),宿舍！=学号，(宿舍)-&gt;(费用),费用!=宿舍，所以符合传递函数的要求；</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt; </span><br><span class="line">&gt; C.   几个范式的定义</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1)   第一范式（1NF）</span><br><span class="line">&gt; </span><br><span class="line">&gt; 主属性（主键）不为空且不重复，字段不可再分。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 2)   第二范式（2NF）</span><br><span class="line">&gt; </span><br><span class="line">&gt; 在第一范式的基础上，要求非主属性完全依赖主属性。（不存在非主属性对主键的部分依赖）</span><br><span class="line">&gt; </span><br><span class="line">&gt; 3)   第三范式（3NF）</span><br><span class="line">&gt; </span><br><span class="line">&gt; 3NF在2NF的基础之上，消除了非主属性对于码的传递依赖。(不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。)</span><br><span class="line">&gt; </span><br><span class="line">&gt; 4)   BC范式（BCNF）</span><br><span class="line">&gt; </span><br><span class="line">&gt; BC范式在 3NF 的基础上，消除主属性对于码的部分与传递函数依赖。</span><br><span class="line">&gt; </span><br><span class="line">&gt; （1）所有非主属性对每一个码都是完全函数依赖；</span><br><span class="line">&gt; </span><br><span class="line">&gt; （2）所有的主属性对于每一个不包含它的码，也是完全函数依赖；</span><br><span class="line">&gt; </span><br><span class="line">&gt; （3）没有任何属性完全函数依赖于非码的任意一个组合。</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt; </span><br><span class="line">&gt; D.   几个范式的定义</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1)   第一范式</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt; </span><br><span class="line">&gt; 改为</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt; </span><br><span class="line">&gt; 2)   第二范式</span><br><span class="line">&gt; </span><br><span class="line">&gt; 当数据表中是联合主键，但是有的列只依赖联合主键中的一个或一部分属性组成的联合主键，此时需要拆表才能复合第二范式。</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt; </span><br><span class="line">&gt; 两个主属性：学号 和 课程。“学号“和”课程“就组成了联合主键。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 对于（学号，课名） → 姓名，有 学号 → 姓名，存在非主属性 姓名 对码（学号，课名）的部分依赖。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 对于（学号，课名） → 系名，有 学号 → 系名，存在非主属性 系名 对码（学号，课名）的部依赖。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 对于（学号，课名） → 系主任，有 学号 → 系主任，存在非主属性 系主任  对码（学号，课名）的部分依赖</span><br><span class="line">&gt; </span><br><span class="line">&gt; 3)   第三范式</span><br><span class="line">&gt; </span><br><span class="line">&gt; Employee(emp_id,emp_name,emp_age,dept_id,dept_name,dept_info)，当员工表中emp_id能够唯一确定员工员工信息，但是dept_name可由dept_id唯一确定，此时，该表不符合第三范式，此时可以删除除了dept_id之外的其他部门信息，把所有部门信息单独建立一张部门表。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 4)   BC范式</span><br><span class="line">&gt; </span><br><span class="line">&gt; 某公司有若干个仓库；每个仓库只能有一名管理员，一名管理员只能在一个仓库中工作； 一个仓库中可以存放多种物品，一种物品也可以存放在不同的仓库中。每种物品在每个仓库中都有对应的数量。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 那么关系模式 仓库（仓库名，管理员，物品名，数量） 属于哪一级范式？</span><br><span class="line">&gt; </span><br><span class="line">&gt; 答：已知函数依赖集：仓库名 → 管理员，管理员 → 仓库名，（仓库名，物品名）→ 数量</span><br><span class="line">&gt; </span><br><span class="line">&gt; 码：（管理员，物品名），（仓库名，物品名）</span><br><span class="line">&gt; </span><br><span class="line">&gt; 主属性：仓库名、管理员、物品名 ；非主属性：数量</span><br><span class="line">&gt; </span><br><span class="line">&gt; ∵ 不存在非主属性对码的部分函数依赖和传递函数依赖。∴ 此属于3NF。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 某仓库被清空后，需要删除所有与这个仓库相关的物品存放记录，会带来什么问题？——仓库本身与管理员的信息也被随之删除了。 如果某仓库更换了管理员，会带来什么问题？——这个仓库有几条物品存放记录，就要修改多少次管理员信息。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 但是存在着主属性对于码的部分函数依赖与传递函数依赖。（在此例中就是存在主属性 仓库名 对于码（管理员，物品名）的部分函数依赖：仓库名 → 管理员。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 仓库（仓库名，管理员） 库存（仓库名，物品名，数量）。这样，之前的插入异常，修改异常与删除异常的问题就被解决了。</span><br><span class="line">&gt; </span><br><span class="line">&gt;  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="4-数据库隔离级别，每个级别会引发什么问题"><a href="#4-数据库隔离级别，每个级别会引发什么问题" class="headerlink" title="4.数据库隔离级别，每个级别会引发什么问题"></a>4.数据库隔离级别，每个级别会引发什么问题</h2><p>  1 .未提交读：事务中的修改。即使没有提交，对其他事物也是可见的。这样会提高性能，但是会导致脏读问题。</p>
+<ol>
+<li>提交读：一个事务只能读取已经提交的的事务所做的修改，换句话说，一个事务所做的修改在提交之前对其他事务是不可见的。该级别可以解决脏读问题，但不能避免不可重复读。</li>
+<li>可重复读： 保证在同一个事务中多次读取同样数据的结果是一样的。可以解决不可重复读的问题，但还是不能避免幻读的问题。</li>
+<li>可串行化：强制事务串行执行。可以解决所有的问题。最高级别的隔离<br>MySQL默认的隔离级别是可重复读 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">并发一致性问题：</span><br><span class="line">丢失修改：T1和T2两个事务都对一个数据进行修改，T1先修改，T2随后修改，T2的修改覆盖了T1的修改。</span><br><span class="line">脏读数据：T1修改一个数据，T2随后读取这个数据。如果T1撤销了这次修改，那么T2读取的数据是脏数据。</span><br><span class="line">不可重复读：T2读取一个数据，T1对该数据做了修改。如果T2再次读取这个数据，此时读取的结果和第一次读取的结果不同。</span><br><span class="line">幻读：T1读取某个范围的数据，T2在这个范围内插入新的数据，T1再次读取这个范围的数据，此时读取的结果和第一次读取的结果不同。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>数据库中并发操作的相关知识点：</strong></p>
+<p><strong>A.</strong>   <strong>并发与并行的区分：</strong></p>
+<p>1)   <strong>并发</strong>(Concurrent)<strong>：</strong>当有多个线程在操作时,如果系统只有一个CPU,则它不可能真正同时进行一个以上的线程，它只能把CPU运行时间划分成若干个时间段,再将时间段分配给各个线程执行，在一个时间段的线程代码运行时，其它线程处于挂起状。</p>
+<p>2)   <strong>并行</strong>(Parallel)：当系统有一个以上CPU时,则线程的操作有可能非并发。当一个CPU执行一个线程时，另一个CPU可以执行另一个线程，两个线程互不抢占CPU资源，可以同时进行。</p>
+<p><strong>3)</strong>   <strong>区别：</strong>并发和并行是即相似又有区别的两个概念，并行是指两个或者多个事件在同一时刻发生；而并发是指两个或多个事件在同一时间间隔内发生。</p>
+<p><strong>B.</strong>   <strong>数据库事务并发带来的**</strong>数据不一致<strong>**问题有：更新丢失、脏读、不可重复读、幻象读。</strong></p>
+<p>1)   <strong>丢失修改：一个事务的更新覆盖了另一个事务的更新。</strong>两个事务读入同一数据并修改，后提交的结果破坏先提交的结果，导致先提交的事务修改被丢失；</p>
+<p>2)   <strong>不可重复读：一个事务两次读取同一个数据，两次读取的数据不一致。</strong>先提交的事务读取数据后，后提交的事务执行更新操作，使得前面的事务不能读取前一次结果。</p>
+<p>3)   <strong>读脏数据：一个事务读取了另一个事务未提交的数据。</strong>某事务修改某一数据，并将它写回磁盘，后来的事务读取同一数据后，前一事务由于某种原因回滚（rollback），这时前面已经修改的数据已经恢复原值，后读到的数据就与数据库的数据不一致。</p>
+<p>4)   <strong>幻象读：一个事务两次读取一个范围的记录，两次读取的记录数不一致。</strong></p>
+<p>a)   事务T1按一定条件从数据库中读取了某些数据记录后,事务T2删除了其中部分记录,当T1再次按照相同条件读取数据时,发现某些记录神秘的消失了.</p>
+<p>b)   事务T1按一定条件从数据库中读取了某些数据记录后,事务T2插入了一些记录,当T1再次按照相同条件读取数据时,发现多了一些记录.</p>
+<p>事务A：张三妻子两次查询张三有几张银行卡。事务B：张三新办一张银行卡。事务A第一次查询银行卡数的时候，张三还没有新办银行卡，第二次查询银行卡数的时候，张三已经新办了一张银行卡，导致两次读取的银行卡数不一样。幻象读本质上是读写操作的冲突，解决办法是读完再写。</p>
+<p>以上三种现象的原因是并发操作破坏了事务的隔离性。为了应对这些数据不一致性，主要技术主要有：<strong>封锁</strong>，时间戳，乐观控制法。</p>
+</blockquote>
+<blockquote>
+<p>数据库恢复的基础是利用转储的冗余数据。这些转储的冗余数据包括（日志文件，数据库后备副本）</p>
+</blockquote>
+<h2 id="5-锁的分类"><a href="#5-锁的分类" class="headerlink" title="5.锁的分类"></a>5.锁的分类</h2><p>一般可以分为两种锁，一个是悲观锁，一个是乐观锁，悲观锁就是数据库锁机制，乐观锁一般是指用户自己实现的一种锁机制。<br>悲观锁：总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程）。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。Java中synchronized和ReentrantLock等独占锁就是悲观锁思想的实现。<br>悲观锁按使用性质划分：<br>1）共享锁（Share locks简记为S锁）：也称读锁，事务A对对象T加s锁，其他事务也只能对T加S，多个事务可以同时读，但不能有写操作，直到A释放S锁。<br>2）排它锁（Exclusivelocks简记为X锁）：也称写锁，事务A对对象T加X锁以后，其他事务不能对T加任何锁，只有事务A可以读写对象T直到A释放X锁。<br>3）更新锁（简记为U锁）：用来预定要对此对象施加X锁，它允许其他事务读，但不允许再施加U锁或X锁；当被读取的对象将要被更新时，则升级为X锁，主要是用来防止死锁的。<br>悲观锁按照作用划分：<br>1）行锁：锁的作用范围是行级别，数据库能够确定那些行需要锁的情况下使用行锁，如果不知道会影响哪些行的时候就会使用表锁。<br>2）表锁：锁的作用范围是整张表。<br><strong>乐观锁：</strong>顾名思义，就是很乐观，每次自己操作数据的时候认为没有人回来修改它，所以不去加锁，但是在更新的时候会去判断在此期间数据有没有被修改。<br>两种锁使用场景：从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下（多读场景），即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以一般多写的场景下用悲观锁就比较合适。</p>
+<blockquote>
+<p> <strong>数据库中的封锁机制相关知识点</strong></p>
+<p><strong>A.</strong>   <strong>封锁机制的概念</strong></p>
+<p><strong>封锁</strong>就是事务T在对某个数据对象操作之前，先向系统发出请求对其加锁。加锁后事务T就对该数据对象有了一定的控制，在事务T释放它的锁之前，其他事务不能更新此数据对象。基本的锁类型有两种：<strong>排他锁</strong>（又称<strong>写锁</strong>，X锁）和<strong>共享锁</strong>（又称<strong>读锁</strong>，S锁），此处再加一个<strong>更新锁</strong>和<strong>意向锁</strong></p>
+<p>1)   <strong>共享锁（读锁S锁），</strong>是读取操作创建的锁。事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排他锁。获准共享锁的事务只能读数据，不能修改数据。</p>
+<p>2)   <strong>排他锁（写锁X锁）</strong>，如果事务T对数据A加上排他锁后，则其他事务不能再对A加任任何类型的封锁。获准排他锁的事务T既能读数据，又能修改数据。</p>
+<p>3)   <strong>更新锁（U锁）：更新锁在修改操作的初始化阶段用来锁定可能要被修改的资源，这样可以避免使用共享锁造成的死锁现象。</strong>因为使用共享锁时，修改数据的操作分为两步，首先获得一个共享锁，读取数据，然后将共享锁升级为排它锁，然后再执行修改操作。这样如果同时有两个或多个事务同时对一个事务申请了共享锁，在修改数据的时候，这些事务都要将共享锁升级为排它锁。这时，这些事务都不会释放共享锁而是一直等待对方释放，这样就造成了死锁。<strong>如果一个数据在修改前直接申请更新锁，在数据修改的时候再升级为排它锁，就可以避免死锁。</strong></p>
+<p>4)   <strong>意向锁：</strong>对多粒度树中的结点加意向锁，则说明该结点的下层结点正在被加锁；对任一结点加锁时，必须先对它的上层结点加意向锁。</p>
+<p>意向锁的作用就是当一个事务在需要获取资源锁定的时候，如果遇到自己需要的资源已经被排他锁占用的时候，该事务可以需要锁定行的表上面添加一个合适的意向锁。如果自己需要一个共享锁，那么就在表上面添加一个意向共享锁。而如果自己需要的是某行（或者某些行）上面添加一个排他锁的话，则先在表上面添加一个意向排他锁。意向共享锁可以同时并存多个，但是意向排他锁同时只能有一个存在。</p>
+<p>意向锁是InnoDB自动加的，不需用户干预。对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及数据集加排他锁（X)；对于普通SELECT语句，InnoDB不会加任何锁；事务可以通过以下语句显示给记录集加共享锁或排他锁。</p>
+<p>共享锁（S）：SELECT * FROM table_name WHERE … LOCK IN SHARE MODE</p>
+<p>排他锁（X)：SELECT * FROM table_name WHERE … FOR UPDATE</p>
+<p><strong>B.</strong>   <strong>封锁协议</strong></p>
+<p>在运用X锁和S锁这两种基本封锁对数据对象加锁时，还需要约定一些规则。例如，何时申请X锁或S锁、持锁时间、何时释放等。这些规则称为封锁协议。通常使用三级封锁协议来在不同程度上解决并发操作的不正确调度带来的丢失修改、不可重复读和读“脏”数据等不一致性问题。</p>
+<p><strong>1)</strong>   <strong>一级封锁协议</strong></p>
+<p>事务T在修改数据R之前必须先对其加X锁，直到事务结束才释放。一级封锁协议可以<strong>防止丢失修改</strong>，并保证事务T是可恢复的。</p>
+<p><strong>2)</strong>   <strong>二级封锁协议</strong></p>
+<p>在一级封锁协议基础上增加事务T在读数据R之前必须先对其加S锁，读完后释放S锁。二级封锁协议防止<strong>丢失修改</strong>，<strong>读脏数据</strong>。</p>
+<p><strong>3)</strong>   <strong>三级封锁协议</strong></p>
+<p>在一级封锁协议的基础上增加事务T在读数据R之前必须先对其加S锁，直到事务结束才释放。三级封锁协议出防止了丢失修改和读“脏”数据外，还可以进一步防止了不可重复读。</p>
+<p><strong>C.</strong>   <strong>Mysql**</strong>中锁的粒度划分**</p>
+<p>MySQL各存储引擎使用了三种级别的锁定机制：表级锁定，行级锁定和页级锁定</p>
+<p><strong>1)</strong>   <strong>表级锁：</strong>开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低；</p>
+<p>MyISAM在执行查询语句（SELECT）前，会自动给涉及的所有表加读锁，在执行更新操作（UPDATE、DELETE、INSERT等）前，会自动给涉及的表加写锁，这个过程并不需要用户干预，因此，用户一般不需要直接用LOCK TABLE命令给MyISAM表显式加锁。</p>
+<p><strong>2)</strong>   <strong>行级锁：</strong>开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高；</p>
+<p><strong>3)</strong>   <strong>页面锁：</strong>开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。</p>
+<p><strong>4)</strong>   <strong>适用范围：</strong>从锁的角度来说，表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用，如Web应用；而行级锁则更适合于有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用，如一些在线事务处理（OLTP）系统。</p>
+<p><strong>例题;</strong></p>
+<p>若事务 T 对数据 R 已加 X 锁，则其他事务对数据 R（D）</p>
+<p>A 可以加 S 锁不能加 X 锁 ；B 不能加 S 锁可以加 X 锁</p>
+<p>C 可以加 S 锁也可以加 X 锁 ; D 不能加任何锁</p>
+</blockquote>
+<h2 id="6-drop、delete与truncate的区别："><a href="#6-drop、delete与truncate的区别：" class="headerlink" title="6.drop、delete与truncate的区别："></a>6.drop、delete与truncate的区别：</h2><p>1）delete和truncate只删除标的数据不删除的结构<br>2）速度，一般来说：drop&gt;truncate&gt; delete<br>3)delete语句是dml,这个操作会放到rollback segement中,事务提交之后才生效;<br>如果有相应的trigger,执行的时候将被触发. truncate,drop是ddl, 操作立即生效,原数据不放到rollback segment中,不能回滚. 操作不触发trigger.<br>4)不在需要一张表的时候，用drop（删除标的结构）<br>5）想删除部分数据行的时候。用delete，并且带上where字句（删除部分数据）<br>6）保留表而删除所有数据的时候用turncate（删除全部数据）</p>
+<h2 id="7-超键，候选键、主键、外键分别是什么："><a href="#7-超键，候选键、主键、外键分别是什么：" class="headerlink" title="7.超键，候选键、主键、外键分别是什么："></a>7.超键，候选键、主键、外键分别是什么：</h2><p>超键：在关系中能唯一标识元组的属性集称为关系模式的超键。一个属性可以为作为一个超键，多个属性组合在一起也可以作为一个超键。超键包含候选键和主键。<br>候选键：是最小超键，即没有冗余元素的超键。<br>主键：数据库表中对存储数据对象予以唯一和完整标示的数据列和属性组合。一个数据列只能有一个主键，且主键的取值不能为空（Null）。<br>外键：在一个表中存在另一个表的主键称为此表的外键。</p>
+<h2 id="8-什么是视图，以及视图的使用场景："><a href="#8-什么是视图，以及视图的使用场景：" class="headerlink" title="8.什么是视图，以及视图的使用场景："></a>8.什么是视图，以及视图的使用场景：</h2><p>视图是一种虚拟的表，具有和物理表相同的功能，可以对视图进行增、改、查操作，视图通常是由一个表或者多个表的行或列的子集，对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。<br>1）只暴露部分字段给访问者，所以就建一个虚表，就是视图。<br>2）查询的数据来源于不同的表，而查询者希望一统一的方式查询，这样也可以建立一个视图，把多个表查询结果联合起来，查询者只需要直接在视图中获取数据，不必考虑数据来源于不同的表所带来的差异。</p>
+<blockquote>
+<p> <strong>数据库中的视图（子查询）相关知识点：</strong></p>
+<p>视图（子查询）：是从一个或多个表导出的虚拟的表，其内容由查询定义。具有普通表的结构，但是不实现数据存储。对视图的修改：单表视图一般用于查询和修改，会改变基本表的数据，多表视图一般用于查询，不会改变基本表的数据。</p>
+<p><strong>1)</strong>   <strong>定义和概念</strong></p>
+<p>①　从一个或几个基本表中根据用户需要而做成一个虚表</p>
+<p>②　视图是虚表,它在存储时只存储视图的定义,而没有存储对应的数据 </p>
+<p>③　视图只在刚刚打开的一瞬间,通过定义从基表中搜集数据,并展现给用户</p>
+<p><strong>2)</strong>   <strong>视图的优点</strong></p>
+<p>①　能分割数据,简化观点。可以通过select和where来定义视图,从而可以分割数据基表中某些对于用户不关心的数据,使用户把注意力集中到所关心的数据列.进一步简化浏览数据工作 </p>
+<p>②　为数据提供一定的逻辑独立性。 如果为某一个基表定义一个视图,即使以后基本表的内容的发生改变了也不会影响“视图定义”所得到的数据 </p>
+<p>③　提供自动的安全保护功能。 视图能像基本表一样授予或撤消访问许可权，给用户是表的一部分访问权限而不是全部。</p>
+<p>④　视图可以间接对表进行更新,因此视图的更新就是表的更新 </p>
+<p>3)   使用视图的一些限制和规则</p>
+<p>①　视图必须唯一命名，不能和表或者其他视图重名</p>
+<p>②　视图可以嵌套，可以从其他视图中构造视图</p>
+<p>③　order by可以用在视图定义中，但是如果select语句从视图中检索数据时候，在视图中order by将被覆盖。</p>
+<p><strong>4)</strong>   <strong>视图和基本表的区别</strong></p>
+<p>a)   视图是已经编译好的sql语句。而表不是  </p>
+<p>b)   视图没有实际的物理记录。而表有。</p>
+<p>c)   表是内容，视图是窗口</p>
+<p>d)   表只用物理空间而视图不占用物理空间，视图只是逻辑概念的存在，表可以及时对它进行修改，但视图只能有创建的语句来修改</p>
+<p>e)   表是内模式，视图是外模式</p>
+<p>f)   视图是查看数据表的一种方法，可以查询数据表中某些字段构成的数据，只是一些SQL语句的集合。从安全的角度说，视图可以不给用户接触数据表，从而不知道表结构。</p>
+<p>g)   表属于全局模式中的表，是实表；视图属于局部模式的表，是虚表。 </p>
+<p>h)   视图的建立和删除只影响视图本身，不影响对应的基本表。</p>
+</blockquote>
+<h2 id="9-char和varchar的区别："><a href="#9-char和varchar的区别：" class="headerlink" title="9.char和varchar的区别："></a>9.char和varchar的区别：</h2><p>Char的长度是固定的，而varchar的长度是可以变化的，比如，存储字符串“abc”对于char(20)，表示你存储的字符将占20个字节，包含17个空，而同样的varchar（20）只占了3个字节，20只是最大值，当你存储的字符小于20时，按实际长度存储。 char的效率要被varchar2的效率高。</p>
+<h2 id="10-order-by与group-by的区别："><a href="#10-order-by与group-by的区别：" class="headerlink" title="10.order by与group by的区别："></a>10.order by与group by的区别：</h2><p>order by排序查询、asc升序、desc降序。group by分组查询，having 只能用于group by子句、作用于组内，having条件子句可以直接跟函数表达式。使用group by 子句的查询语句需要使用聚合函数。</p>
+<h2 id="11-列举几种表的连接方式及区别："><a href="#11-列举几种表的连接方式及区别：" class="headerlink" title="11.列举几种表的连接方式及区别："></a>11.列举几种表的连接方式及区别：</h2><p>内连接、子连接、外连接、（左、右、全）、交叉连接<br>内连接：只有两个元素表相匹配的才能在结果集中显示。<br>外连接：左外连接:左边为驱动表，驱动表的数据全部显示，匹配表的不匹配的不会显示。 右外连接:右边为驱动表，驱动表的数据全部显示，匹配表的不匹配的不会显示。 全外连接：连接的表中不匹配的数据全部会显示出来。<br>交叉连接：笛卡尔效应，显示的结果是连接表数的乘积。</p>
+<h2 id="12-在数据库中查询语句速度很慢，如何优化？"><a href="#12-在数据库中查询语句速度很慢，如何优化？" class="headerlink" title="12.在数据库中查询语句速度很慢，如何优化？"></a>12.在数据库中查询语句速度很慢，如何优化？</h2><p>1.建索引 2.减少表之间的关联 3.优化sql，尽量让sql很快定位数据，不要让sql做全表查询，应该走索引,把数据 量大的表排在前面 4.简化查询字段，没用的字段不要，已经对返回结果的控制，尽量返回少量数据 5.尽量用PreparedStatement来查询，不要用Statement。</p>
+<h2 id="13-什么是索引？索引有那几种"><a href="#13-什么是索引？索引有那几种" class="headerlink" title="13.什么是索引？索引有那几种?"></a>13.什么是索引？索引有那几种?</h2><p>索引是用来快速的寻找那些具有特定值的记录，所有的MySQL索引都以B+树的形式保存。如果没有索引，执行查询的时候MySQl必须从第一个记录开始扫面整个表中的所有记录，直至找到符合要求的记录。表里面的记录数量越多，这个操作的代价就越高。虽然索引大大提高查询速度，同时会降低更新表的速度，如对表进行insert、update、delete。因为更新表时，不仅要保存数据，还要保存索引文件。建立索引会占用磁盘空间的索引文件，一般情况这个问题不太严重，但如果在一个大表上建立多种组合，索引文件会增长很快。索引只是提高效率的一种因素，如果有大数据量的表，就要花时间建立最优秀的索引，或优化查询语句。</p>
+<p>索引的类型：<br>1）<strong>普通索引</strong>：这是最基本的索引类型，而且它没有唯一性之类的限制，即允许该列有重复的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name ON table_name (column_name)</span><br></pre></td></tr></table></figure>
+<p>2）<strong>唯一性索引</strong>： 这种索引和前面的“普通索引”基本相同，但有一个区别：索引列的所有值都只能出现一次，即必须唯一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">ON table_name (column_name)</span><br></pre></td></tr></table></figure>
+<p>3）<strong>主键索引</strong>：是一种特殊的唯一索引，一个表只能有一个主键，不允许有空值，一般是在建表的时候同时自动创建主键索引。<br>4）<strong>组合索引</strong>：指多个自字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用，使用组合索引时遵循最左前缀集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE `table` ADD INDEX name_city_age (name,city,age);</span><br></pre></td></tr></table></figure>
+<p>5）<strong>全文索引</strong>：主要用来查找文本中的关键字，而不是直接与索引中的值相比较。fulltext索引跟其它索引大不相同，它更像是一个搜索引擎，而不是简单的where语句的参数匹配。fulltext索引配合match against操作使用，而不是一般的where语句加like。它可以在create table，alter table ，create index使用，不过目前只有char、varchar，text 列上可以创建全文索引。值得一提的是，在数据量较大时候，现将数据放入一个没有全局索引的表中，然后再用CREATE index创建fulltext索引，要比先为一张表建立fulltext然后再将数据写入的速度快很多。</p>
+<h2 id="14-索引原理："><a href="#14-索引原理：" class="headerlink" title="14.索引原理："></a>14.索引原理：</h2><p>想要理解索引原理必须清楚一种数据结构「平衡树」(非二叉)，也就是b tree或者 b+ tree，重要的事情说三遍：“平衡树，平衡树，平衡树”。当然， 有的数据库也使用哈希桶作用索引的数据结构 ， 然而， 主流的RDBMS都是把平衡树当做数据表默认的索引数据结构的。<br>我们平时建表的时候都会为表加上主键， 在某些关系数据库中， 如果建表时不指定主键，数据库会拒绝建表的语句执行。 事实上， 一个加了主键的表，并不能被称之为「表」。一个没加主键的表，它的数据无序的放置在磁盘存储器上，一行一行的排列的很整齐， 跟我认知中的「表」很接近。如果给表上了主键，那么表在磁盘上的存储结构就由整齐排列的结构转变成了树状结构，也就是上面说的「平衡树」结构，换句话说，就是整个表就变成了一个索引。没错， 再说一遍， 整个表变成了一个索引，也就是所谓的「聚集索引」。 这就是为什么一个表只能有一个主键， 一个表只能有一个「聚集索引」，因为主键的作用就是把「表」的数据格式转换成「索引（平衡树）」的格式放置。 </p>
+<p><img src="/2019/09/15/数据库总结/sql.png" alt="sql"></p>
+<p>索引能让数据库查询数据的速度上升， 而使写入数据的速度下降，原因很简单的， 因为平衡树这个结构必须一直维持在一个正确的状态， 增删改数据都会改变平衡树各节点中的索引数据内容，破坏树结构， 因此，在每次数据改变时， DBMS必须去重新梳理树（索引）的结构以确保它的正确，这会带来不小的性能开销，也就是为什么索引会给查询以外的操作带来副作用的原因。</p>
+<p>非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段， 假如给user表的name字段加上索引 ， 那么索引就是由name字段中的值构成，在数据改变时， DBMS需要一直维护索引结构的正确性。如果给表中多个字段加上索引 ， 那么就会出现多个独立的索引结构，每个索引（非聚集索引）互相之间不存在关联。<br>非聚集索引和聚集索引的区别在于， 通过聚集索引可以查到需要查找的数据， 而通过非聚集索引可以查到记录对应的主键值 ， 再使用主键的值通过聚集索引查找到需要的数据。<br>聚集索引:表记录的排列顺序和与数据的存储顺序一致(主键)，一个表只能有一个,但该索引可以包含多个列（组合索引），就像电话簿按姓氏和名字进行组织一样。数据行的物理顺序与列值的顺序相同<br>–&gt;聚集索引规定了数据文件的存储顺序<br>非聚集索引：表记录的排列顺序和与数据的存储顺序不一致(唯一)，一个表可以有多个<br>–&gt;是一个单独存放的指针表,用来快速找到对应点的地址<br>不管以任何方式查询表， 最终都会利用主键通过聚集索引来定位到数据， 聚集索引（主键）是通往真实数据所在的唯一路径。</p>
+<blockquote>
+<p><strong>有关数据库中索引的相关知识点：</strong></p>
+<p><strong>A.</strong>   <strong>索引的概念</strong></p>
+<p><strong>数据库索引，是数据库管理系统中一个排序的数据结构</strong>，<strong>以协助快速查询、更新数据库表中数据。</strong>索引的实现通常使用B树及其变种B+树 。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。为表设置索引要付出代价的：一是增加了数据库的存储空间 ，二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动) 。</p>
+<p><strong>B.</strong>   <strong>创建索引的优点：</strong></p>
+<p>1)   通过创建唯一性索引，可以<strong>保证数据库表中每一行数据的唯一性</strong>。</p>
+<p>2)   <strong>大大加快数据的检索速度</strong>，这也是创建索引的最主要的原因。</p>
+<p>3)   <strong>加速表和表之间的连接</strong>，特别是在实现数据的参考完整性方面特别有意义。</p>
+<p>4)   使用分组和排序子句进行检索，<strong>减少查询中分组和排序的时间</strong>。</p>
+<p>5)   通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。 </p>
+<p><strong>C.</strong>   <strong>增加索引的弊端：</strong></p>
+<p>1)   对表中的数据进行增删改时，<strong>索引也要动态维护</strong>，降低了数据库的维护性。</p>
+<p>2)   <strong>索引需要占物理空间，</strong>除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</p>
+<p>3)   <strong>创建索引和维护索引要耗费时间</strong>，这种时间随着数据量的增加而增加。  </p>
+<p><strong>D.</strong>   <strong>需要创建索引的列：</strong></p>
+<p>索引是建立在数据库表中的某些列的上面。在创建索引的时候，应该考虑在哪些列上可以创建索引，在哪些列上不能创建索引。 一般来说，应该在以下这些列上创建索引：</p>
+<p>1)   在<strong>经常需要搜索的列</strong>，可以加快搜索的速度；</p>
+<p>2)   在<strong>作为主键的列</strong>，强制该列的唯一性和组织表中数据的排列结构；</p>
+<p>3)   在<strong>经常用在连接的列</strong>，这些列主要是一些外键，可以加快连接的速度；</p>
+<p>4)   在<strong>经常需要根据范围进行搜索的列</strong>，因为索引已经排序，其指定的范围是连续的；</p>
+<p>5)   在<strong>经常需要排序的列上创建索引，</strong>这样查询可以利用索引的排序，加快排序查询时间；</p>
+<p>6)   <strong>在经常使用在WHERE子句中的列上面创建索引</strong>，加快条件的判断速度。</p>
+<p><strong>E.</strong>   <strong>不适合创建索引的列：</strong></p>
+<p>不应该创建索引的的这些列具有下列特点：</p>
+<p>1)   在<strong>查询中很少使用或者参考的列</strong>不应该创建索引。既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。</p>
+<p>2)   对于那些只<strong>有很少数据值的列</strong>也不应该增加索引。由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。</p>
+<p>3)   对于<strong>那些定义为text, image和bit数据类型的列</strong>不应该增加索引。这些列的数据量要么相当大，要么取值很少。</p>
+<p>4)   <strong>当修改性能远远大于检索性能时，</strong>不应该创建索引。修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该创建索引。</p>
+<p><strong>F.</strong>   <strong>索引的分类：</strong></p>
+<p>三种索引： <strong>唯一索引、主键索引和聚集索引</strong>。</p>
+<p><strong>1)</strong>   <strong>普通索引：</strong>最基本的索引，而且<strong>没有唯一性之类的限制</strong>。</p>
+<p>创建：create <strong>index</strong> [indexName] on [TableName] ([column],…)</p>
+<p>删除：drop <strong>index</strong> [tableName].[indexName]</p>
+<p><strong>唯一索引</strong>：<strong>不允许其中任何两行具有相同索引值的索引</strong>。当现有数据中存在重复的键值时，大多数数据库不允许将新创建的唯一索引与表一起保存。数据库还防止添加，将在表中创建重复键值的新数据。</p>
+<p>例如，如果在 employee 表中职员的姓 (lname) 上创建了唯一索引，则任何两个员工都不能同姓。</p>
+<p>创建： create <strong>Unique index</strong> [indexName] on [TableName] ([column],…)</p>
+<p>删除：drop index [TableName].[IndexName]</p>
+<p><strong>2)</strong>   <strong>主键索引</strong></p>
+<p>数据库表经常有一列或列组合，其值唯一标识表中的每一行。该列称为表的主键。在数据库关系图中为表定义主键将自动创建主键索引，<strong>主键索引是唯一索引的特定类型</strong>。该索引要求主键中的每个值都唯一。当在查询中使用主键索引时，它还允许对数据的快速访问。建议建立唯一索引时，直接创建主键索引就好了。</p>
+<p><strong>3)</strong>   <strong>聚集索引</strong></p>
+<p>该索引中键值的<strong>逻辑顺序决定了表中相应行的物理顺序</strong>。聚集索引类似于电话簿，按姓氏排列数据。由于聚集索引规定数据在表中的物理存储顺序，因此一个表只能包含一个聚集索引。但该索引可以包含多个列（组合索引），就像电话簿按姓氏和名字进行组织一样。</p>
+<p><strong>创建：CREATE cluster index [IndexName] ON <a href="[ColumnName],[ColumnName],...">TableName</a></strong></p>
+<p><strong>聚集索引使用注意事项：</strong></p>
+<p>(1) 定义聚集索引键时使用的<strong>列越少越好</strong>；</p>
+<p>(2) 使用下列运算符返回一个范围值的查询：BETWEEN、&gt;、&gt;=、&lt; 和 &lt;=,可以按物理顺序更快的返回一个范围;</p>
+<p>(3) 被连续访问的列;</p>
+<p>(4) 返回大型结果集的查询；</p>
+<p>(5) 经常被使用表联接或 GROUP BY 子句的查询访问的列；一般来说，这些是外键列。对 ORDER BY 或 GROUP BY 子句中指定的列进行索引，可以使 SQL Server 不必对数据进行排序，因为这些行已经排序。这样可以提高查询性能;</p>
+<p>(6) OLTP 类型的应用程序，这些程序要求进行非常快速的单行查找（一般通过主键）。应在主键上创建聚集索引;</p>
+<p><strong>4)</strong>   <strong>非聚集索引</strong></p>
+<p><strong>数据存储在一个地方，索引存储在另一个地方，索引带有指针指向数据的存储位置。非聚集索引中的项目按索引键值的顺序存储</strong>，<strong>而表中的信息按另一种顺序存储</strong>（这可以由聚集索引规定）。对于非聚集索引，可以为在表非聚集索引中查找数据时常用的每个列创建一个非聚集索引。有些书籍包含多个索引。例如，一本介绍园艺的书可能会包含一个植物通俗名称索引，和一个植物学名索引，因为这是读者查找信息的两种最常用的方法。</p>
+<p>创建CREATE <strong>noclustered index</strong> [IndexName] ON <a href="[ColumnName],[ColumnName]...">TableName</a></p>
+<p><strong>7.</strong>   数据表建立复合索引tab_index(“name”,”age”)，下面哪些语句能用上索引？（A）</p>
+<p>A select*from table where age=18 and name=’test’;</p>
+<p>B select*from table where name=’test’and age=18;</p>
+<p>C select*from table where name like”%test%”and age=18;</p>
+<p>D select*from table where name like”%test”and age=18;</p>
+<p>1)   什么是复合索引？</p>
+<p>索引可以包含一个、两个或更多个列。两个或更多个列上的索引被称作 复合索引。</p>
+<p>2)   复合索引作用</p>
+<p>利用索引中的附加列，您可以缩小搜索的范围，但使用一个具有两列的索引不同于使用两个单独的索引。</p>
+<p>3)   例子</p>
+<p> CREATE INDEX name ON employee (emp_lname, emp_fname)</p>
+<p>复合索引的结构与电话簿类似，它首先按姓氏对雇员进行排序，然后按名字对所有姓氏相同的雇员进行排序。如果您知道姓氏，电话簿将非常有用，如果您知道名字和姓氏，电话簿则更为有用，但如果您只知道名字而不知道姓氏，电话簿将没有用处。所以复合索引，字段的先后顺序是很重要的。 <strong>列的顺序：</strong>在创建复合索引时，应该仔细考虑列的顺序。对索引中的所有列执行搜索或仅对前几列执行搜索时，复合索引非常有用；仅对后面的任意列执行搜索时，复合索引则没有用处。</p>
+<p>解析：</p>
+<p>A，没有注意复合索引顺序</p>
+<p>B 正确</p>
+<p>C 凡是对索引列，使用了‘%XXX’，都不走索引。如果改为where name = ‘test%’则可以走索引。</p>
+</blockquote>
+<h2 id="15-MySQL的两种存储引擎区别，各自的使用场景"><a href="#15-MySQL的两种存储引擎区别，各自的使用场景" class="headerlink" title="15.MySQL的两种存储引擎区别，各自的使用场景"></a>15.MySQL的两种存储引擎区别，各自的使用场景</h2><p>1）事务：InnoDB 是事务型的，可以使用 Commit 和 Rollback 语句。<br>2）并发：MyISAM 只支持表级锁，而 InnoDB 还支持行级锁。<br>3）外键：InnoDB 支持外键。<br>4）备份：InnoDB 支持在线热备份。<br>5）崩溃恢复：MyISAM 崩溃后发生损坏的概率比 InnoDB 高很多，而且恢复的速度也更慢。<br>6）其它特性：MyISAM 支持压缩表和空间数据索引。<br>应用场景：<br>MyISAM管理非事务表。他提供高速存储和检索，依旧全文搜素能力。如果应用需要执行大量的SELECT查询，那么MyISAM是更好的选择。<br>InnoDB用于事务处理用于程序，具有众多特性，包括ACID事务支持，如果应用中需要执行大量的INSERT或ＵＰＤＡＴＥ操作，则应使用InnoDB，这样可以提高用户并发操作的性能。 </p>
+<h2 id="16-数据库中的三级模式："><a href="#16-数据库中的三级模式：" class="headerlink" title="16.数据库中的三级模式："></a><strong>16.数据库中的三级模式：</strong></h2><p><strong>外模式，（概念）模式，内模式。</strong></p>
+<p>1)   <strong>模式</strong>：模式又称<strong>概念模式</strong>或<strong>逻辑模式</strong>，对应于<strong>概念级</strong>。它是由数据库设计者综合所有用户的数据，按照统一的观点构造的全局逻辑结构，是对数据库中全部数据的逻辑结构和特征的总体描述，是所有用户的公共数据视图(全局视图)。由<strong>DDL</strong>来描述、定义的，体现、反映了数据库系统的整体观。</p>
+<p>2)   <strong>外模式</strong>：外模式又称<strong>子模式</strong>或<strong>用户模式</strong>，对应于<strong>用户级</strong>。它是某个或某几个用户所看到的数据库的数据视图，是与某一应用有关的数据的逻辑表示。利用数据操纵语言<strong>DML</strong>对这些数据记录进行</p>
+<p>3)   <strong>内模式</strong>：内模式又称<strong>存储模式</strong>，对应于<strong>物理级</strong>，它是数据库中全体数据的内部表示或底层描述，是数据库最低一级的逻辑描述，它描述了数据在存储介质上的存储方式和物理结构，对应着实际存储在外存储介质上的数据库。内模式由内模式描述语言来描述、定义，它是数据库的存储观。</p>
+<p><strong>外模式和模式建立逻辑独立性</strong>数据的逻辑独立性是指(用户的应用程序与数据库的逻辑结构是相互独立的)；<strong>模式和内模式建立物理独立性</strong></p>
+<h2 id="17-数据库中的几种故障"><a href="#17-数据库中的几种故障" class="headerlink" title="17.  数据库中的几种故障"></a><strong>17.</strong>  <strong>数据库中的几种故障</strong></h2><p>1)   <strong>事务故障：</strong>由非预期的、不正常的程序结束所造成的故障。如<strong>输入数据错误</strong>、运算溢出、违反存储保护、并行事务发生死锁；</p>
+<p>2)   <strong>系统故障：</strong>系统的运行过程中，由于某种原因造成系统停止运转，致所有正在运行的事务都以非正常的方式终止，要求系统重新启动。如<strong>CPU错误、DBMS代码错误</strong>；</p>
+<p>3)   <strong>介质故障：</strong>系统在运行过程中，辅助<strong>存储器介质受到破坏</strong>，使存储在外存中的数据部分或全部丢失。</p>
+<h2 id="18-防止SQL注入的五种方法"><a href="#18-防止SQL注入的五种方法" class="headerlink" title="18.防止SQL注入的五种方法"></a><strong>18.</strong>防止SQL注入的五种方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br></pre></td><td class="code"><pre><span class="line">一、SQL注入简介</span><br><span class="line"></span><br><span class="line">    SQL注入是比较常见的网络攻击方式之一，它不是利用操作系统的BUG来实现攻击，而是针对程序员编程时的疏忽，通过SQL语句，实现无帐号登录，甚至篡改数据库。</span><br><span class="line"></span><br><span class="line">二、SQL注入攻击的总体思路</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>.寻找到SQL注入的位置</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.判断服务器类型和后台数据库类型</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>.针对不通的服务器和数据库特点进行SQL注入攻击</span><br><span class="line"></span><br><span class="line">三、SQL注入攻击实例</span><br><span class="line"></span><br><span class="line">比如在一个登录界面，要求输入用户名和密码：</span><br><span class="line"></span><br><span class="line">可以这样输入实现免帐号登录：</span><br><span class="line"></span><br><span class="line">用户名： ‘or <span class="number">1</span> = <span class="number">1</span> –</span><br><span class="line"></span><br><span class="line">密 码：</span><br><span class="line"></span><br><span class="line">点登陆,如若没有做特殊处理,那么这个非法用户就很得意的登陆进去了.(当然现在的有些语言的数据库API已经处理了这些问题)</span><br><span class="line"></span><br><span class="line">这是为什么呢? 下面我们分析一下：</span><br><span class="line"></span><br><span class="line">从理论上说，后台认证程序中会有如下的SQL语句：</span><br><span class="line"></span><br><span class="line">String sql = <span class="string">"select * from user_table where username=</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">' "</span>+userName+<span class="string">" ' and password=' "</span>+password+<span class="string">" '"</span>;</span><br><span class="line"></span><br><span class="line">当输入了上面的用户名和密码，上面的SQL语句变成：</span><br><span class="line"></span><br><span class="line">SELECT * FROM user_table WHERE username=</span><br><span class="line"></span><br><span class="line"><span class="string">'’or 1 = 1 -- and password='</span>’</span><br><span class="line"></span><br><span class="line">分析SQL语句：</span><br><span class="line"></span><br><span class="line">条件后面username=”or <span class="number">1</span>=<span class="number">1</span> 用户名等于 ” 或<span class="number">1</span>=<span class="number">1</span> 那么这个条件一定会成功；</span><br><span class="line"></span><br><span class="line">然后后面加两个-，这意味着注释，它将后面的语句注释，让他们不起作用，这样语句永远都能正确执行，用户轻易骗过系统，获取合法身份。</span><br><span class="line"></span><br><span class="line">这还是比较温柔的，如果是执行</span><br><span class="line"></span><br><span class="line">SELECT * FROM user_table WHERE</span><br><span class="line"></span><br><span class="line">username=<span class="string">''</span> ;<span class="function">DROP <span class="title">DATABASE</span> <span class="params">(DB Name)</span> --' and password</span>=<span class="string">''</span></span><br><span class="line"></span><br><span class="line">….其后果可想而知… </span><br><span class="line"></span><br><span class="line">四、应对方法</span><br><span class="line"></span><br><span class="line">下面我针对JSP，说一下应对方法：</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>.（简单又有效的方法）PreparedStatement</span><br><span class="line"></span><br><span class="line">采用预编译语句集，它内置了处理SQL注入的能力，只要使用它的setXXX方法传值即可。</span><br><span class="line"></span><br><span class="line">使用好处：</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>).代码的可读性和可维护性.</span><br><span class="line"></span><br><span class="line">(<span class="number">2</span>).PreparedStatement尽最大可能提高性能.</span><br><span class="line"></span><br><span class="line">(<span class="number">3</span>).最重要的一点是极大地提高了安全性.</span><br><span class="line"></span><br><span class="line">原理：</span><br><span class="line"></span><br><span class="line">sql注入只对sql语句的准备(编译)过程有破坏作用</span><br><span class="line"></span><br><span class="line">而PreparedStatement已经准备好了,执行阶段只是把输入串作为数据处理,</span><br><span class="line"></span><br><span class="line">而不再对sql语句进行解析,准备,因此也就避免了sql注入问题. </span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.使用正则表达式过滤传入的参数</span><br><span class="line"></span><br><span class="line">要引入的包：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"></span><br><span class="line">正则表达式：</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String CHECKSQL = “^(.+)\\sand\\s(.+)|(.+)\\sor(.+)\\s$”;</span><br><span class="line"></span><br><span class="line">判断是否匹配：</span><br><span class="line"></span><br><span class="line">Pattern.matches(CHECKSQL,targerStr);</span><br><span class="line"></span><br><span class="line">下面是具体的正则表达式：</span><br><span class="line"></span><br><span class="line">检测SQL meta-characters的正则表达式 ：</span><br><span class="line"></span><br><span class="line">/(\%27)|(\’)|(\-\-)|(\%23)|(#)/ix</span><br><span class="line"></span><br><span class="line">修正检测SQL meta-characters的正则表达式 ：/((\%<span class="number">3</span>D)|(=))[^\n]*((\%<span class="number">27</span>)|(\’)|(\-\-)|(\%<span class="number">3</span>B)|(:))/i</span><br><span class="line"></span><br><span class="line">典型的SQL 注入攻击的正则表达式 ：/\w*((\%<span class="number">27</span>)|(\’))((\%<span class="number">6F</span>)|o|(\%<span class="number">4F</span>))((\%<span class="number">72</span>)|r|(\%<span class="number">52</span>))/ix</span><br><span class="line"></span><br><span class="line">检测SQL注入，UNION查询关键字的正则表达式 ：/((\%<span class="number">27</span>)|(\’))union/ix(\%<span class="number">27</span>)|(\’)</span><br><span class="line"></span><br><span class="line">检测MS SQL Server SQL注入攻击的正则表达式：</span><br><span class="line"></span><br><span class="line">/exec(\s|\+)+(s|x)p\w+/ix</span><br><span class="line"></span><br><span class="line">等等…..</span><br><span class="line"><span class="number">3</span>.字符串过滤</span><br><span class="line"></span><br><span class="line">比较通用的一个方法：</span><br><span class="line"></span><br><span class="line">（||之间的参数可以根据自己程序的需要添加）</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">sql_inj</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">String inj_str = <span class="string">"'|and|exec|insert|select|delete|update|</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,"</span>;</span><br><span class="line"></span><br><span class="line">String inj_stra[] = split(inj_str,<span class="string">"|"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span> ; i &amp;lt; inj_stra.length ; i++ )&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (str.indexOf(inj_stra[i])&amp;gt;=<span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="number">4</span>.jsp中调用该函数检查是否包函非法字符</span><br><span class="line"></span><br><span class="line">防止SQL从URL注入：</span><br><span class="line"></span><br><span class="line">sql_inj.java代码：</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> sql_inj;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.net.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.String;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">sql_inj</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">sql_inj</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">String inj_str = <span class="string">"'|and|exec|insert|select|delete|update|</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里的东西还可以自己添加</span></span><br><span class="line"></span><br><span class="line">String[] inj_stra=inj_str.split(<span class="string">"\\|"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span> ; i &amp;lt; inj_stra.length ; i++ )&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (str.indexOf(inj_stra[i])&amp;gt;=<span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.JSP页面判断代码：</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">使用javascript在客户端进行不安全字符屏蔽</span><br><span class="line"></span><br><span class="line">功能介绍：检查是否含有”‘”,”\\”,”/”</span><br><span class="line"></span><br><span class="line">参数说明：要检查的字符串</span><br><span class="line"></span><br><span class="line">返回值：<span class="number">0</span>：是<span class="number">1</span>：不是</span><br><span class="line"></span><br><span class="line">函数名是</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">check</span><span class="params">(a)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">fibdn = <span class="keyword">new</span> Array (”‘” ,”\\”,”/”);</span><br><span class="line"></span><br><span class="line">i=fibdn.length;</span><br><span class="line"></span><br><span class="line">j=a.length;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (ii=<span class="number">0</span>; ii＜i; ii++)</span><br><span class="line"></span><br><span class="line">&#123; <span class="keyword">for</span> (jj=<span class="number">0</span>; jj＜j; jj++)</span><br><span class="line"></span><br><span class="line">&#123; temp1=a.charAt(jj);</span><br><span class="line"></span><br><span class="line">temp2=fibdn[ii];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (tem’; p1==temp2)</span><br><span class="line"></span><br><span class="line">&#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">===================================</span><br><span class="line"></span><br><span class="line">总的说来，防范一般的SQL注入只要在代码规范上下点功夫就可以了。</span><br><span class="line"></span><br><span class="line">凡涉及到执行的SQL中有变量时，用JDBC（或者其他数据持久层）提供的如：PreparedStatement就可以 ，切记不要用拼接字符串的方法就可以了。</span><br></pre></td></tr></table></figure>
+<h2 id="19-模糊查询语句"><a href="#19-模糊查询语句" class="headerlink" title="19.模糊查询语句"></a><strong>19.模糊查询语句</strong></h2><p><strong>数据库中的模糊查询关键字为like，并提供了四种模糊匹配条件：</strong></p>
+<p>1)   %：表示0~n个任意个字符</p>
+<p>把flow_user这张表里面，列名username中含有“王”的记录全部查询出来</p>
+<p>select * from flow_user where username like ‘%王%’；</p>
+<p>2)   _:表示一个字符</p>
+<p>只能找到“王英琨”这样username为三个字且中间一个字是“英”的内容。</p>
+<p>select * from flow_user where username like ‘_英_’;</p>
+<p>3)   []：表示括号内所列字符中的一个</p>
+<p>将找出“王飞”“李飞”“张飞”（而不是“张王李飞”）。</p>
+<p>select * from flow_user where username LIKE’[王李张]飞’;</p>
+<p>4)   [^]：表示不在括号所列之内的单个字符。</p>
+<p>将找出不是“王飞”“李飞”“张飞“的”赵飞“、”吴飞“等。</p>
+<p>select * from flow_user where username LIKE’[^王李张]飞’;</p>
+<h2 id="20-数据库中的”空值”-和”NULL”的概念："><a href="#20-数据库中的”空值”-和”NULL”的概念：" class="headerlink" title="20.  数据库中的”空值” 和”NULL”的概念："></a><strong>20.</strong>  <strong>数据库中的”空值” 和”NULL”的概念：</strong></h2><p>1)   空值(‘’)是不占用空间的,判断空字符用 = ‘’ 或者 &lt;&gt; ‘’ 来进行处理;</p>
+<p>2)   NULL值是未知的，且占用空间，不走索引;判断 NULL 用 IS NULL 或者 is not null , SQL 语句函数中可以使用 ifnull ()函数来进行处理.</p>
+<p>3)   在进行 count ()统计某列的记录数的时候，如果采用的 NULL 值，会别系统自动忽略掉，但是空值是统计到其中</p>
+<h2 id="21-数据库中的触发器"><a href="#21-数据库中的触发器" class="headerlink" title="21.数据库中的触发器"></a>21.<strong>数据库中的触发器</strong></h2><p><strong>1)</strong>   <strong>触发器的概念</strong></p>
+<p>触发器（trigger）是SQL server 提供给程序员和数据分析员来保证数据完整性的一种方法，它是与表事件相关的特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件来触发，比如当对一个表进行操作（ insert，delete， update）时就会激活它执行。触发器经常用于加强数据的完整性约束和业务规则等。</p>
+<p>不会触发触发器的包括 SELECT、TRUNCATE、WRITETEXT、UPDATETEXT。</p>
+<p><strong>2)</strong>   <strong>触发器的语法</strong></p>
+<p><strong>Create trigger</strong> trigger_name <strong>ON</strong> {table_name | view_name}</p>
+<p>{FOR | After | Instead of } [ insert, update,delete ]</p>
+<p><strong>AS</strong>  sql_statement</p>
+<p>删除触发器：drop trigger 触发器名</p>
+<p><strong>3)</strong>   <strong>触发器的分类</strong></p>
+<p>a)   After触发器，After触发器要求只有执行某一操作insert、update、delete之后触发器才被触发，且只能定义在表上。</p>
+<p>b)   Instead of 触发器，Instead of 触发器表示并不执行其定义的操作（insert、update、delete）而仅是执行触发器本身。既可以在表上定义instead of触发器，也可以在视图上定义。</p>
+<p>c)   后触发型触发器</p>
+<p>使用for或after选项定义的触发器，执行过程如下：1. 执行到引发触发器执行的语句。2. 执行该语句 。3. 执行触发器</p>
+<p><strong>4)</strong>   <strong>触发器的作用</strong></p>
+<p>a)   完成比约束更复杂的数据约束</p>
+<p>b)   检查所做的sql是否允许</p>
+<p>c)   调用更多的存储过程</p>
+<p>d)   防止数据表结构更改或数据表被删除</p>
+<p>e)   修改其他数据表的数据</p>
+<p>f)   发送sql mail</p>
+<p>g)   返回自定义的错误信息</p>
+<p><strong>5)</strong>   <strong>注意事项</strong></p>
+<p>a)   一个表可以有多个触发器，但一个触发器只能对应一个表，但可以引用数据库以外的对象</p>
+<p>b)   同一个数据表中，对每个操作而言，可以建立多个after触发器，但instead of 触发器只能创建一个</p>
+<p>c)   对某个操作，既建了after触发器，又设置了instead of触发器，instead of触发器一定会激活，after触发器不一定会被激活</p>
+<h2 id="22-数据库中关于删除的几个关键词"><a href="#22-数据库中关于删除的几个关键词" class="headerlink" title="22.  数据库中关于删除的几个关键词"></a><strong>22.</strong>  数据库中关于删除的几个关键词</h2><p>当你不再需要该表时， 用 drop;</p>
+<p>当你仍要保留该表，但要删除所有记录时， 用 truncate;</p>
+<p>当你要删除部分记录时（always with a WHERE clause), 用 delete.</p>
+<h2 id="23-多表查询（重要）"><a href="#23-多表查询（重要）" class="headerlink" title="23.多表查询（重要）"></a>23.<strong>多表查询（重要）</strong></h2><h2 id=""><a href="#" class="headerlink" title=""></a><strong><img src="/2019/09/15/数据库总结/1568516479834.png" alt="1568516479834"></strong></h2><p><strong>内连接</strong></p>
+<p>内连接就是表间的主键与外键相连，只取得键值一致的，可以获取双方表中的数据连接方式。语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名1,列名2... FROM 表1 INNER JOIN 表2 ON 表1.外键=表2.主键 WhERE 条件语句;</span><br></pre></td></tr></table></figure>
+<p>外连接<br>与取得双方表中数据的内连接相比，外连接只能取得其中一方存在的数据，外连接又分为左连接和右连接两种情况。接下来，我们将介绍这两种连接方式。</p>
+<p><strong>左外连接</strong><br>左连接是以左表为标准，只查询在左边表中存在的数据，当然需要两个表中的键值一致。语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列名<span class="number">1</span> <span class="keyword">FROM</span> 表<span class="number">1</span> <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> 表<span class="number">2</span> <span class="keyword">ON</span> 表<span class="number">1.</span>外键=表<span class="number">2.</span>主键 <span class="keyword">WhERE</span> 条件语句;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>他会以左连接中的左表的<strong>全部数据</strong>作为基准进行查询。</p>
+</blockquote>
+<p> <strong>右外连接</strong></p>
+<p>同理，右连接将会以右边作为基准，进行检索。语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名1 FROM 表1 RIGHT OUTER JOIN 表2 ON 表1.外键=表2.主键 WhERE 条件语句;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里就是以右边的表为基准进行了检索</p>
+</blockquote>
+<blockquote>
+<p>内连接是抽取两表间键值一致的数据，而外连接（左连接，右连接）时，是以其中一个表的全部记录作为基准进行检索。<br>左连接和右连接只有数据基准的区别，本质上是一样的，具体使用哪一种连接，根据实际的需求所决定<br>无论是内连接还是外连接，在查询的时候最好使用【表名.列名】的方式指定需要查询的列名，否则一旦两个表中出现了列名一致的数据时，可能会报错，养成良好的习惯很重要。<br>表的别名：其实我们在查询的过程中，如果遇到了特别复杂的数据表名，我们可以通过取别名的方式来实现，使用的是我们以前使用过的【AS】语句，例如，我们的内连接就可以化简为下面的语句：<br>SELECT s.name,c.collegeName FROM student AS s INNER JOIN college AS c ON s.collegeId = c.collegeId;查询结果一致，是不是瞬间觉得语句简洁很多呢？ </p>
+</blockquote>
+<p><strong>自连接</strong></p>
+<p>自连接顾名思义就是自己跟自己连接，有人或许会问，这样的连接有意义吗？答案是肯定的。<br>例如，我们将【student】的数据改为下图： </p>
+<blockquote>
+<p>自连接的使用情况还是很多的，比如当我们找某个站点所经过的所有公交等，都可以采用自连接的方式进行检索；</p>
+</blockquote>
+<p><strong>子查询</strong><br>通常我们在查询的SQL中嵌套查询，称为子查询。子查询通常会使复杂的查询变得简单，但是相关的子查询要对基础表的每一条数据都进行子查询的动作，所以当表单中数据过大时，一定要慎重选择。基本语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 列名<span class="number">1</span> ...FROM 表名 <span class="keyword">WHERE</span> 列名 比较运算符 （<span class="keyword">SELECT</span> 命令）;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Tipping via QR code</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="muxin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zhifu.jpg" alt="muxin 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/13/数编程之美-Continually-updated/" rel="next" title="数编程之美-Continually updated">
+                <i class="fa fa-chevron-left"></i> 数编程之美-Continually updated
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/15/面经分析-20190915/" rel="prev" title="面经分析-20190915">
+                面经分析-20190915 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://xzx.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/09/15/数据库总结/';
+          this.page.identifier = '2019/09/15/数据库总结/';
+          this.page.title = '数据库总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xzx.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+	
+
+
+
+
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159828"></script>
+        <!-- UY END -->
+    
+  
+ 
+
+
+ 
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/photo.JPG"
+                alt="muxin" />
+            
+              <p class="site-author-name" itemprop="name">muxin</p>
+              <p class="site-description motion-element" itemprop="description">Fear not that the life shall come to an end, but rather fear that it shall never have a beginning.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据库事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">1.数据库事务的四个特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数据库之存储过程"><span class="nav-number">2.</span> <span class="nav-text">2.数据库之存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-数据库建表的三种范式"><span class="nav-number">3.</span> <span class="nav-text">3.数据库建表的三种范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数据库隔离级别，每个级别会引发什么问题"><span class="nav-number">4.</span> <span class="nav-text">4.数据库隔离级别，每个级别会引发什么问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-锁的分类"><span class="nav-number">5.</span> <span class="nav-text">5.锁的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-drop、delete与truncate的区别："><span class="nav-number">6.</span> <span class="nav-text">6.drop、delete与truncate的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-超键，候选键、主键、外键分别是什么："><span class="nav-number">7.</span> <span class="nav-text">7.超键，候选键、主键、外键分别是什么：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-什么是视图，以及视图的使用场景："><span class="nav-number">8.</span> <span class="nav-text">8.什么是视图，以及视图的使用场景：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-char和varchar的区别："><span class="nav-number">9.</span> <span class="nav-text">9.char和varchar的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-order-by与group-by的区别："><span class="nav-number">10.</span> <span class="nav-text">10.order by与group by的区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-列举几种表的连接方式及区别："><span class="nav-number">11.</span> <span class="nav-text">11.列举几种表的连接方式及区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-在数据库中查询语句速度很慢，如何优化？"><span class="nav-number">12.</span> <span class="nav-text">12.在数据库中查询语句速度很慢，如何优化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-什么是索引？索引有那几种"><span class="nav-number">13.</span> <span class="nav-text">13.什么是索引？索引有那几种?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-索引原理："><span class="nav-number">14.</span> <span class="nav-text">14.索引原理：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-MySQL的两种存储引擎区别，各自的使用场景"><span class="nav-number">15.</span> <span class="nav-text">15.MySQL的两种存储引擎区别，各自的使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-数据库中的三级模式："><span class="nav-number">16.</span> <span class="nav-text">16.数据库中的三级模式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-数据库中的几种故障"><span class="nav-number">17.</span> <span class="nav-text">17.  数据库中的几种故障</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-防止SQL注入的五种方法"><span class="nav-number">18.</span> <span class="nav-text">18.防止SQL注入的五种方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-模糊查询语句"><span class="nav-number">19.</span> <span class="nav-text">19.模糊查询语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-数据库中的”空值”-和”NULL”的概念："><span class="nav-number">20.</span> <span class="nav-text">20.  数据库中的”空值” 和”NULL”的概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-数据库中的触发器"><span class="nav-number">21.</span> <span class="nav-text">21.数据库中的触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-数据库中关于删除的几个关键词"><span class="nav-number">22.</span> <span class="nav-text">22.  数据库中关于删除的几个关键词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-多表查询（重要）"><span class="nav-number">23.</span> <span class="nav-text">23.多表查询（重要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">24.</span> <span class="nav-text"></span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+	<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=431791036&auto=1&height=66"></iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">muxin</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+ 
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+</div>
+
+<div>
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("07/08/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script> 
+	
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 | Search by algolia</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2cb6ba3a1c27ee1fc0a8e6d0dcb28522";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+undefined
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

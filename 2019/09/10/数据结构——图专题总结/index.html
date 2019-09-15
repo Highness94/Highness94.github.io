@@ -88,10 +88,13 @@
 <meta property="og:site_name" content="muxin&#39;s Blog">
 <meta property="og:description" content="图的基本定义123456　　定义：图（Graph）是由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为：G(V,E)，其中，G表示一个图，V是图G中顶点的集合，E是图G中边的集合。　　在图中需要注意的是：　　（1）线性表中我们把数据元素叫元素，树中将数据元素叫结点，在图中数据元素，我们则称之为顶点（Vertex）。　　（2）线性表可以没有元素，称为空表；树中可以没有节点，称为空树；但是，在图中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T09:23:32.203Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/数据结构——图专题总结/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/数据结构——图专题总结/2.jpg">
+<meta property="og:updated_time" content="2019-09-11T05:42:23.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构——图专题总结">
 <meta name="twitter:description" content="图的基本定义123456　　定义：图（Graph）是由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为：G(V,E)，其中，G表示一个图，V是图G中顶点的集合，E是图G中边的集合。　　在图中需要注意的是：　　（1）线性表中我们把数据元素叫元素，树中将数据元素叫结点，在图中数据元素，我们则称之为顶点（Vertex）。　　（2）线性表可以没有元素，称为空表；树中可以没有节点，称为空树；但是，在图中">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/10/数据结构——图专题总结/1.jpg">
 
 
 
@@ -435,7 +438,31 @@
 <h2 id="图的存储方式"><a href="#图的存储方式" class="headerlink" title="图的存储方式"></a>图的存储方式</h2><p>邻接矩阵</p>
 <p>邻接表</p>
 <h2 id="图的最小生成树"><a href="#图的最小生成树" class="headerlink" title="图的最小生成树"></a>图的最小生成树</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">现在假设有一个很实际的问题：我们要在n个城市中建立一个通信网络，则连通这n个城市需要布置n-1一条通信线路，这个时候我们需要考虑如何在成本最低的情况下建立这个通信网？ </span><br><span class="line">于是我们就可以引入连通图来解决我们遇到的问题，n个城市就是图上的n个顶点，然后，边表示两个城市的通信线路，每条边上的权重就是我们搭建这条线路所需要的成本，所以现在我们有n个顶点的连通网可以建立不同的生成树，每一颗生成树都可以作为一个通信网，当我们构造这个连通网所花的成本最小时，搭建该连通网的生成树，就称为最小生成树。</span><br></pre></td></tr></table></figure>
-<p>普里姆算法—Prim算法<br>算法思路：<br>首先就是从图中的一个起点a开始，把a加入U集合，然后，寻找从与a有关联的边中，权重最小的那条边并且该边的终点b在顶点集合：（V-U）中，我们也把b加入到集合U中，并且输出边（a，b）的信息，这样我们的集合U就有：{a,b}，然后，我们寻找与a关联和b关联的边中，权重最小的那条边并且该边的终点在集合：（V-U）中，我们把c加入到集合U中，并且输出对应的那条边的信息，这样我们的集合U就有：{a,b,c}这三个元素了，一次类推，直到所有顶点都加入到了集合U。 </p>
+<h3 id="普里姆算法—Prim算法"><a href="#普里姆算法—Prim算法" class="headerlink" title="普里姆算法—Prim算法"></a>普里姆算法—Prim算法</h3><p>算法思路：<br>首先就是从图中的一个起点a开始，把a加入U集合，然后，寻找从与a有关联的边中，权重最小的那条边并且该边的终点b在顶点集合：（V-U）中，我们也把b加入到集合U中，并且输出边（a，b）的信息，这样我们的集合U就有：{a,b}，然后，我们寻找与a关联和b关联的边中，权重最小的那条边并且该边的终点在集合：（V-U）中，我们把c加入到集合U中，并且输出对应的那条边的信息，这样我们的集合U就有：{a,b,c}这三个元素了，一次类推，直到所有顶点都加入到了集合U。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度的分析： </span><br><span class="line">其中我们建立邻接矩阵需要的时间复杂度为：O(n*n),然后，我们Prim函数中生成最小生成树的时间复杂度为：O(n*n).</span><br></pre></td></tr></table></figure>
+<h3 id="克鲁斯卡算法"><a href="#克鲁斯卡算法" class="headerlink" title="克鲁斯卡算法"></a>克鲁斯卡算法</h3><p>算法思路：<br>（1）将图中的所有边都去掉。<br>（2）将边按权值从小到大的顺序添加到图中，保证添加的过程中不会形成环<br>（3）重复上一步直到连接所有顶点，此时就生成了最小生成树。这是一种贪心策略。</p>
+<p>这里同样我们给出一个和Prim算法讲解中同样的例子，模拟克鲁斯卡算法生成最小生成树的 </p>
+<h2 id="单源最短路径问题"><a href="#单源最短路径问题" class="headerlink" title="单源最短路径问题"></a><strong>单源最短路径问题</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Dijkstra最短路算法（单源最短路）</span><br><span class="line">Bellman–Ford算法（解决负权边问题）</span><br><span class="line">SPFA算法（Bellman-Ford算法改进版本）</span><br><span class="line">Floyd最短路算法（全局/多源最短路）</span><br></pre></td></tr></table></figure>
+<h3 id="迪杰斯特拉-Dijkstra）"><a href="#迪杰斯特拉-Dijkstra）" class="headerlink" title="迪杰斯特拉(Dijkstra）"></a>迪杰斯特拉(Dijkstra）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2. 初始状态：</span><br><span class="line"></span><br><span class="line">2.1.  若从源点 v0 到顶点 vi有边：dist[i]为该边上的权值；</span><br><span class="line"></span><br><span class="line">2.2.  若从源点 v0 到顶点 vi无边：dist[i]为∞。</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">根据以上描述，可以得到如下描述的算法：</span><br><span class="line"></span><br><span class="line"> （<span class="number">1</span>）初始化时，S只含有源节点；</span><br><span class="line">    （<span class="number">2</span>）从U中选取一个距离v最小的顶点k加入S中（该选定的距离就是v到k的最短路径长度）；</span><br><span class="line">    （<span class="number">3</span>）以k为新考虑的中间点，修改U中各顶点的距离；若从源节点v到顶点u的距离（经过顶点k）比原来距离（不经过顶点k）短，则修改顶点u的距离值，修改后的距离值是顶点k的距离加上k到u的距离；</span><br><span class="line">    （<span class="number">4</span>）重复步骤（<span class="number">2</span>）和（<span class="number">3</span>），直到所有顶点都包含在S中。</span><br><span class="line">    具体图例与算法执行步骤：（就从A开始，到各节点的最短路径）。</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/10/数据结构——图专题总结/1.jpg" alt=""></p>
+<p><img src="/2019/09/10/数据结构——图专题总结/2.jpg" alt="2"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">个人认为，Dijkstra算法的原理其实就是广度优先搜索，即逐步查找整张图，不管输入节点的位置情况，最后得到的也是所有点到源点的最小路径情况。</span><br><span class="line">    Dijkstra算法从用户输入的某个节点编号（a）开始，然后查找出与a相连通且权值最小的点，将其加入已确定路径点的集合 （T）中。之后每次循环，查找出从源点出发，经过T中新加入的点，再到当前点，路径权值是否有变化。若有变化，则更新路径信息。之后再重复循环，找出未确定路径点集合中（没有加入集合T的点即为未确定路径点），权值最小的那个，重复上述循环直至所有点都加入集合 T 中。</span><br></pre></td></tr></table></figure>
+<p>算法的精髓：S 集内的顶点是已经找到最短路径的顶点，V0 到 w 的最短路径只能通过 S 集内的顶点。**</p>
+<p><strong>迪杰斯特拉算法的时间复杂度为O(n*n)。</strong></p>
+<blockquote>
+<p>Dijkstra算法 和 Prim算法的原理都是一样是 广度优先搜索，只不过前者每次循环更新的是其余点到源点的路径信息（路径权值总和最小），后者更新的是总体权值总和最小。它们都是每次加入一个点，从某个确定点开始，逐步展开至整张图。</p>
+</blockquote>
+<blockquote>
+<p>Floyd优缺点分析：</p>
+<p>优点：比较容易容易理解，可以算出任意两个节点之间的最短距离，代码编写简单。<br>缺点：时间复杂度比较高(n3)，不适合计算大量数据，当数据稍微大点儿的时候就可以选择其他的算法来解决问题了，不然也会是超时。</p>
+<p>Floyd算法与Dijkstra算法的不同</p>
+<p>1.Floyd算法是求任意两点之间的距离，是多源最短路，而Dijkstra(迪杰斯特拉)算法是求一个顶点到其他所有顶点的最短路径，是单源最短路。<br>2.Floyd算法属于动态规划，我们在写核心代码时候就是相当于推dp状态方程，Dijkstra(迪杰斯特拉)算法属于贪心算法。<br>3.Dijkstra(迪杰斯特拉)算法时间复杂度一般是o(n^2),Floyd算法时间复杂度是o(n^3),Dijkstra(迪杰斯特拉)算法比Floyd算法块。<br>4.Floyd算法可以算带负权的，而Dijkstra(迪杰斯特拉)算法是不可以算带负权的。并且Floyd算法不能算负权回路。 </p>
+</blockquote>
+<blockquote>
+</blockquote>
+<h3 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h3><p><strong>不管三七二十一，先把整个图中任意两点的最短距离求出再说</strong></p>
+<p>Floyd算法又称为插点法，是一种利用<a href="https://baike.baidu.com/item/动态规划/529408" target="_blank" rel="noopener">动态规划</a>的思想寻找给定的<a href="https://baike.baidu.com/item/加权图/10579361" target="_blank" rel="noopener">加权图</a>中多源点之间<a href="https://baike.baidu.com/item/最短路径/6334920" target="_blank" rel="noopener">最短路径</a>的算法，</p>
 
       
     </div>
@@ -498,6 +525,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/13/数编程之美-Continually-updated/" rel="prev" title="数编程之美-Continually updated">
+                数编程之美-Continually updated <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -670,7 +701,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -732,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图的基本定义"><span class="nav-number">1.</span> <span class="nav-text">图的基本定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的存储方式"><span class="nav-number">2.</span> <span class="nav-text">图的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的最小生成树"><span class="nav-number">3.</span> <span class="nav-text">图的最小生成树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图的基本定义"><span class="nav-number">1.</span> <span class="nav-text">图的基本定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的存储方式"><span class="nav-number">2.</span> <span class="nav-text">图的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的最小生成树"><span class="nav-number">3.</span> <span class="nav-text">图的最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普里姆算法—Prim算法"><span class="nav-number">3.1.</span> <span class="nav-text">普里姆算法—Prim算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克鲁斯卡算法"><span class="nav-number">3.2.</span> <span class="nav-text">克鲁斯卡算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单源最短路径问题"><span class="nav-number">4.</span> <span class="nav-text">单源最短路径问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迪杰斯特拉-Dijkstra）"><span class="nav-number">4.1.</span> <span class="nav-text">迪杰斯特拉(Dijkstra）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd算法"><span class="nav-number">4.2.</span> <span class="nav-text">Floyd算法</span></a></li></ol></li></ol></div>
             
 
           </div>
