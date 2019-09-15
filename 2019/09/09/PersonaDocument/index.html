@@ -90,7 +90,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/09/09/PersonaDocument/image_1d9oni5bs6tj1ov414g353a1qdn9.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/09/PersonaDocument/image_1d9onkskg2vq10mnj0recp1alem.png">
-<meta property="og:updated_time" content="2019-09-12T11:05:39.249Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/09/PersonaDocument/1568551213(1">
+<meta property="og:updated_time" content="2019-09-15T12:41:15.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PersonaDocument">
 <meta name="twitter:description" content="农业物联网终端系统12345678在农业环境（大田、大棚）布置传感器采集环境数据，通过物联网终端传输到大数据平台，平台提供用户数据存储、访问、下载、上传。用户不需要自己搭建物联网系统、也不需要自己建设大数据系统，只需要从我们平台上下载数据进行自己所从事的专业数据建模与分析。应用示范，本系统与江苏省农科院团队共同开发，已经完成在扬州、兴化等地的应用示范。 主要负责： 物联网采集终端的设计与实现">
@@ -488,7 +489,31 @@
 </blockquote>
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">数据分片，是将整体数据分摊在多个存储设备（下文统称为“数据分区”或“分区”）上，这样每个存储设备的数据量相对就会小很多，以此满足系统的性能需求。</span><br><span class="line">Sharding按【方向】可以分为两类。</span><br><span class="line">（1）垂直分片：以表为单位，把不同的表分散到不同的数据库或主机上。特点是规则简单，实施方便，适合业务之间耦合度低的系统。</span><br><span class="line">（2）水平分片：以行为单位，将同一个表中的数据按照某种条件拆分到不同的数据库或主机上。特点是相对复杂，适合单表巨大的系统。</span><br></pre></td></tr></table></figure>
-<p>12.分布式设计</p>
+<h3 id="12-分布式设计"><a href="#12-分布式设计" class="headerlink" title="12.分布式设计"></a>12.分布式设计</h3><h3 id="13-socket安全性"><a href="#13-socket安全性" class="headerlink" title="13.socket安全性"></a>13.socket安全性</h3><p> SSL。它是Secure Socket Layer的，即安全的套接层。</p>
+<p>它就是用于给普通Socket提供安装功能，实现安全的几个主要功能： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1：认证; </span><br><span class="line"></span><br><span class="line">2：加密数据，是数据不可读; </span><br><span class="line"></span><br><span class="line">3：防止数据被修改，维持数据完整性;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>什么是SSLSocket</li>
+</ol>
+<p>JDK文档指出，SSLSocket扩展Socket并提供使用SSL或TLS协议的安全套接字。</p>
+<p>这种套接字是正常的流套接字，但是它们在基础网络传输协议(如TCP)上添加了安全保护层。</p>
+<p>具体安全方面的讨论见下一篇。本篇重点关注SSLSocket及相关几个类的使用。</p>
+</blockquote>
+<blockquote>
+<p>SSL Socket通讯是对socket的扩展，增加Socket通讯的数据安全性，SSL认证分为单向和双向认证。单向认证只认证服务器端的合法性而不认证客户端的合法性。双向认证是同时认证服务端和客户端。下面我分别说说使用C#实现单向认证和双向认证的过程，并用代码实现。</p>
+</blockquote>
+<blockquote>
+<p>SSL原理<br>比如 A要和B互相通讯，为了安全他们希望双方发送的数据都是经过加密的。这就要求双方有一个共同的加解密密钥(一般加密都是基于对称加密算法)。如何才能让双方都拥有同一个密钥呢？有人说由一方生成发给另一方不就行了。这样就带来另一个问题，如何保证这个传送的密钥是安全的呢？</p>
+<p>ssl实现了通过非对称的RSA加解密原理实现密钥的交换。(这里就不细讲RSA的原理了，不明白的可以先补充一下这部分知识)。我们假设A是服务器端，B是客户端。然后还有一个角色，是一个可信任的第三方CA。A首先生成一个RSA公私钥对，然后再由这个可信的第三方用自己的私钥(为了便于描述， 后面叫CA_PRIVATE_KEY)把这个DES密钥连同RSA公钥一起签发一个客户端证书(后面叫CLIENT_CERT)，这个证书中同时也包含一段签名。</p>
+<p>A会把CA证书(证书中包含CA_PRIVATE_KEY 对应的公钥， 后面叫CA_CERT)连同CLIENT_CERT一起发给客户端，当然客户端也可以由其它途径获取这两个证书(比如由专门的安全设备中导入到本地)。同时RSA私钥(后面叫CLIENT_PRIVATE_KEY)也会一起下发到客户端。</p>
+<p>客户端首先用CA_CERT对CLIENT_CERT做验签，以确保数据确实是由A发出来的。如果验签能过，其实就已经说明B已经认证了A的身份。前面说到CLIENT_CERT包含服务器的公钥，B用这个公钥对一个对称的DES密钥加密，然后可以公开发出去，他不用担心这个密钥会被截取，因为只有A才有CLIENT_PRIVATE_KEY，也只有A才能解密出来这个DES密钥。这样就完成了对称密钥的交换。</p>
+<p>盗个图，流程基本是下面这样的，</p>
+<p> <img src="/2019/09/09/PersonaDocument/1568551213(1" alt="1568551213(1)">.jpg)</p>
+</blockquote>
+<p>大部分时候到这里，SSL通讯前的握手已经完成了，可以进行安全的数据通讯了。不过有时候会有双向认证的需求，也就是A也想认证B。这个时候CLIENT_PRIVATE_KEY就发生作用了，B会用这个私钥自己生成签名，然后发给A来认证。</p>
+<p>这些基本就是SSL的原理了。</p>
+<p>上面讲到的这些流程，如果用程序实现还是有点复杂的。幸运的是，开源库openssl已经帮我们做了大部分的事情(openssl的实现机制更复杂也更灵活，但基本原理跟上面是一致的)。我们只需要调用一些基本的接口就可以完成SSL socket通讯。 </p>
 
       
     </div>
@@ -789,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#农业物联网终端系统"><span class="nav-number">1.</span> <span class="nav-text">农业物联网终端系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试可能涉及到的问题"><span class="nav-number">1.1.</span> <span class="nav-text">面试可能涉及到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解答"><span class="nav-number">1.2.</span> <span class="nav-text">问题解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Zigbee通信"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 Zigbee通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-TTL串口通信"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.TTL串口通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-GPRS"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. GPRS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-socket通信-代码以C-为例"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.socket通信(代码以C#为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-多线程与socket通信"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.多线程与socket通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-高并发的socket的高性能设计"><span class="nav-number">1.2.6.</span> <span class="nav-text">6.高并发的socket的高性能设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-粘包、分包、拆包"><span class="nav-number">1.2.7.</span> <span class="nav-text">7.粘包、分包、拆包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-http的工作流程"><span class="nav-number">1.2.8.</span> <span class="nav-text">8.http的工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-对handle的认识"><span class="nav-number">1.2.9.</span> <span class="nav-text">9.对handle的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-系统调用"><span class="nav-number">1.2.10.</span> <span class="nav-text">10.系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-数据库水平扩展、垂直扩展"><span class="nav-number">1.2.11.</span> <span class="nav-text">11 数据库水平扩展、垂直扩展</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#农业物联网终端系统"><span class="nav-number">1.</span> <span class="nav-text">农业物联网终端系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试可能涉及到的问题"><span class="nav-number">1.1.</span> <span class="nav-text">面试可能涉及到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题解答"><span class="nav-number">1.2.</span> <span class="nav-text">问题解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Zigbee通信"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 Zigbee通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-TTL串口通信"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.TTL串口通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-GPRS"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. GPRS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-socket通信-代码以C-为例"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.socket通信(代码以C#为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-多线程与socket通信"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.多线程与socket通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-高并发的socket的高性能设计"><span class="nav-number">1.2.6.</span> <span class="nav-text">6.高并发的socket的高性能设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-粘包、分包、拆包"><span class="nav-number">1.2.7.</span> <span class="nav-text">7.粘包、分包、拆包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-http的工作流程"><span class="nav-number">1.2.8.</span> <span class="nav-text">8.http的工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-对handle的认识"><span class="nav-number">1.2.9.</span> <span class="nav-text">9.对handle的认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-系统调用"><span class="nav-number">1.2.10.</span> <span class="nav-text">10.系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-数据库水平扩展、垂直扩展"><span class="nav-number">1.2.11.</span> <span class="nav-text">11 数据库水平扩展、垂直扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-分布式设计"><span class="nav-number">1.2.12.</span> <span class="nav-text">12.分布式设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-socket安全性"><span class="nav-number">1.2.13.</span> <span class="nav-text">13.socket安全性</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
