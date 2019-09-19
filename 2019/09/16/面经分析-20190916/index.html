@@ -91,9 +91,10 @@
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/面经分析-20190916/064bb159a5a563699dbabaf8bb737e1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/16/面经分析-20190916/E:/PersonalBlog/source/_posts/面经分析-20190916/5e197d1be3fbf69d630ba615426d137.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/16/面经分析-20190916/5e197d1be3fbf69d630ba615426d137.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/面经分析-20190916/1dbbc48c03e86aceb701e8bbe8185cc.png">
-<meta property="og:updated_time" content="2019-09-16T09:14:06.218Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/16/面经分析-20190916/E:/PersonalBlog/source/_posts/面经分析-20190916/a4e1812cccfc18f484cc5b34fc1f853.png">
+<meta property="og:updated_time" content="2019-09-17T09:19:44.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面经分析-20190916">
 <meta name="twitter:description" content="网易互娱原帖 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859一面 共计时长1h+牛客视频面试，两位面试官一起面，面试官们态度都特别好，面试体验极佳1.自我介绍介绍了学校，项目（这一部分重点介绍），常用的编程语言，以及喜欢的游戏（">
@@ -486,7 +487,7 @@
 </blockquote>
 <p>多重继承**</p>
 <p>当一个类继承多个类，且多个基类都有虚函数时，子类对象中将包含多个虚函数表的指针（即多个vptr），例：</p>
-<p><img src="/2019/09/16/面经分析-20190916/E:/PersonalBlog\source\_posts\面经分析-20190916\5e197d1be3fbf69d630ba615426d137.png" alt="5e197d1be3fbf69d630ba615426d137"></p>
+<p><img src="/2019/09/16/面经分析-20190916/5e197d1be3fbf69d630ba615426d137.png" alt="5e197d1be3fbf69d630ba615426d137"></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">其中：D自身的虚函数与B基类共用了同一个虚函数表，因此也称B为D的主基类（primary base <span class="class"><span class="keyword">class</span>）。</span></span><br><span class="line"><span class="class">虚函数替换过程与前面描述类似，只是多了一个虚函数表，多了一次拷贝和替换的过程。</span></span><br><span class="line"><span class="class">虚函数的调用过程，与前面描述基本类似，区别在于基类指针指向的位置可能不是派生类对象的起始位置，以如下面的程序为例：</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2019/09/16/面经分析-20190916/1dbbc48c03e86aceb701e8bbe8185cc.png" alt="1dbbc48c03e86aceb701e8bbe8185cc"></p>
 <p><strong>哪些不能是虚函数</strong></p>
@@ -546,6 +547,89 @@ c.使用free或者delete释放之后，没有将其置空，导致产生野指�
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  hash_map和<span class="built_in">map</span>的区别在哪里？</span><br><span class="line">构造函数。hash_map需要hash函数，等于函数；<span class="built_in">map</span>只需要比较函数(小于函数). </span><br><span class="line">存储结构。hash_map采用hash表存储，<span class="built_in">map</span>一般采用红黑树(RB Tree)实现。因此其memory数据结构是不一样的。 </span><br><span class="line">    什么时候需要用hash_map，什么时候需要用<span class="built_in">map</span>?</span><br><span class="line">总体来说，hash_map 查找速度会比<span class="built_in">map</span>快，而且查找速度基本和数据数据量大小，属于常数级别;而<span class="built_in">map</span>的查找速度是<span class="built_in">log</span>(n)级别。并不一定常数就比<span class="built_in">log</span>(n)小，hash还有hash函数的耗时，明白了吧，如果你考虑效率，特别是在元素达到一定数量级时，考虑考虑hash_map。但若你对内存使用特别严格，希望程序尽可能少消耗内存，那么一定要小心，hash_map可能会让你陷入尴尬，特别是当你的hash_map对象特别多时，你就更无法控制了，而且hash_map的构造速度较慢。</span><br><span class="line"></span><br><span class="line">现在知道如何选择了吗？权衡三个因素: 查找速度, 数据量, 内存使用。</span><br></pre></td></tr></table></figure>
 <p><strong>在C++11中，unordered_map作为一种关联容器，替代了hash_map，unordered_map的底层实现是hash表，所以被称为无序关联容器。</strong></p>
+<h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><p><strong>何时调用拷贝函数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一个对象以值传递的方式传入函数体</span><br><span class="line">一个对象以值传递的方式从函数返回（与返回值优化密切相关）</span><br><span class="line">一个对象需要通过另一个对象进行初始化</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://www.cnblogs.com/qianqiannian/p/8946769.html" target="_blank" rel="noopener">为什么需要拷贝构造函数</a></p>
+<p>　　把参数传递给函数有三种方法，一种是传值，一种是传地址，一种是传引用。传值与其他两种方式不同的地方在于 当使用传值方式的时候，会在函数里面生成传递参数的一个副本，这个副本的内容是按位从原始参数那里复制过来的，两者的内容是相同的。</p>
+<p>当原始参数是一个类的对象时，它也会产生一个对象的副本，此时需要注意：一般对象在创建时都会调用构造函数来进行初始化，但是</p>
+<p>在产生对象的副本时如果再执行对象的构造函数，那么这个对象的属性又再恢复到原始状态，这就不是我们希望的了。所以在产生对象</p>
+<p>副本的时候，构造函数不会被执行，被执行的是一个默认的默认的拷贝构造函数。</p>
+<p>　　问题原因：</p>
+<p>　　当函数执行完毕要返回的时候对象副本会执行析构函数，</p>
+<p>如果你的析构函数是空的话，也不会发生什么问题，但一般的析构函数都是要完成一些清理工作，如释放指针所指向的内存空间，这时候</p>
+<p>可能就会出问题。 譬如：我们在构造函数中为一个指针变量分配了内存，在析构函数中释放给这个指针所指向的内存空间，在把对象传递</p>
+<p>给函数至函数结束返回 的这个过程中 首先有一个对象的副本产生了。这个副本也有一个指针，它和原始对象的指针是指向同块内存空间的，</p>
+<p>函数返回时，副本对象的析构函数执行了，释放了副本对象中指针指向的内存空间，但是这个内存空间对于原始对象而言还是有效地，</p>
+<p>这是第一个问题，后面当原始对象也被销毁的时候，原始对象的析构函数执行，还会对那块已经释放掉的内存空间再次释放，产生严重</p>
+<p>错误，这是第二个问题。</p>
+<p>　　解决方法：</p>
+<p>　　既然传值有这样的问题，那是否可以使用传地址或者传引用的方式解决这种问题呢？</p>
+<p>　　事实上传地址和传引用确实可以解决这种问题，但是这并不适用所有的情况，有时我们不希望在函数里面的一些操作会影响到函数外部的变量。</p>
+<p>为了解决这种问题，此时就需要用到拷贝构造函数，拷贝构造函数就是在产生副本对象的时候执行的，在拷贝构造函数里面我们申请一个新的内存空间，</p>
+<p>这样在副本对象执行析构函数时其释放的就是新的内存空间，从而解决这个问题。</p>
+<p>　　适用范围：</p>
+<p>\1. 一个对象以值传递的方式传入函数体</p>
+<p>\2. 一个对象以值传递的方式从函数返回</p>
+<p>\3. 一个对象需要通过另外一个对象进行初始化  </p>
+<p>　　拷贝构造函数不可以改变它所引用的对象，如果可以改变，那么将导致无限循环，如果类中没有显示的声明一个拷贝构造函数，</p>
+<p>那么编译器会为你隐式定义一个位拷贝的默认拷贝构造函数</p>
+<p>　　如果不准备使用按值传递对象，那么其实是不需要拷贝构造函数，但是我们如果不写拷贝构造函数，编译器又可能为我们创建一个默认的。</p>
+<p>那么如何保证一个对象将永远不会被通过按值传递方式传递呢？</p>
+<p>　　声明一个私有的拷贝构造函数，甚至不必去定义它，除非成员函数或友元函数需要执行按值传递方式的传递。否则，如果用户试图用按值传递方式传递</p>
+<p>或返回对象，编译器将会报错。这是因为拷贝构造函数是私有的。因为已经显示地声明我们接管了这项工作，所以编译器不再创建默认的拷贝构造函数</p>
+</blockquote>
+<h3 id="指针引用"><a href="#指针引用" class="headerlink" title="指针引用"></a>指针引用</h3><p>指针是一个存放地址的变量，而指针引用指的是这个变量的<strong>引用</strong>，众所周知C++中如果参数不是引用的话会调用参数对象的拷贝构造函数，所以如果有需求想改变指针所指的对象（换句话说，就是要改变指针里面存的地址），就要使用指针引用。</p>
+<blockquote>
+<p>C++中定义指针的引用有什么好处呢？</p>
+<p>首先指针引用的定义方式（以char类型为例）： char*   &amp;ptr = xxx   </p>
+<p>我们知道在C语言中如果想改变实参指针所指向的位置，就要定义重指针，如下面的例子</p>
+<p>// 错误 实参指针不能被赋值<br>void changePtr( char<em> ptr )<br>{<br>    ptr = (char</em>)malloc(100*sizeof(char));<br>}<br>如果要想改变实参指针所指向的地址，则需要定义重指针</p>
+<p>// 正确<br>void changePtr( char*<em> dbl_ptr )<br>{
+    </em>dbl_ptr = (char<em>)malloc(100</em>sizeof(char));<br>}<br>如果使用指针的引用</p>
+<p>void changePtr( char<em>&amp;  ref_ptr )<br>{<br>    ref_ptr = (char</em>)malloc(100*sizeof(char));<br>}<br>就可以直接使用引用来修改实参指针所指向的位置，也就相当于用指针本身修改指针所指向的位置。</p>
+<p>(当然前提不是指针常量） </p>
+</blockquote>
+<h3 id="网络应用程序设计模式"><a href="#网络应用程序设计模式" class="headerlink" title="网络应用程序设计模式"></a>网络应用程序设计模式</h3><p>C/S模式</p>
+<p>传统的网络应用设计模式，客户机(client)/服务器(server)模式。需要在通讯两端各自部署客户机和服务器来完成数据通信。</p>
+<p>B/S模式</p>
+<p>浏览器()/服务器(server)模式。只需在一端部署服务器，而另外一端使用每台PC都默认配置的浏览器即可完成数据的传输。</p>
+<p>优缺点： 对于C/S模式来说，其优点明显。客户端位于目标主机上可以保证性能，将数据缓存至客户端本地，从而提高数据传输效率。且一般来说客户端和服务器程序由一个开发团队创作，所以他们之间所采用的协议相对灵活。可以在标准协议的基础上根据需求裁剪及定制。例如，腾讯公司所采用的通信协议，即为ftp协议的修改剪裁版。 因此，传统的网络应用程序及较大型的网络应用程序都首选C/S模式进行开发。如，知名的网络游戏英雄联盟。3D画面，数据量庞大，使用C/S模式可以提前在本地进行大量数据的缓存处理，从而提高观感。 C/S模式的缺点也较突出。由于客户端和服务器都需要有一个开发团队来完成开发。工作量将成倍提升，开发周期较长。另外，从用户角度出发，需要将客户端安插至用户主机上，对用户主机的安全性构成威胁。这也是很多用户不愿使用C/S模式应用程序的重要原因。<br>B/S模式相比C/S模式而言，由于它没有独立的客户端，使用标准浏览器作为客户端，其工作开发量较小。只需开发服务器端即可。另外由于其采用浏览器显示数据，因此移植性非常好，不受平台限制。如早期的偷菜游戏，在各个平台上都可以完美运行。 B/S模式的缺点也较明显。由于使用第三方浏览器，因此网络应用支持受限。另外，没有客户端放到对方主机上，缓存数据不尽如人意，从而传输数据量受到限制。应用的观感大打折扣。第三，必须与浏览器一样，采用标准http协议进行通信，协议选择不灵活。 因此在开发过程中，模式的选择由上述各自的特点决定。根据实际需求选择应用程序设计模式。 </p>
+<h3 id="程序编译的四个阶段"><a href="#程序编译的四个阶段" class="headerlink" title="程序编译的四个阶段"></a>程序编译的四个阶段</h3><p>1.编译过程的四个阶段</p>
+<p>源程序到目标程序执行的四个阶段如图1所示，GCC编译C源代码有四个步骤：预处理—-&gt;编译—-&gt;汇编—-&gt;链接。 <img src="/2019/09/16/面经分析-20190916/E:/PersonalBlog\source\_posts\面经分析-20190916\a4e1812cccfc18f484cc5b34fc1f853.png" alt="a4e1812cccfc18f484cc5b34fc1f853"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">以源程序hello.c为例</span><br><span class="line"></span><br><span class="line">#include intmain()&#123;printf(&quot;happy new year!\n&quot;);return0;&#125;</span><br><span class="line"></span><br><span class="line">2.预处理阶段（.c—.i）</span><br><span class="line"></span><br><span class="line">编译器将C程序的头文件编译进来，还有宏的替换，可以用gcc的参数-E来参看。</span><br><span class="line"></span><br><span class="line">命令：unix&gt;gcc –o hello hello.c </span><br><span class="line"></span><br><span class="line">作用：将hello.c预处理输出hello.i</span><br><span class="line"></span><br><span class="line">3 编译（.i—.s）转换为汇编语言文件</span><br><span class="line"></span><br><span class="line">这个阶段编译器主要做词法分析、语法分析、语义分析等，在检查无错误后后，把代码翻译成汇编语言[2]。可用gcc的参数-S来参看。 </span><br><span class="line"></span><br><span class="line">编译器(ccl)将文本文件hello.i 翻译成文本文件hello.s, 它包含一个汇编语言程序。 </span><br><span class="line"></span><br><span class="line">一条低级机器语言指令。 </span><br><span class="line"></span><br><span class="line">命令：gcc -S hello.i -o hello.s </span><br><span class="line"></span><br><span class="line">作用：将预处理输出文件hello.i汇编成hello.s文件</span><br><span class="line"></span><br><span class="line">4.汇编阶段（.s—.o）得到机器语言</span><br><span class="line"></span><br><span class="line">汇编器as 将hello.s 翻译成机器语言保存在hello.o 中（二进制文本形式）。</span><br><span class="line"></span><br><span class="line">5.链接阶段</span><br><span class="line"></span><br><span class="line">printf函数存在于一个名为printf.o的单独预编译目标文件中。必须得将其并入到hello.o的程序中，链接器就是负责处理这两个的并入，结果得到hello文件，它就是一个可执行的目标文件。</span><br></pre></td></tr></table></figure>
+<h3 id="浏览器多进程架构"><a href="#浏览器多进程架构" class="headerlink" title="浏览器多进程架构"></a>浏览器多进程架构</h3><p>跟现在的很多多线程浏览器不一样，Chrome浏览器使用多个进程来隔离不同的网页。因此在Chrome中打开一个网页相当于起了一个进程</p>
+<h4 id="那么Chrome为什么要使用多进程架构"><a href="#那么Chrome为什么要使用多进程架构" class="headerlink" title="那么Chrome为什么要使用多进程架构?"></a>那么Chrome为什么要使用多进程架构?</h4><p>在浏览器刚被设计出来的时候，那时的网页非常的简单，每个网页的资源占有率是非常低的，因此一个进程处理多个网页时可行的。然后在今天，大量网页变得日益复杂。把所有网页都放进一个进程的浏览器面临在健壮性，响应速度，安全性方面的挑战。因为如果浏览器中的<code>一个tab网页崩溃的话，将会导致其他被打开的网页应用</code>。另外相对于线程，进程之间是不共享资源和地址空间的,所以不会存在太多的安全问题，而由于多个线程共享着相同的地址空间和资源,所以会存在<code>线程之间有可能会恶意修改或者获取非授权数据等复杂的安全问题。</code></p>
+<p>在了解这个知识点线，我们需要先说明下什么是<code>浏览器内核</code>。</p>
+<h4 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h4><p>简单来说浏览器内核是通过取得页面内容、整理信息（应用CSS）、计算和组合最终输出可视化的图像结果，通常也被称为渲染引擎。从上面我们可以知道，Chrome浏览器为每个tab页面单独启用进程，因此每个tab网页都有由其独立的渲染引擎实例。</p>
+<h4 id="浏览器内核是多线程"><a href="#浏览器内核是多线程" class="headerlink" title="浏览器内核是多线程"></a>浏览器内核是多线程</h4><p>浏览器内核是多线程，在内核控制下各线程相互配合以保持同步，一个浏览器通常由以下常驻线程组成：</p>
+<ul>
+<li>GUI 渲染线程</li>
+<li>JavaScript引擎线程</li>
+<li>定时触发器线程</li>
+<li>事件触发线程</li>
+<li>异步http请求线程</li>
+</ul>
+<h3 id="select，poll，epoll"><a href="#select，poll，epoll" class="headerlink" title="select，poll，epoll"></a>select，poll，epoll</h3><blockquote>
+<p>当有多个流时，可以考虑用轮训的方式<strong>逐一查看每个流目前是否有数据</strong>，若有，则进行处理。（非阻塞忙轮询－－一直主动查看流的状态）</p>
+<p>缺点：cpu空耗在无用的流缓冲区检查上，浪费时间。</p>
+<p>改进：引入一个代理人（select），<strong>当代理人感知到有一个或多个流的数据有变化时，再进行轮询检查</strong>。（非阻塞轮询－－有流的状态发生变化时，主动检查所有流的状态）</p>
+<p>缺点：当只有一个或少数流有更新时，遍历检查所有的流非常浪费时间。（故，亦称为无差别轮询）</p>
+<p>改进：当有流的状态改变时，仅处理该流相关的数据变化。（epoll－－event poll，事件轮询，精确到“什么流”发生了“什么事件”）</p>
+<p>具体实现是引入了一个红黑树及一个就绪列表。</p>
+<p>epoll的关键操作：</p>
+<p>1、创建一个epoll对象</p>
+<p>epollfd=epoll_create()</p>
+<p>此时，会在内核中专属于epoll的高速cache区新建一棵红黑树以及一个就绪列表。</p>
+<p>2、往epoll中添加或删除<strong>某个流</strong>的<strong>某个事件</strong></p>
+<p>epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN)</p>
+<p>epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT)</p>
+<p>“add”动作会将文件句柄（socket）加入到红黑树中，并向内核注册改句柄的回调函数，当内核检测到该句柄可读或可写时（由中断触发），就将该句柄对应的回调函数加入到就绪列表中。</p>
+</blockquote>
+<p>在讨论epoll的实现细节之前，先把epoll的相关操作列出：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">epoll_create 创建一个epoll对象，一般epollfd = epoll_create()</span><br><span class="line"></span><br><span class="line">epoll_ctl （epoll_add/epoll_del的合体），往epoll对象中增加/删除某一个流的某一个事件</span><br><span class="line"></span><br><span class="line">比如</span><br><span class="line"></span><br><span class="line">epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);<span class="comment">//注册缓冲区非空事件，即有数据流入</span></span><br><span class="line"></span><br><span class="line">epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);<span class="comment">//注册缓冲区非满事件，即流可以被写入</span></span><br><span class="line"></span><br><span class="line">epoll_wait(epollfd,...)等待直到注册的事件发生</span><br><span class="line"></span><br><span class="line">（注：当对一个非阻塞流的读写发生缓冲区满或缓冲区空，write/read会返回<span class="number">-1</span>，并设置errno=EAGAIN。而epoll只关心缓冲区非满和缓冲区非空事件）。</span><br><span class="line"></span><br><span class="line">一个epoll模式的代码大概的样子是：</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span> &#123;</span><br><span class="line"></span><br><span class="line">    active_stream[] = epoll_wait(epollfd)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i in active_stream[] &#123;</span><br><span class="line"></span><br><span class="line">         read <span class="keyword">or</span> write till</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一次读懂 Select、Poll、Epoll IO复用技术</p>
+<p><a href="https://baijiahao.baidu.com/s?id=1611547498841608701&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1611547498841608701&amp;wfr=spider&amp;for=pc</a></p>
 
       
     </div>
@@ -842,7 +926,7 @@ c.使用free或者delete释放之后，没有将其置空，导致产生野指�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网易互娱"><span class="nav-number">1.</span> <span class="nav-text">网易互娱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Static关键字各种用法，Static声明的函数能否在其他文件中调用"><span class="nav-number">1.1.</span> <span class="nav-text">Static关键字各种用法，Static声明的函数能否在其他文件中调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Const关键字各种用法"><span class="nav-number">1.2.</span> <span class="nav-text">Const关键字各种用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数的原理介绍一下，哪些函数不能是虚函数"><span class="nav-number">1.3.</span> <span class="nav-text">虚函数的原理介绍一下，哪些函数不能是虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存问题"><span class="nav-number">1.4.</span> <span class="nav-text">内存问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构之哈希表"><span class="nav-number">1.5.</span> <span class="nav-text">数据结构之哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash、Hash-map、map"><span class="nav-number">1.6.</span> <span class="nav-text">Hash、Hash_map、map</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网易互娱"><span class="nav-number">1.</span> <span class="nav-text">网易互娱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Static关键字各种用法，Static声明的函数能否在其他文件中调用"><span class="nav-number">1.1.</span> <span class="nav-text">Static关键字各种用法，Static声明的函数能否在其他文件中调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Const关键字各种用法"><span class="nav-number">1.2.</span> <span class="nav-text">Const关键字各种用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数的原理介绍一下，哪些函数不能是虚函数"><span class="nav-number">1.3.</span> <span class="nav-text">虚函数的原理介绍一下，哪些函数不能是虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存问题"><span class="nav-number">1.4.</span> <span class="nav-text">内存问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构之哈希表"><span class="nav-number">1.5.</span> <span class="nav-text">数据结构之哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash、Hash-map、map"><span class="nav-number">1.6.</span> <span class="nav-text">Hash、Hash_map、map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数"><span class="nav-number">1.7.</span> <span class="nav-text">拷贝构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针引用"><span class="nav-number">1.8.</span> <span class="nav-text">指针引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络应用程序设计模式"><span class="nav-number">1.9.</span> <span class="nav-text">网络应用程序设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序编译的四个阶段"><span class="nav-number">1.10.</span> <span class="nav-text">程序编译的四个阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器多进程架构"><span class="nav-number">1.11.</span> <span class="nav-text">浏览器多进程架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#那么Chrome为什么要使用多进程架构"><span class="nav-number">1.11.1.</span> <span class="nav-text">那么Chrome为什么要使用多进程架构?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器内核"><span class="nav-number">1.11.2.</span> <span class="nav-text">浏览器内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器内核是多线程"><span class="nav-number">1.11.3.</span> <span class="nav-text">浏览器内核是多线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select，poll，epoll"><span class="nav-number">1.12.</span> <span class="nav-text">select，poll，epoll</span></a></li></ol></li></ol></div>
             
 
           </div>
